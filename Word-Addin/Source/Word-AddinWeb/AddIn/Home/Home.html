@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
+    <!-- <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+    <!-- <script src="../../Scripts/Office/1/office.js" type="text/javascript"></script>  -->
+
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+
+    <script src="../../Scripts/Jquery.Dropdown.js"></script>
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="header" class="ms-bgColor-themePrimary">
+        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Word add-in</h2>
+    </div>
+    <div id="content">
+        <!-- Introduction -->
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This sample demonstrates a few different ways to interact with the Office context. Adding different types of content and reading data from the document.
+        </p>
+
+        <!-- Exercise Section: Write -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Write</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Below are different ways for adding content, using different data types.
+        </p>
+
+        <!-- Exercise: Add plain text and HTML -->
+        <div class="section">
+            <button id="add-plain-text" class="ms-Button">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus"></i>
+                </span>
+                <span class="ms-Button-label">Add plain text</span>
+                <span class="ms-Button-description">Description of the action this button takes</span>
+            </button>
+
+            <button id="add-html" class="ms-Button ms-Button--primary">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus"></i>
+                </span>
+                <span class="ms-Button-label">Add HTML</span>
+                <span class="ms-Button-description">Description of the action this button takes</span>
+            </button>
+        </div>
+
+        <!-- Exercise: Add Matrix -->
+        <div class="section">
+            <button id="add-matrix" class="ms-Button ms-Button--compound">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus">
+                    </i>
+                </span>
+                <span class="ms-Button-label">Add Matrix</span>
+                <span class="ms-Button-description">
+                    Description of the action this button takes
+                </span>
+            </button>
+        </div>
+
+        <!-- Exercise: Add Office Table -->
+        <div class="section">
+            <button id="add-office-table" class="ms-Button ms-Button--command">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus"></i>
+                </span> <span class="ms-Button-label">Add Office Table</span>
+                <span class="ms-Button-description">
+                    Description of the action this button takes
+                </span>
+            </button>
+        </div>
+
+        <!-- Exercise: Add Open XML -->
+        <div class="section">
+            <div class="ms-Dropdown" tabindex="0">
+                <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                <select id="ooxml-file" class="ms-Dropdown-select">
+                    <option value="Chart.xml">Chart.xml</option>
+                    <option value="SimpleImage.xml">SimpleImage.xml</option>
+                    <option value="SmartArt.xml">SmartArt.xml</option>
+                    <option value="TableStyled.xml">TableStyled.xml</option>
+                    <option value="TableWithDirectFormat.xml">TableWithDirectFormat.xml</option>
+                    <option value="TextBoxWordArt.xml">TextBoxWordArt.xml</option>
+                    <option value="TextWithStyle.xml">TextWithStyle.xml</option>
+                </select>
+            </div>
+
+            <button id="add-open-xml" class="ms-Button ms-Button--hero">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus">
+                    </i>
+                </span>
+                <span class="ms-Button-label">Add Open XML</span>
+                <span class="ms-Button-description">
+                    Description of the action this button takes
+                </span>
+            </button>
+        </div>
+
+        <!-- Exercise Section: Read -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Read</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This Office add-in demonstrates a few different ways to interact with the Office context.
+        </p>
+
+        <!-- Exercise: Selected data dialog -->
+        <div id="selected-data-dialog" class="ms-Dialog ms-Dialog--lgHeader">
+            <div class="ms-Overlay"></div>
+            <div class="ms-Dialog-main">
+                <button class="ms-Dialog-button ms-Dialog-button--close"><i class="ms-Icon ms-Icon--x"></i></button>
+                <div class="ms-Dialog-header">
+                    <p class="ms-Dialog-title">
+                        Selected data
+                    </p>
+                </div>
+                <div class="ms-Dialog-inner">
+                    <div class="ms-Dialog-content">
+                        <p id="selected-data-dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                            <!-- Dialog text -->
+                        </p>
+                    </div>
+                    <div class="ms-Dialog-actions">
+                        <div class="ms-Dialog-actionsRight">
+                            <button id="selected-data-dialog-more" class="ms-Dialog-action ms-Button ms-Button--primary">
+                                <span class="ms-Button-label">OK</span>
+                            </button>
+                            <button id="selected-data-dialog-got-it" class="ms-Dialog-action ms-Button">
+                                <span class="ms-Button-label">Got it</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise: Get selected data (plain text) -->
+        <div class="section">
+            <button id="get-selected-plain-text" class="ms-Button">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus"></i>
+                </span>
+                <span class="ms-Button-label">Get selected data (plain text)</span>
+                <span class="ms-Button-description">Description of the action this button takes</span>
+            </button>
+        </div>
+
+        <!-- Exercise: Get selected data (HTML) -->
+        <div class="section">
+            <button id="get-selected-html" class="ms-Button ms-Button--primary">
+                <span class="ms-Button-icon">
+                    <i class="ms-Icon ms-Icon--plus"></i>
+                </span>
+                <span class="ms-Button-label">Get selected data (HTML)</span>
+                <span class="ms-Button-description">Description of the action this button takes</span>
+            </button>
+        </div>
+
+
+        <!-- Office UI Fabric -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+        </p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
+        </p>
+    </div>
+</body>
+</html>
