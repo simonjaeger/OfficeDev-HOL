@@ -268,7 +268,7 @@ Our first task here is to clean up the project.
         <div class="section">
         </div>
 
-        <!-- Exercise: Add Open XML -->
+        <!-- Exercise: Add OOXML -->
         <div class="section">
         </div>
 
@@ -454,6 +454,65 @@ Our first task here is to clean up the project.
     }
     ```
 4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
+
+#### Exercise 3.4: Add an Office Open XML (OOXML) to the document ####
+
+1. In **Home.html**, locate the "Add OOXML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled Dropdown (using the **Jquery.Dropdown.js** file) and button. 
+    ```html
+    <div class="ms-Dropdown" tabindex="0">
+        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+        <select id="ooxml-file" class="ms-Dropdown-select">
+            <option value="Chart.xml">Chart.xml</option>
+            <option value="SimpleImage.xml">SimpleImage.xml</option>
+            <option value="SmartArt.xml">SmartArt.xml</option>
+            <option value="TableStyled.xml">TableStyled.xml</option>
+            <option value="TableWithDirectFormat.xml">TableWithDirectFormat.xml</option>
+            <option value="TextBoxWordArt.xml">TextBoxWordArt.xml</option>
+            <option value="TextWithStyle.xml">TextWithStyle.xml</option>
+        </select>
+    </div>
+
+    <button id="add-open-xml" class="ms-Button ms-Button--hero">
+        <span class="ms-Button-icon">
+            <i class="ms-Icon ms-Icon--plus">
+            </i>
+        </span>
+        <span class="ms-Button-label">Add OOXML</span>
+        <span class="ms-Button-description">
+            Description of the action this button takes
+        </span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+    ```js
+    // Add event handlers
+    $('#add-open-xml').click(addOpenXml);
+    
+    ```
+3. In **Home.js**, add the following function to HTML to the document:
+    ```js
+    // Add data (Open XML) to the current document selection
+    function addOpenXml() {
+        // Get the selected file
+        var file = $('#ooxml-file').val();
+
+        // Get the file contents
+        $.ajax({
+            url: '/../../OOXML/' + file,
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                // Set selection
+                Office.context.document.setSelectedDataAsync(data, { coercionType: 'ooxml' }, onSelectionSet);
+            },
+            error: function (e) {
+                // TODO: Handle error
+            }
+        });
+    }
+    ```
+4. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML file into the document.
 
 
 
