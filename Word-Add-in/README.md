@@ -8,9 +8,10 @@ This hands-on lab demonstrates a few different ways to interact with the Office 
 The objective is to get familiar with some of the possiblities that we have when building Word add-ins
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
-1. [1.0 Creating the project](#exercise-10-creating-the-project)
-1. [1.1 Editing the manifest](#exercise-11-editing-the-manifest)
-1. [1.2 Launching the project](#exercise-12-launching-the-project)
+
+* [1.0 Creating the project](#exercise-10-creating-the-project)
+* [1.1 Editing the manifest](#exercise-11-editing-the-manifest)
+* [1.2 Launching the project](#exercise-12-launching-the-project)
 
 ### Applies to ###
 -  Word Client
