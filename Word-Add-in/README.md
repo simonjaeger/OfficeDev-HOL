@@ -559,8 +559,8 @@ Our first task here is to clean up the project.
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/Dialog.png)
 2. In **Home.js**, add two event handlers (below the initialization of the Office UI Fabric components, in the **ready** function) for the dialog. This will allow us to close it.
     ```js
-    $('#get-selected-plain-text').click(getSelectedPlainText);
-    $('#get-selected-html').click(getSelectedHTML);
+    $('#selected-data-dialog-more').click(hideSelectedDataDialog);
+    $('#selected-data-dialog-got-it').click(hideSelectedDataDialog);
     
     ```
 3. In **Home.js**, add the following two functions to HTML to the document:
