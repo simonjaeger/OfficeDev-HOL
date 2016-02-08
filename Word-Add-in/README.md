@@ -337,7 +337,16 @@ Our first task here is to clean up the project.
         Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
     }
     ```
-4. Launch your Word add-in and test your new functionality by clicking the **Add plain text** button. When the new button is clicked, the function will be executed; adding a piece of plain text onto the document.
+4. In **Home.js**, add the following function to serve as a callback when adding any data to the selection in the document. You can perform validation checks in this function and present errors if something goes wrong during the insertion.
+    ```js
+    // Callback function for the asynchronous write function
+    function onSelectionSet(asyncResult) {
+        if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+            // TODO: Handle error
+        }
+    }
+    ```
+5. Launch your Word add-in and test your new functionality by clicking the **Add plain text** button. When the new button is clicked, the function will be executed; adding a piece of plain text onto the document.
 
 # More Resources #
 - Discover Office development at: <https://msdn.microsoft.com/en-us/office/>
