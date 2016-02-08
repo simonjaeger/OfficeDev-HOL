@@ -239,7 +239,7 @@ Our first task here is to clean up the project.
         margin-bottom: 10px;
     }
     ``` 
-2. In **Home.html**, add the following chunk of HTML inside the **<body>** tags.
+2. In **Home.html**, add the following chunk of HTML inside the **<body>** tags. This will set the stage for the next array of exercises to come. 
     ```html
     <!-- Header -->
     <div id="header" class="ms-bgColor-themePrimary">
