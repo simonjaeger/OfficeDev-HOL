@@ -324,6 +324,21 @@ Our first task here is to clean up the project.
     
     ```
 3. In **Home.js**, add the following function to add plain text to the document:
+    ```js
+    // Adds data (plain text) to the current document selection
+    function addPlainText() {
+        var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod' +
+            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
+            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
+            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+            'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt ' +
+            'in culpa qui officia deserunt mollit anim id est laborum.';
+
+        // Set selection
+        Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
+    }
+    
+    ```
 4. Launch your Word add-in and test your new functionality. When the new button is clicked, the function should be executed; adding a piece of plain text onto the document.
 
 # More Resources #
