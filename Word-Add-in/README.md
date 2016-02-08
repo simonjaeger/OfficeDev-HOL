@@ -92,7 +92,7 @@ Our first task here is to clean up the project.
 
 1. Remove the **Content** and **Images** folders from the project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything inside the **<body>** tags. This should leave you with something like this:
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything inside the **body** tags. This should leave you with something like this:
     ```html
     <!DOCTYPE html>
     <html>
@@ -141,7 +141,7 @@ Our first task here is to clean up the project.
 
 
 #### Exercise 2.1: Add Office UI Fabric ####
-1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **<head>** tags. Add them before the CSS reference to **"../App.css"**.
+1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
     ```xml
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
@@ -150,7 +150,7 @@ Our first task here is to clean up the project.
 2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
 3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
-4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **<head>** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
+4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
     ```xml
     <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
     
@@ -239,7 +239,7 @@ Our first task here is to clean up the project.
         margin-bottom: 10px;
     }
     ``` 
-2. In **Home.html**, add the following chunk of HTML inside the **<body>** tags. This will set the stage for the next array of exercises to come. 
+2. In **Home.html**, add the following chunk of HTML inside the **body** tags. This will set the stage for the next array of exercises to come. 
     ```html
     <!-- Header -->
     <div id="header" class="ms-bgColor-themePrimary">
