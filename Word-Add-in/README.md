@@ -203,8 +203,43 @@ Our first task here is to clean up the project.
         };
     })();
     ``` 
-6. 
-    
+
+#### Exercise 2.2: Add the base (CSS + HTML) ####
+1. In **App.css**, add the following basic CSS (this should be entire file). We will do much of the styling through already defined classes in the Office UI Fabric. But some basic layouting will do us great!
+    ```css
+    #header {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 80px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #header h2 {
+        position: relative;
+        margin-left: 22px;
+        margin-top: 30px;
+        text-wrap: none;
+        white-space: nowrap;
+    }
+
+    #content {
+        position: absolute;
+        top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .section-title {
+        margin-bottom: -5px;
+    }
+
+    .section {
+        margin-bottom: 10px;
+    }
+    ``` 
+2. 
     
 
 # More Resources #
