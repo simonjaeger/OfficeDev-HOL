@@ -145,9 +145,7 @@ Our first task here is to clean up the project.
     ```xml
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
-        
     <body>
-    
     </body>
     ```
 2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
@@ -201,6 +199,17 @@ Our first task here is to clean up the project.
            $(document).ready(function () {
                // Initialize Office UI Fabric components (dropdowns)
                $(".ms-Dropdown").Dropdown();
+            });
+        };
+    })();
+    ``` 
+6. 
+    
+    
+
+# More Resources #
+- Discover Office development at: <https://msdn.microsoft.com/en-us/office/>
+- Office UI Fabric
             });
         };
     })();
