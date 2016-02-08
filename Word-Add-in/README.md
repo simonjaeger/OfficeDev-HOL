@@ -418,7 +418,6 @@ Our first task here is to clean up the project.
     ```
 4. Launch your Word add-in and test your work by clicking the **Add matrix** button. When the button is clicked, the function will be executed; adding a matrix as a table into the document.
 
-
 #### Exercise 3.3: Add an Office Table to the document ####
 
 1. In **Home.html**, locate the "Add Office Table" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
@@ -515,9 +514,66 @@ Our first task here is to clean up the project.
       * TableWithDirectFormat.xml
       * TextBoxWordArt.xml
       * TextWithStyle.xml
-5. **Create** a new folder in your web project and name it **OOXML** in the **Solution Explorer**. **Add** these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
+5. Create a new folder in your web project and name it **OOXML** in the **Solution Explorer**. Add these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
 6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.
+
+
+
+
+#### Exercise 4.0: Add a dialog ####
+
+1. In **Home.html**, locate the "Selected data dialog" section (commented) and add the following HTML piece right after. This is an Office UI Fabric styled dialog. 
+    ```html
+    <div id="selected-data-dialog" class="ms-Dialog ms-Dialog--lgHeader">
+        <div class="ms-Overlay"></div>
+        <div class="ms-Dialog-main">
+            <button class="ms-Dialog-button ms-Dialog-button--close"><i class="ms-Icon ms-Icon--x"></i></button>
+            <div class="ms-Dialog-header">
+                <p class="ms-Dialog-title">
+                    Selected data
+                </p>
+            </div>
+            <div class="ms-Dialog-inner">
+                <div class="ms-Dialog-content">
+                    <p id="selected-data-dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                        <!-- Dialog text -->
+                    </p>
+                </div>
+                <div class="ms-Dialog-actions">
+                    <div class="ms-Dialog-actionsRight">
+                        <button id="selected-data-dialog-more" class="ms-Dialog-action ms-Button ms-Button--primary">
+                            <span class="ms-Button-label">OK</span>
+                        </button>
+                        <button id="selected-data-dialog-got-it" class="ms-Dialog-action ms-Button">
+                            <span class="ms-Button-label">Got it</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#add-office-table').click(addOfficeTable);
+    
+    ```
+3. In **Home.js**, add the following function to HTML to the document:
+    ```js
+    // Add data (Office Table) to the current document selection
+    function addOfficeTable() {
+        var table = new Office.TableData();
+        table.headers = [['Header', 'Header']];
+        table.rows = [['Entry', 'Entry'], ['Entry', 'Entry'], ['Entry', 'Entry']];
+
+        // Set selection
+        Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
+    }
+    ```
+4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
+
 
 
 
