@@ -304,7 +304,7 @@ Our first task here is to clean up the project.
     
 #### Exercise 3.0: Add plain text to the document ####
 
-1. In **Home.html**, locate the "Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-plain-text" class="ms-Button">
         <span class="ms-Button-icon">
@@ -350,7 +350,7 @@ Our first task here is to clean up the project.
 
 #### Exercise 3.1: Add HTML to the document ####
 
-1. In **Home.html**, locate the "Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-html" class="ms-Button ms-Button--primary">
         <span class="ms-Button-icon">
@@ -384,7 +384,7 @@ Our first task here is to clean up the project.
 
 #### Exercise 3.2: Add a matrix to the document ####
 
-1. In **Home.html**, locate the "Add matrix" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Add matrix" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-matrix" class="ms-Button ms-Button--compound">
         <span class="ms-Button-icon">
@@ -453,7 +453,7 @@ Our first task here is to clean up the project.
 
 #### Exercise 3.4: Add Office Open XML (OOXML) to the document ####
 
-1. In **Home.html**, locate the "Add OOXML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled Dropdown (using the **Jquery.Dropdown.js** file) and button. 
+1. In **Home.html**, locate the "Exercise: Add OOXML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled Dropdown (using the **Jquery.Dropdown.js** file) and button. 
     ```html
     <div class="ms-Dropdown" tabindex="0">
         <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
@@ -523,7 +523,7 @@ Our first task here is to clean up the project.
 
 #### Exercise 4.0: Add a dialog ####
 
-1. In **Home.html**, locate the "Selected data dialog" section (commented) and add the following HTML piece right after. This is an Office UI Fabric styled dialog. 
+1. In **Home.html**, locate the "Exercise: Selected data dialog" section (commented) and add the following HTML piece right after. This is an Office UI Fabric styled dialog. 
     ```html
     <div id="selected-data-dialog" class="ms-Dialog ms-Dialog--lgHeader">
         <div class="ms-Overlay"></div>
@@ -555,6 +555,8 @@ Our first task here is to clean up the project.
     </div>
     
     ```
+2. Launch your Word add-in and test your work. You should find a dialog covering up most of your view.
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/Dialog.png)
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     $('#add-office-table').click(addOfficeTable);
