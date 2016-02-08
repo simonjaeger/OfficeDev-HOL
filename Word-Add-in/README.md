@@ -301,7 +301,8 @@ Our first task here is to clean up the project.
         </p>
     </div>
     ``` 
-3. 
+3. Launch your Word add-in to display the new UI. We will add more interactive components in the different sections (in the recently added HTML).                                     
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedAddin2.png)
     
 
 # More Resources #
