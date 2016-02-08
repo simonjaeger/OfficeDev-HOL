@@ -38,8 +38,12 @@ The first thing that we need to do is to create the project itself. Make sure th
 
 1. Click **File**, **New** and finally the **Project** button.
 2. In **Templates**, select **Visual C#**, **Office/SharePoint** and then **Office Add-ins**. This will list the Office add-in templates, choose **Office Add-in**. 
-3. Name your project "Word-Add-in" and click the **OK** button to continue.
-4. sdfs
+3. Name your project "Word-Add-in" and click the **OK** button to continue. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/NewProject.png)
+4. df
+5. 
+
+
 
 #### Exercise 2.1: Creating the project ####
 
