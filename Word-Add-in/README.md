@@ -557,13 +557,13 @@ Our first task here is to clean up the project.
     ```
 2. Launch your Word add-in and test your work. You should find a dialog covering up most of your display area.
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/Dialog.png)
-2. In **Home.js**, add two event handlers (below the initialization of the Office UI Fabric components, in the **ready** function) for the dialog. This will allow us to close it.
+3. In **Home.js**, add two event handlers (below the initialization of the Office UI Fabric components, in the **ready** function) for the dialog. This will allow us to close it.
     ```js
     $('#selected-data-dialog-more').click(hideSelectedDataDialog);
     $('#selected-data-dialog-got-it').click(hideSelectedDataDialog);
     
     ```
-3. In **Home.js**, add the following two functions to HTML to the document:
+4. In **Home.js**, add the following two functions to HTML to the document:
     ```js
     // Show the selected data dialog
     function showSelectedDataDialog(text) {
@@ -581,8 +581,14 @@ Our first task here is to clean up the project.
         $('#selected-data-dialog').hide();
     }
     ```
-4. Launch your Word add-in and test your work. You should be able to close the dialog using any of the two buttons.
-
+5. Launch your Word add-in and test your work. You should be able to close the dialog using any of the two buttons.
+6. In **Home.css**, add the following CSS to hide the dialog when your Word add-in has launched.
+    ```css
+    #selected-data-dialog {
+        display: none;
+    }
+    
+    ```
 
 
 

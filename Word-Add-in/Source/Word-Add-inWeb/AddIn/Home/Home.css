@@ -1,2 +1,3 @@
-﻿/* Page-specific styling */
-
+﻿#selected-data-dialog {
+    display: none;
+}
