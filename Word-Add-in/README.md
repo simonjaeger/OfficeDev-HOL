@@ -81,15 +81,46 @@ Before we launch our Word add-in we should validate that our start actions are p
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
 6. Once your Word add-in has launched, you can explore the functionality that comes right of the box with the Visual Studio 2015 template.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedAddin.png)
-7. d
-
-sd
 
 
-StartProject
+#### Exercise 2.0: Using Office UI Fabric ####
+While the default styling that comes along with the Visual Studio 2015 template for Office add-ins does its job - leveraging the features of the Office UI Fabric can be fantastic. It's a UI toolit made specifically for building Office and Office 365 experiences, so it will certainly help us here.
 
-#### Exercise 2.1: Creating the project ####
+The Office UI Fabric library comes with everything from styling, components to animations. The majority of the library can be references via a CDN. The heavier parts needs to be downloaded and added to the project itself. We will go through both of these things. 
 
+Our first task here is to clean up the project.
+1. Remove the **Content** and **Images** folders from the project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything in the **<body>** tag.            
+   ```html
+   <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+    <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
+    <!-- <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+    <!-- <script src="../../Scripts/Office/1/office.js" type="text/javascript"></script>  -->
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+</head>
+<body>
+
+</body>
+</html>
+
+   ```
+3. 
 
 
     
@@ -97,7 +128,4 @@ StartProject
 
 # More Resources #
 - Discover Office development at: <https://msdn.microsoft.com/en-us/office/>
-- Get started on Microsoft Azure at: <https://azure.microsoft.com/en-us/>
-- Learn about webhooks at: <http://culttt.com/2014/01/22/webhooks/>
-- Explore the Outook Notifications REST API and its operations at: <https://msdn.microsoft.com/en-us/office/office365/api/notify-rest-operations> 
-- Read more about this sample at: <http://simonjaeger.com/call-me-back-outlook-notifications-rest-api/>
+- Office UI Fabric
