@@ -15,10 +15,10 @@
             $('#add-matrix').click(addMatrix);
             $('#add-office-table').click(addOfficeTable);
             $('#add-open-xml').click(addOpenXml);
-            $('#get-selected-plain-text').click(getSelectedPlainText);
-            $('#get-selected-html').click(getSelectedHTML);
             $('#selected-data-dialog-more').click(hideSelectedDataDialog);
             $('#selected-data-dialog-got-it').click(hideSelectedDataDialog);
+            $('#get-selected-plain-text').click(getSelectedPlainText);
+            $('#get-selected-html').click(getSelectedHTML);
         });
     };
 
@@ -68,7 +68,7 @@
         Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
     }
 
-    // Add data (Open XML) to the current document selection
+    // Add data (OOXM) to the current document selection
     function addOpenXml() {
         // Get the selected file
         var file = $('#ooxml-file').val();
@@ -95,6 +95,22 @@
         }
     }
 
+    // Show the selected data dialog
+    function showSelectedDataDialog(text) {
+        if (text.length === 0) {
+            text = 'No selected data was found';
+        }
+
+        // Set the dialog text
+        $('#selected-data-dialog-text').text(text);
+        $('#selected-data-dialog').show();
+    }
+
+    // Hide the selected data dialog
+    function hideSelectedDataDialog() {
+        $('#selected-data-dialog').hide();
+    }
+
     // Get the selected data as plain text
     function getSelectedPlainText() {
         getSelectedData('text');
@@ -115,21 +131,5 @@
                 showSelectedDataDialog(asyncResult.value);
             }
         });
-    }
-
-    // Show the selected data dialog
-    function showSelectedDataDialog(text) {
-        if (text.length === 0) {
-            text = 'No selected data was found';
-        }
-
-        // Set the dialog text
-        $('#selected-data-dialog-text').text(text);
-        $('#selected-data-dialog').show();
-    }
-
-    // Hide the selected data dialog
-    function hideSelectedDataDialog() {
-        $('#selected-data-dialog').hide();
     }
 })();
