@@ -14,7 +14,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 -  Word Online
 
 ### Prerequisites ###
-The Outlook Notifications REST API is available for multiple services. You will need to register your app before you can make any calls towards the Outlook Notifcations REST API. Find more information: <https://dev.outlook.com/RestGettingStarted>
+// TODO
 
 ### Solution ###
 Solution | Author(s)
@@ -31,11 +31,16 @@ Version  | Date | Comments
 
 ----------
 
-# Title #
+# Exercises #
 
+#### Exercise 1: Creating the project ####
+The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites and Launch Visual Studio 2015. 
+1. Click **File**, **New** and finally the **Project** button.
+2. In **Templates**, select **Visual C#**, **Office/SharePoint** and then **Office Add-ins**. This will list the Office add-in templates, choose **Office Add-in**. 
+3. Name your project "Word-Add-in" and click the **OK** button to continue. ![alt tag](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/NewProject.png)
+4. sdfs
 
-#### Title ####
-
+#### Exercise 2.1: Creating the project ####
 
 
 
