@@ -37,7 +37,7 @@ Version  | Date | Comments
 
 # Exercises #
 
-#### Exercise 1.0: Creating the project ####
+#### Exercise 1.0: Create the project ####
 The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites and Launch Visual Studio 2015. 
 
 1. Click **File**, **New** and finally the **Project** button.
@@ -59,7 +59,7 @@ The first thing that we need to do is to create the project itself. Make sure th
    
    You've now created the basic structure for a taskpane add-in running in Word. 
 
-#### Exercise 1.1: Editing the manifest ####
+#### Exercise 1.1: Edit the manifest ####
 We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open and edit the manifest file.
 
 1. In the manifest project **Word-Add-in**, double-click the **Word-Add-inManifest** file. This will open the manifest editor.
@@ -68,7 +68,7 @@ We need to make sure that we understand the manifest file. This file is essentia
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/EditManifest.png)
 3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Word-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.
 
-#### Exercise 1.2: Launching the project ####
+#### Exercise 1.2: Launch the project ####
 Before we launch our Word add-in we should validate that our start actions are proper.
 
 1. Select the manifest project; **Word-Add-in** in the **Solution Explorer**.                                     
@@ -83,7 +83,7 @@ Before we launch our Word add-in we should validate that our start actions are p
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedAddin.png)
 
 
-#### Exercise 2.0: Using Office UI Fabric ####
+#### Exercise 2.0: Clean up the project ####
 While the default styling that comes along with the Visual Studio 2015 template for Office add-ins does its job - leveraging the features of the Office UI Fabric can be fantastic. It's a UI toolit made specifically for building Office and Office 365 experiences, so it will certainly help us here.
 
 The Office UI Fabric library comes with everything from styling, components to animations. The majority of the library can be references via a CDN. The heavier parts needs to be downloaded and added to the project itself. We will go through both of these things. 
@@ -116,7 +116,16 @@ Our first task here is to clean up the project.
     </body>
     </html>
     ```
-3. In **Home.js**, **remove** the **getDataFromSelection** function and the call to **app.initialize()**. As we are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
+3. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+    ```js
+    var app = (function () {
+        "use strict";
+    
+        var app = {};
+        return app;
+    })();
+    ```
+4. In **Home.js**, **remove** the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
     ```js
     (function () {
         "use strict";
@@ -128,9 +137,71 @@ Our first task here is to clean up the project.
         };
     })();
     ```
-4. f
+5. In **App.css**, **remove** everything, leaving you with an empty file.
 
 
+#### Exercise 2.1: Add Office UI Fabric ####
+1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric in the **<head>** tag. Add them before the CSS reference to **"../App.css"**.             
+    ```html
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+    ```
+2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
+3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
+4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line in the **<head>** tag. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.             
+    ```html
+    <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
+    ```
+5. In **Home.js**, add the following line in the **ready** function of your page.             
+    ```js
+    $(".ms-Dropdown").Dropdown();
+    ```  
+    This will use the **Jquery.Dropdown.js** file and initialize any Dropdown components that we add to the view. 
+    
+6. Your **Home.html** file should now look like this: 
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+        <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
+
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
+    
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+    ``` 
+    Your **Home.js** file should look like this:
+    ```js
+    (function () {
+        "use strict";
+    
+        // The initialize function must be run each time a new page is loaded
+        Office.initialize = function (reason) {
+           $(document).ready(function () {
+               // Initialize Office UI Fabric components (dropdowns)
+               $(".ms-Dropdown").Dropdown();
+            });
+        };
+    })();
+    ``` 
+6. 
     
     
 
