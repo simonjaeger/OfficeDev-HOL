@@ -7,7 +7,11 @@ With the new application model for Office comes a brand new way of extending Off
 This hands-on lab demonstrates a few different ways to interact with the Office context. Adding different types of content, reading selected data from the document and displaying it. Additionally - different styles and components from the Office UI Fabric library is used throughout this Office add-in. 
 The objective is to get familiar with some of the possiblities that we have when building Word add-ins
 
-The hands-on lab is divided into multiple exercises and should be followed in a chronological order. T
+The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
+
+* [1.0 Creating the project](#creating-the-project)
+* [1.1 Editing the manifest](#editing-the-manifest)
+* [1.2 Launching the project](#launching-the-project)
 
 ### Applies to ###
 -  Word Client
