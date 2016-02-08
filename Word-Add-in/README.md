@@ -336,9 +336,8 @@ Our first task here is to clean up the project.
         // Set selection
         Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
     }
-    
     ```
-4. Launch your Word add-in and test your new functionality. When the new button is clicked, the function should be executed; adding a piece of plain text onto the document.
+4. Launch your Word add-in and test your new functionality by clicking the **Add plain text** button. When the new button is clicked, the function will be executed; adding a piece of plain text onto the document.
 
 # More Resources #
 - Discover Office development at: <https://msdn.microsoft.com/en-us/office/>
