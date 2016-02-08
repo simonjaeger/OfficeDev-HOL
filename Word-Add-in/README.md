@@ -555,26 +555,33 @@ Our first task here is to clean up the project.
     </div>
     
     ```
-2. Launch your Word add-in and test your work. You should find a dialog covering up most of your view.
+2. Launch your Word add-in and test your work. You should find a dialog covering up most of your display area.
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/Dialog.png)
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+2. In **Home.js**, add two event handlers (below the initialization of the Office UI Fabric components, in the **ready** function) for the dialog. This will allow us to close it.
     ```js
-    $('#add-office-table').click(addOfficeTable);
+    $('#get-selected-plain-text').click(getSelectedPlainText);
+    $('#get-selected-html').click(getSelectedHTML);
     
     ```
-3. In **Home.js**, add the following function to HTML to the document:
+3. In **Home.js**, add the following two functions to HTML to the document:
     ```js
-    // Add data (Office Table) to the current document selection
-    function addOfficeTable() {
-        var table = new Office.TableData();
-        table.headers = [['Header', 'Header']];
-        table.rows = [['Entry', 'Entry'], ['Entry', 'Entry'], ['Entry', 'Entry']];
+    // Show the selected data dialog
+    function showSelectedDataDialog(text) {
+        if (text.length === 0) {
+            text = 'No selected data was found';
+        }
 
-        // Set selection
-        Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
+        // Set the dialog text
+        $('#selected-data-dialog-text').text(text);
+        $('#selected-data-dialog').show();
+    }
+
+    // Hide the selected data dialog
+    function hideSelectedDataDialog() {
+        $('#selected-data-dialog').hide();
     }
     ```
-4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
+4. Launch your Word add-in and test your work. You should be able to close the dialog using any of the two buttons.
 
 
 
