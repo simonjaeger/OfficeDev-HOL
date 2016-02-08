@@ -141,12 +141,7 @@ Our first task here is to clean up the project.
 
 
 #### Exercise 2.1: Add Office UI Fabric ####
-1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric in the **<head>** tag. Add them before the CSS reference to **"../App.css"**.
-    ```xml
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
-    ```
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything in the **<body>** tag. This should leave you with something like this:
+1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric in the **<head>** tag. Add them before the CSS reference to
     ```html
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
@@ -155,10 +150,7 @@ Our first task here is to clean up the project.
 3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
 4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line in the **<head>** tag. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
-      ```js
-    $(".ms-Dropdown").Dropdown();
-    ```  
-    ```js
+    ```html
     <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
     ```
 5. In **Home.js**, add the following line in the **ready** function of your page.             
