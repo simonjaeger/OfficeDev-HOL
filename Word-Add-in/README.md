@@ -33,7 +33,7 @@ Version  | Date | Comments
 
 # Exercises #
 
-#### Exercise 1: Creating the project ####
+#### Exercise 1.0: Creating the project ####
 The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites and Launch Visual Studio 2015. 
 
 1. Click **File**, **New** and finally the **Project** button.
@@ -52,11 +52,17 @@ The first thing that we need to do is to create the project itself. Make sure th
    
    **Word-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Word add-in. We will make quite a few adjustments to this structure as we continue.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SolutionExplorer.png)
-7. df
-8. 
+   
+   You've now created the basic structure for a Word taskpane add-in. 
+#### Exercise 1.1: Editing the manifest ####
+We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open and edit the manifest file.
+1. In the manifest project **Word-Add-in**, double-click the **Word-Add-inManifest** file. This will open the manifest editor.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/WordAddinManifest.png)
+2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/EditManifest.png)
+3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Word-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed. 
 
-
-
+#### Exercise 1.2: Launching the project ####
 
 
 #### Exercise 2.1: Creating the project ####
