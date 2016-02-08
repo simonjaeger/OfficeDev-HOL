@@ -91,9 +91,9 @@ The Office UI Fabric library comes with everything from styling, components to a
 Our first task here is to clean up the project.
 1. Remove the **Content** and **Images** folders from the project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything in the **<body>** tag.            
-   ```html
-   <!DOCTYPE html>
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything in the **<body>** tag. This should leave you with something like this:            
+```html
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -103,10 +103,6 @@ Our first task here is to clean up the project.
 
     <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
     <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
-
-    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
-    <!-- <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
-    <!-- <script src="../../Scripts/Office/1/office.js" type="text/javascript"></script>  -->
 
     <link href="../App.css" rel="stylesheet" type="text/css" />
     <script src="../App.js" type="text/javascript"></script>
@@ -118,9 +114,20 @@ Our first task here is to clean up the project.
 
 </body>
 </html>
+```
+3. In **Home.js**, **remove** the **getDataFromSelection** function and the call to **app.initialize()**. As we are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
+```html
+   (function () {
+    "use strict";
 
-   ```
-3. 
+    // The initialize function must be run each time a new page is loaded
+    Office.initialize = function (reason) {
+        $(document).ready(function () {
+        });
+    };
+})();
+```
+4. f
 
 
     
