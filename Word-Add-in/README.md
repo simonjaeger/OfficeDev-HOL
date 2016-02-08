@@ -54,6 +54,7 @@ The first thing that we need to do is to create the project itself. Make sure th
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SolutionExplorer.png)
    
    You've now created the basic structure for a Word taskpane add-in. 
+
 #### Exercise 1.1: Editing the manifest ####
 We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open and edit the manifest file.
 1. In the manifest project **Word-Add-in**, double-click the **Word-Add-inManifest** file. This will open the manifest editor.
