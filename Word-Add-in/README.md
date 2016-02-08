@@ -116,8 +116,8 @@ Our first task here is to clean up the project.
 </html>
 ```
 3. In **Home.js**, **remove** the **getDataFromSelection** function and the call to **app.initialize()**. As we are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
-```html
-   (function () {
+```js
+(function () {
     "use strict";
 
     // The initialize function must be run each time a new page is loaded
