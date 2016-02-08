@@ -261,7 +261,7 @@ Our first task here is to clean up the project.
         <div class="section">
         </div>
 
-        <!-- Exercise: Add Matrix -->
+        <!-- Exercise: Add matrix -->
         <div class="section">
             <!-- TODO: Replace with code -->
         </div>
@@ -350,7 +350,6 @@ Our first task here is to clean up the project.
     ```
 5. Launch your Word add-in and test your work by clicking the **Add plain text** button. When the button is clicked, the function will be executed; adding a piece of plain text into the document.
 
-
 #### Exercise 3.1: Add HTML to the document ####
 
 1. In **Home.html**, locate the "Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
@@ -372,7 +371,7 @@ Our first task here is to clean up the project.
     ```
 3. In **Home.js**, add the following function to HTML to the document:
     ```js
-      // Add data (HTML) to the current document selection
+    // Add data (HTML) to the current document selection
     function addHtml() {
         var elements = $('<div>')
             .append($('<h2>').text('Lorem ipsum dolor'))
@@ -386,7 +385,42 @@ Our first task here is to clean up the project.
     ```
 4. Launch your Word add-in and test your work by clicking the **Add HTML** button. When the button is clicked, the function will be executed; adding a piece of HTML into the document.
 
+#### Exercise 3.2: Add a matrix to the document ####
 
+1. In **Home.html**, locate the "Add matrix" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="add-matrix" class="ms-Button ms-Button--compound">
+        <span class="ms-Button-icon">
+            <i class="ms-Icon ms-Icon--plus">
+            </i>
+        </span>
+        <span class="ms-Button-label">Add matrix</span>
+        <span class="ms-Button-description">
+            Description of the action this button takes
+        </span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
+    ```js
+    // Add event handlers
+    $('#add-matrix').click(addMatrix);
+    
+    ```
+3. In **Home.js**, add the following function to HTML to the document:
+    ```js
+    // Add data (matrix) to the current document selection
+    function addMatrix() {
+        var matrix = [["Header", "Header"],
+                ["Entry", "Entry"],
+                ["Entry", "Entry"],
+                ["Entry", "Entry"]];
+
+        // Set selection
+        Office.context.document.setSelectedDataAsync(matrix, { coercionType: 'matrix' }, onSelectionSet);
+    }
+    ```
+4. Launch your Word add-in and test your work by clicking the **Add matrix** button. When the button is clicked, the function will be executed; adding a piece of HTML into the document.
 
 
 

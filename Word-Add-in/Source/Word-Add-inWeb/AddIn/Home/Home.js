@@ -105,6 +105,7 @@
         getSelectedData('html');
     }
 
+    // Get the selected data
     function getSelectedData(coercionType) {
         Office.context.document.getSelectedDataAsync(coercionType, function (asyncResult) {
             if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
