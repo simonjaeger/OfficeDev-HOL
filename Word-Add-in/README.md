@@ -92,7 +92,7 @@ Our first task here is to clean up the project.
 
 1. Remove the **Content** and **Images** folders from the project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything in the **<body>** tag. This should leave you with something like this:
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything inside the **<body>** tags. This should leave you with something like this:
     ```html
     <!DOCTYPE html>
     <html>
@@ -141,7 +141,7 @@ Our first task here is to clean up the project.
 
 
 #### Exercise 2.1: Add Office UI Fabric ####
-1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric in the **<head>** tag. Add them before the CSS reference to **"../App.css"**.
+1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **<head>** tags. Add them before the CSS reference to **"../App.css"**.
     ```xml
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
@@ -150,7 +150,7 @@ Our first task here is to clean up the project.
 2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
 3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
-4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line in the **<head>** tag. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
+4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **<head>** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
     ```xml
     <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
     
@@ -239,7 +239,69 @@ Our first task here is to clean up the project.
         margin-bottom: 10px;
     }
     ``` 
-2. 
+2. In **Home.html**, add the following chunk of HTML inside the **<body>** tags.
+    ```html
+    <!-- Header -->
+    <div id="header" class="ms-bgColor-themePrimary">
+        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Word add-in</h2>
+    </div>
+    <div id="content">
+        <!-- Introduction -->
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This sample demonstrates a few different ways to interact with the Office context. Adding different types of content and reading data from the document.
+        </p>
+
+        <!-- Exercise Section: Write -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Write</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Here is a few different ways for adding content, using different data types.
+        </p>
+
+        <!-- Exercise: Add plain text and HTML -->
+        <div class="section">
+        </div>
+
+        <!-- Exercise: Add Matrix -->
+        <div class="section">
+            <!-- TODO: Replace with code -->
+        </div>
+
+        <!-- Exercise: Add Office Table -->
+        <div class="section">
+        </div>
+
+        <!-- Exercise: Add Open XML -->
+        <div class="section">
+        </div>
+
+        <!-- Exercise Section: Read -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Read</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Here is a couple of different functions for getting the selected data, in two different formats.
+        </p>
+
+        <!-- Exercise: Selected data dialog -->
+
+
+        <!-- Exercise: Get selected data (plain text) -->
+        <div class="section">
+        </div>
+
+        <!-- Exercise: Get selected data (HTML) -->
+        <div class="section">
+        </div>
+
+        <!-- Office UI Fabric -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+        </p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
+        </p>
+    </div>
+    ``` 
+3. 
     
 
 # More Resources #
