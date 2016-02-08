@@ -513,12 +513,12 @@ Our first task here is to clean up the project.
     }
     ```
 4. Browse the files included in this hands-on lab or head over to <https://github.com/OfficeDev/Word-Add-in-Load-and-write-Open-XML/tree/master/C%23/LoadingAndWritingOOXMLWeb/OOXMLSamples>. Get ahold of the listed OOXML files. You can open these files in any text editor and explore the OOXML data.
-      1. Chart.xml
-      2. SimpleImage.xml
-      3. TableStyled.xml
-      4. TableWithDirectFormat.xml
-      5. TextBoxWordArt.xml
-      6. TextWithStyle.xml
+      * Chart.xml
+      * SimpleImage.xml
+      * TableStyled.xml
+      * TableWithDirectFormat.xml
+      * TextBoxWordArt.xml
+      * TextWithStyle.xml
 5. **Create** a new folder in your web project named **OOXML** in the **Solution Explorer**. **Add** these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
 6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML file into the document.
