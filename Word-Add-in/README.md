@@ -306,7 +306,7 @@ Our first task here is to clean up the project.
     
 #### Exercise 3.0: Add plain text to the document ####
 
-1. In **Home.html**, locate the "Add plain text and HTML" section and add the following HTML inside the **div** (section) tags:
+1. In **Home.html**, locate the "Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-plain-text" class="ms-Button">
         <span class="ms-Button-icon">
@@ -318,6 +318,11 @@ Our first task here is to clean up the project.
     
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
+    ```js
+    // Add event handlers
+    $('#add-plain-text').click(addPlainText);
+    
+    ```
 3. In **Home.js**, add the following function to add plain text to the document:
 4. Launch your Word add-in and test your new functionality. When the new button is clicked, the function should be executed; adding a piece of plain text onto the document.
 
