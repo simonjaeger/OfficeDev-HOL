@@ -308,15 +308,13 @@ Our first task here is to clean up the project.
 
 1. In **Home.html**, locate the "Add plain text and HTML" section and add the following HTML inside the **div** (section) tags:
     ```html
-        <button id="add-plain-text" class="ms-Button">
+    <button id="add-plain-text" class="ms-Button">
         <span class="ms-Button-icon">
             <i class="ms-Icon ms-Icon--plus"></i>
         </span>
         <span class="ms-Button-label">Add plain text</span>
         <span class="ms-Button-description">Description of the action this button takes</span>
     </button>
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
     
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
