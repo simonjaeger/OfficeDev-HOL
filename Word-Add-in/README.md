@@ -70,15 +70,18 @@ We need to make sure that we understand the manifest file. This file is essentia
 #### Exercise 1.2: Launching the project ####
 Before we launch our Word add-in we should validate that our start actions are proper.
 
-1. Select the manifest project; **Word-Add-in** in the **Solution Explorer**.
+1. Select the manifest project; **Word-Add-in** in the **Solution Explorer**. 
+   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SelectManifestProject.png)
 2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
 3. Set **Start Document** to **[New Word Document]**.
 4. Set **Web Project** to your web project; **Word-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartActions.png)
 5. To launch the project, open on the **Debug** tab in the top and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **F5** keyboard shortcut.
+   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
 6. Once your Word add-in has launched, you can explore the functionality that comes right of the box with the Visual Studio 2015 template.
+   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedWordAddin.png)
 7. d
 
