@@ -76,7 +76,10 @@ Before we launch our Word add-in we should validate that our start actions are p
 3. Set **Start Document** to **[New Word Document]**.
 4. Set **Web Project** to your web project; **Word-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartActions.png)
-5. 
+5. To launch the project, open on the **Debug** tab in the top and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **F5** keyboard shortcut.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
+6. Once your Word add-in has launched, you can explore the functionality that comes right of the box with the Visual Studio 2015 template. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedWordAddin.png)
 
 sd
 
