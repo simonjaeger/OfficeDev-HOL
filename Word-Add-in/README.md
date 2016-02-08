@@ -624,7 +624,7 @@ Our first task here is to clean up the project.
         });
     }
     ```
-4. Launch your Word add-in and test your work by clicking the **Get selected data (plain text)** button. When the button is clicked, the function will be executed; getting the selected data as plain text and then displaying it using the dialog.
+4. Launch your Word add-in and test your work by clicking the **Get selected data (plain text)** button. When the button is clicked, the function will be executed; getting the selected data as plain text and displaying it using the dialog.
 
 #### Exercise 4.2: Get selected data as HTML  ####
 
@@ -652,11 +652,11 @@ Our first task here is to clean up the project.
     }
     
     ```
-4. Launch your Word add-in and test your work by clicking the **Get selected data (HTML)** button. When the button is clicked, the function will be executed; getting the selected data as HTML and then displaying it using the dialog.
+4. Launch your Word add-in and test your work by clicking the **Get selected data (HTML)** button. When the button is clicked, the function will be executed; getting the selected data as HTML and displaying it using the dialog.                                   
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/GetSelectedData.png) 
 
 #### Wrap up  ####
-View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a document in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.                                    
-    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/GetSelectedData.png) 
+View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a document in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric. 
 
 # More Resources #
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
