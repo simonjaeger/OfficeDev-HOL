@@ -142,7 +142,7 @@ Our first task here is to clean up the project.
 
 #### Exercise 2.1: Add Office UI Fabric ####
 1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
-    ```xml
+    ```html
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
     
@@ -151,7 +151,7 @@ Our first task here is to clean up the project.
 3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
 4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
-    ```xml
+    ```html
     <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
     
     ```
@@ -307,15 +307,11 @@ Our first task here is to clean up the project.
 #### Exercise 3.0: Add plain text to the document ####
 
 1. In **Home.html**, locate the "Add plain text and HTML" section and add the following HTML inside the **div** (section) tags:
-    ```html
-    <button id="add-plain-text" class="ms-Button">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus"></i>
-        </span>
-        <span class="ms-Button-label">Add plain text</span>
-        <span class="ms-Button-description">Description of the action this button takes</span>
-    </button>
-    ``` 
+    ```xml
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+    
+    ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
 3. In **Home.js**, add the following function to add plain text to the document:
 4. Launch your Word add-in and test your new functionality. When the new button is clicked, the function should be executed; adding a piece of plain text onto the document.
