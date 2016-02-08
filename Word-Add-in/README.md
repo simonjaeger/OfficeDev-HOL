@@ -363,7 +363,6 @@ Our first task here is to clean up the project.
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
-    // Add event handlers
     $('#add-html').click(addHtml);
     
     ```
@@ -401,7 +400,6 @@ Our first task here is to clean up the project.
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
-    // Add event handlers
     $('#add-matrix').click(addMatrix);
     
     ```
@@ -437,7 +435,6 @@ Our first task here is to clean up the project.
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
-    // Add event handlers
     $('#add-office-table').click(addOfficeTable);
     
     ```
@@ -486,7 +483,6 @@ Our first task here is to clean up the project.
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
-    // Add event handlers
     $('#add-open-xml').click(addOpenXml);
     
     ```
@@ -519,7 +515,7 @@ Our first task here is to clean up the project.
       * TableWithDirectFormat.xml
       * TextBoxWordArt.xml
       * TextWithStyle.xml
-5. **Create** a new folder in your web project named **OOXML** in the **Solution Explorer**. **Add** these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
+5. **Create** a new folder in your web project and name it **OOXML** in the **Solution Explorer**. **Add** these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
 6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML file into the document.
 
