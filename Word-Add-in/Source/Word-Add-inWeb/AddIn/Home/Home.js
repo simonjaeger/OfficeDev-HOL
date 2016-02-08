@@ -6,8 +6,6 @@
     // The initialize function must be run each time a new page is loaded
     Office.initialize = function (reason) {
         $(document).ready(function () {
-            app.initialize();
-
             // Initialize Office UI Fabric components (dropdowns)
             $(".ms-Dropdown").Dropdown();
 

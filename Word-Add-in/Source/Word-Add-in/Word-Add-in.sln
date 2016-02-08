@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Add-in", "Word-Add-in.csproj", "{6A8A4C12-514F-4A04-8E32-7E04B3819A21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Add-inWeb", "..\Word-Add-inWeb\Word-Add-inWeb.csproj", "{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A8A4C12-514F-4A04-8E32-7E04B3819A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8A4C12-514F-4A04-8E32-7E04B3819A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8A4C12-514F-4A04-8E32-7E04B3819A21}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A8A4C12-514F-4A04-8E32-7E04B3819A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A8A4C12-514F-4A04-8E32-7E04B3819A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A8A4C12-514F-4A04-8E32-7E04B3819A21}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

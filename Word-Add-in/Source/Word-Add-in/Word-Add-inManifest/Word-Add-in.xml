@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TaskPaneApp">
-  <Id>d68ca0a0-66d1-4763-90d0-6e3e3e3a7a0b</Id>
+  <Id>f486ef49-2694-4229-9d7f-92aa5985efde</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>[Provider name]</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Word-Addin" />
-  <Description DefaultValue="Word-Addin"/>
+  <DisplayName DefaultValue="Word-Add-in" />
+  <Description DefaultValue="Word-Add-in"/>
   <Hosts>
     <Host Name="Document" />
   </Hosts>

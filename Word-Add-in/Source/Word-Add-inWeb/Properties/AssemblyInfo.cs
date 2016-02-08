@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Word_AddinWeb")]
+[assembly: AssemblyTitle("Word_Add_inWeb")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Word_AddinWeb")]
+[assembly: AssemblyProduct("Word_Add_inWeb")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8eafda06-3e73-4aa4-b2f5-62a472e1e8b4")]
+[assembly: Guid("c7fa4b11-99dd-4be9-8d70-2b392fe77bfd")]
 
 // Version information for an assembly consists of the following four values:
 //

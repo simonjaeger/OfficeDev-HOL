@@ -4,21 +4,21 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63AFD109-84B7-48AF-9EF8-1B6A7E99A5BF}</ProjectGuid>
+    <ProjectGuid>{6A8A4C12-514F-4A04-8E32-7E04B3819A21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Word_Addin</RootNamespace>
-    <AssemblyName>Word-Addin</AssemblyName>
+    <RootNamespace>Word_Add_in</RootNamespace>
+    <AssemblyName>Word-Add-in</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetOfficeVersion>15.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
-    <AppFeaturePartId>{213be557-2b0a-41ee-8dd7-c2b98e190c54}</AppFeaturePartId>
-    <WspPartId>{54b60991-5ed6-4919-a8f4-78eaea45ab4e}</WspPartId>
-    <WorkflowPartId>{8699b363-4c6c-4fbb-918c-263d6e61cfe1}</WorkflowPartId>
-    <CspkgPartId>{b2b30398-ee3f-4773-bcc7-eed0dd5a4f6d}</CspkgPartId>
-    <SqlPackagePartId>{8fa88f3c-8870-4dea-b964-eb791487417c}</SqlPackagePartId>
+    <AppFeaturePartId>{adb2075a-9e84-4079-8c1c-806b96637603}</AppFeaturePartId>
+    <WspPartId>{0cebc6d8-77b7-4952-9b98-e21be2370c70}</WspPartId>
+    <WorkflowPartId>{3e0977bb-29d5-4627-b6d5-656269e79b92}</WorkflowPartId>
+    <CspkgPartId>{23a8833b-97a8-45ac-beaa-3721b0ef6bd1}</CspkgPartId>
+    <SqlPackagePartId>{96a8c78d-7cf8-47f2-b526-87558ca7cb89}</SqlPackagePartId>
     <ProjectMode>OfficeApp</ProjectMode>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
@@ -43,21 +43,21 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Word-AddinManifest\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{f9a245aa-8c6a-4775-bad9-16e3d2f38a70}</SharePointProjectItemId>
+    <None Include="Word-Add-inManifest\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3e3d53fc-3e0b-4543-83b1-e46f03fa6c54}</SharePointProjectItemId>
     </None>
-    <Content Include="Word-AddinManifest\Word-Addin.xml">
+    <Content Include="Word-Add-inManifest\Word-Add-in.xml">
       <OpcRelationship>manifest-oemanifest</OpcRelationship>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Word-AddinWeb\Word-AddinWeb.csproj">
-      <Project>{8EAFDA06-3E73-4AA4-B2F5-62A472E1E8B4}</Project>
-      <Name>Word-AddinWeb</Name>
+    <ProjectReference Include="..\Word-Add-inWeb\Word-Add-inWeb.csproj">
+      <Project>{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}</Project>
+      <Name>Word-Add-inWeb</Name>
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <OutputItemType>SharePointWebProjectOutput</OutputItemType>
-      <RoleName>Word-AddinWeb</RoleName>
+      <RoleName>Word-Add-inWeb</RoleName>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
