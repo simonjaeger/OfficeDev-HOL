@@ -47,7 +47,7 @@
         Office.context.document.setSelectedDataAsync(html, { coercionType: 'html' }, onSelectionSet);
     }
 
-    // Add data (Matrix) to the current document selection
+    // Add data (matrix) to the current document selection
     function addMatrix() {
         var matrix = [["Header", "Header"],
                 ["Entry", "Entry"],

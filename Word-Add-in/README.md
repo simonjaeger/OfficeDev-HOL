@@ -1,7 +1,5 @@
 # Hands-on Lab: Word Add-in #
 
-### Summary ###
-
 With the new application model for Office comes a brand new way of extending Office with your own functionality - using the tools and dev stacks that we already know and love. 
 
 This hands-on lab demonstrates a few different ways to interact with the Office context. Adding different types of content, reading selected data from the document and displaying it. Additionally - different styles and components from the Office UI Fabric library is used throughout this Office add-in. 
@@ -317,7 +315,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
     // Add event handlers
     $('#add-plain-text').click(addPlainText);
@@ -363,7 +361,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
     // Add event handlers
     $('#add-html').click(addHtml);
@@ -401,7 +399,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
     ```js
     // Add event handlers
     $('#add-matrix').click(addMatrix);
@@ -420,7 +418,42 @@ Our first task here is to clean up the project.
         Office.context.document.setSelectedDataAsync(matrix, { coercionType: 'matrix' }, onSelectionSet);
     }
     ```
-4. Launch your Word add-in and test your work by clicking the **Add matrix** button. When the button is clicked, the function will be executed; adding a piece of HTML into the document.
+4. Launch your Word add-in and test your work by clicking the **Add matrix** button. When the button is clicked, the function will be executed; adding a matrix as a table into the document.
+
+
+#### Exercise 3.3: Add an Office Table to the document ####
+
+1. In **Home.html**, locate the "Add Office Table" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="add-office-table" class="ms-Button ms-Button--command">
+        <span class="ms-Button-icon">
+            <i class="ms-Icon ms-Icon--plus"></i>
+        </span> <span class="ms-Button-label">Add Office Table</span>
+        <span class="ms-Button-description">
+            Description of the action this button takes
+        </span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+    ```js
+    // Add event handlers
+    $('#add-office-table').click(addOfficeTable);
+    
+    ```
+3. In **Home.js**, add the following function to HTML to the document:
+    ```js
+    // Add data (Office Table) to the current document selection
+    function addOfficeTable() {
+        var table = new Office.TableData();
+        table.headers = [['Header', 'Header']];
+        table.rows = [['Entry', 'Entry'], ['Entry', 'Entry'], ['Entry', 'Entry']];
+
+        // Set selection
+        Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
+    }
+    ```
+4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
 
 
 
