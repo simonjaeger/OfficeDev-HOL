@@ -605,7 +605,7 @@ Our first task here is to clean up the project.
     $('#get-selected-plain-text').click(getSelectedPlainText);
     
     ```
-3. In **Home.js**, add the following functions to get the selected data as plain text:
+3. In **Home.js**, add the following functions to get the selected data as plain text and then display it:
     ```js
     // Get the selected data as plain text
     function getSelectedPlainText() {
@@ -624,20 +624,37 @@ Our first task here is to clean up the project.
         });
     }
     ```
-4. Browse the files included in this hands-on lab or head over to <https://github.com/OfficeDev/Word-Add-in-Load-and-write-Open-XML/tree/master/C%23/LoadingAndWritingOOXMLWeb/OOXMLSamples>. Get ahold of the listed OOXML files. You can open these files in any text editor and explore the OOXML data.
-      * Chart.xml
-      * SimpleImage.xml
-      * TableStyled.xml
-      * TableWithDirectFormat.xml
-      * TextBoxWordArt.xml
-      * TextWithStyle.xml
-5. Create a new folder in your web project and name it **OOXML** in the **Solution Explorer**. Add these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
-    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
-6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.
+4. Launch your Word add-in and test your work by clicking the **Get selected data (plain text)** button. When the button is clicked, the function will be executed; getting the selected data as plain text and then displaying it using the dialog.
 
+#### Exercise 4.2: Get selected data as HTML  ####
+
+1. In **Home.html**, locate the "Exercise: Get selected data (HTML)" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="get-selected-html" class="ms-Button ms-Button--primary">
+        <span class="ms-Button-icon">
+            <i class="ms-Icon ms-Icon--plus"></i>
+        </span>
+        <span class="ms-Button-label">Get selected data (HTML)</span>
+        <span class="ms-Button-description">Description of the action this button takes</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#get-selected-html').click(getSelectedHTML);
+    
+    ```
+3. In **Home.js**, add the following functions to get the selected data as plain text and then display it:
+    ```js
+    // Get the selected data as HTML
+    function getSelectedHTML() {
+        getSelectedData('html');
+    }
+    ```
+4. Launch your Word add-in and test your work by clicking the **Get selected data (HTML)** button. When the button is clicked, the function will be executed; getting the selected data as HTML and then displaying it using the dialog.
 
 
 
 # More Resources #
-- Discover Office development at: <https://msdn.microsoft.com/en-us/office/>
-- Office UI Fabric
+- Discover Office development: <https://msdn.microsoft.com/en-us/office/>
+- Learn more about Office UI Fabric: <http://dev.office.com/fabric>
