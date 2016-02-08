@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Add-in", "Word-Add-in.csproj", "{6A8A4C12-514F-4A04-8E32-7E04B3819A21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Add-in", "Word-Add-in\Word-Add-in.csproj", "{6A8A4C12-514F-4A04-8E32-7E04B3819A21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Add-inWeb", "..\Word-Add-inWeb\Word-Add-inWeb.csproj", "{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Add-inWeb", "Word-Add-inWeb\Word-Add-inWeb.csproj", "{C7FA4B11-99DD-4BE9-8D70-2B392FE77BFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
