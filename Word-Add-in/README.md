@@ -80,6 +80,7 @@ Before we launch our Word add-in we should validate that our start actions are p
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
 6. Once your Word add-in has launched, you can explore the functionality that comes right of the box with the Visual Studio 2015 template. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedWordAddin.png)
+7. 
 
 sd
 
