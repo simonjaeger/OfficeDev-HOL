@@ -33,6 +33,7 @@ Version  | Date | Comments
 
 # Exercises #
 
+<a name="#creating-the-project"></a>
 #### Exercise 1.0: Creating the project ####
 The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites and Launch Visual Studio 2015. 
 
@@ -53,7 +54,7 @@ The first thing that we need to do is to create the project itself. Make sure th
    **Word-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Word add-in. We will make quite a few adjustments to this structure as we continue.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SolutionExplorer.png)
    
-   You've now created the basic structure for a Word taskpane add-in. 
+   You've now created the basic structure for a taskpane add-in running in Word. 
 
 <a name="#editing-the-manifest"></a>
 #### Exercise 1.1: Editing the manifest ####
@@ -64,10 +65,20 @@ We need to make sure that we understand the manifest file. This file is essentia
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/EditManifest.png)
 3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Word-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.
-4. 
 
-
+<a name="#launching-the-project"></a>
 #### Exercise 1.2: Launching the project ####
+Before we launch our Word add-in we should validate that our start actions are proper.
+
+1. Select the manifest project; **Word-Add-in** in the **Solution Explorer**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SelectManifestProject.png)
+2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
+3. Set **Start Document** to **[New Word Document]**.
+4. Set **Web Project** to your web project; **Word-Add-inWeb**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartActuins.png)
+5. 
+
+sd
 
 
 #### Exercise 2.1: Creating the project ####
