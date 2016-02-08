@@ -315,7 +315,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     // Add event handlers
     $('#add-plain-text').click(addPlainText);
@@ -361,7 +361,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     $('#add-html').click(addHtml);
     
@@ -398,7 +398,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     $('#add-matrix').click(addMatrix);
     
@@ -433,7 +433,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     $('#add-office-table').click(addOfficeTable);
     
@@ -452,7 +452,7 @@ Our first task here is to clean up the project.
     ```
 4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
 
-#### Exercise 3.4: Add an Office Open XML (OOXML) to the document ####
+#### Exercise 3.4: Add Office Open XML (OOXML) to the document ####
 
 1. In **Home.html**, locate the "Add OOXML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled Dropdown (using the **Jquery.Dropdown.js** file) and button. 
     ```html
@@ -481,7 +481,7 @@ Our first task here is to clean up the project.
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the added button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     $('#add-open-xml').click(addOpenXml);
     
@@ -517,7 +517,7 @@ Our first task here is to clean up the project.
       * TextWithStyle.xml
 5. **Create** a new folder in your web project and name it **OOXML** in the **Solution Explorer**. **Add** these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
-6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML file into the document.
+6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.
 
 
 
