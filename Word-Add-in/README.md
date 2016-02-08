@@ -8,9 +8,9 @@ This hands-on lab demonstrates a few different ways to interact with the Office 
 The objective is to get familiar with some of the possiblities that we have when building Word add-ins
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
-1. [1.0 Creating the project](#creating-the-project)
-1. [1.1 Editing the manifest](#editing-the-manifest)
-1. [1.2 Launching the project](#launching-the-project)
+1. [1.0 Creating the project](#exercise-10-creating-the-project)
+1. [1.1 Editing the manifest](#exercise-11-editing-the-manifest)
+1. [1.2 Launching the project](#exercise-12-launching-the-project)
 
 ### Applies to ###
 -  Word Client
@@ -36,7 +36,6 @@ Version  | Date | Comments
 
 # Exercises #
 
-<a name="#creating-the-project"></a>
 #### Exercise 1.0: Creating the project ####
 The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites and Launch Visual Studio 2015. 
 
@@ -59,7 +58,6 @@ The first thing that we need to do is to create the project itself. Make sure th
    
    You've now created the basic structure for a taskpane add-in running in Word. 
 
-<a name="#editing-the-manifest"></a>
 #### Exercise 1.1: Editing the manifest ####
 We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open and edit the manifest file.
 
@@ -69,7 +67,6 @@ We need to make sure that we understand the manifest file. This file is essentia
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/EditManifest.png)
 3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Word-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.
 
-<a name="#launching-the-project"></a>
 #### Exercise 1.2: Launching the project ####
 Before we launch our Word add-in we should validate that our start actions are proper.
 
