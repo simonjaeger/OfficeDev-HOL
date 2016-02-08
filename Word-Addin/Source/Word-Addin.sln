@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Addin", "Word-Addin.csproj", "{63AFD109-84B7-48AF-9EF8-1B6A7E99A5BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-Addin", "Word-Addin\Word-Addin.csproj", "{63AFD109-84B7-48AF-9EF8-1B6A7E99A5BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-AddinWeb", "..\Word-AddinWeb\Word-AddinWeb.csproj", "{8EAFDA06-3E73-4AA4-B2F5-62A472E1E8B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word-AddinWeb", "Word-AddinWeb\Word-AddinWeb.csproj", "{8EAFDA06-3E73-4AA4-B2F5-62A472E1E8B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

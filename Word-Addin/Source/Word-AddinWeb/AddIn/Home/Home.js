@@ -126,7 +126,6 @@
 
         // Set the dialog text
         $('#selected-data-dialog-text').text(text);
-
         $('#selected-data-dialog').show();
     }
 
