@@ -321,7 +321,6 @@ Our first task here is to clean up the project.
     ```js
     // Add event handlers
     $('#add-plain-text').click(addPlainText);
-    
     ```
 3. In **Home.js**, add the following function to add plain text to the document:
     ```js

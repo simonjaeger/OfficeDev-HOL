@@ -22,7 +22,7 @@
         });
     };
 
-    // Adds data (plain text) to the current document selection
+    // Add data (plain text) to the current document selection
     function addPlainText() {
         var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod' +
             'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
@@ -35,7 +35,7 @@
         Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
     }
 
-    // Adds data (HTML) to the current document selection
+    // Add data (HTML) to the current document selection
     function addHtml() {
         var elements = $('<div>')
             .append($('<h2>').text('Lorem ipsum dolor'))
@@ -47,7 +47,7 @@
         Office.context.document.setSelectedDataAsync(html, { coercionType: 'html' }, onSelectionSet);
     }
 
-    // Adds data (Matrix) to the current document selection
+    // Add data (Matrix) to the current document selection
     function addMatrix() {
         var matrix = [["Header", "Header"],
                 ["Entry", "Entry"],
@@ -58,7 +58,7 @@
         Office.context.document.setSelectedDataAsync(matrix, { coercionType: 'matrix' }, onSelectionSet);
     }
 
-    // Adds data (Office Table) to the current document selection
+    // Add data (Office Table) to the current document selection
     function addOfficeTable() {
         var table = new Office.TableData();
         table.headers = [['Header', 'Header']];
@@ -68,7 +68,7 @@
         Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
     }
 
-    // Adds data (Open XML) to the current document selection
+    // Add data (Open XML) to the current document selection
     function addOpenXml() {
         // Get the selected file
         var file = $('#ooxml-file').val();
@@ -95,12 +95,12 @@
         }
     }
 
-    // Gets the selected data as plain text
+    // Get the selected data as plain text
     function getSelectedPlainText() {
         getSelectedData('text');
     }
 
-    // Gets the selected data as HTML
+    // Get the selected data as HTML
     function getSelectedHTML() {
         getSelectedData('html');
     }
@@ -116,7 +116,7 @@
         });
     }
 
-    // Shows the selected data dialog
+    // Show the selected data dialog
     function showSelectedDataDialog(text) {
         if (text.length === 0) {
             text = 'No selected data was found';
@@ -127,7 +127,7 @@
         $('#selected-data-dialog').show();
     }
 
-    // Hides the selected data dialog
+    // Hide the selected data dialog
     function hideSelectedDataDialog() {
         $('#selected-data-dialog').hide();
     }
