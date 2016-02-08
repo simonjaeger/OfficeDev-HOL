@@ -143,7 +143,6 @@ Our first task here is to clean up the project.
 #### Exercise 2.1: Add Office UI Fabric ####
 1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric in the **<head>** tag. Add them before the CSS reference to **"../App.css"**.
     ```xml
-    <!DOCTYPE html>
     <html>
     <head>
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
