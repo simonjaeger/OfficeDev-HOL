@@ -7,9 +7,20 @@ The objective is to get familiar with some of the possiblities that we have when
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
 
-* [1.0 Creating the project](#exercise-10-creating-the-project)
-* [1.1 Editing the manifest](#exercise-11-editing-the-manifest)
-* [1.2 Launching the project](#exercise-12-launching-the-project)
+* [1.0 Create the project](#exercise-10-create-the-project)
+* [1.1 Edit the manifest](#exercise-11-edit-the-manifest)
+* [1.2 Launch the project](#exercise-12-launch-the-project)
+* [2.0 Clean up the project](#exercise-20-clean-up-the-project)
+* [2.1 Add Office UI Fabric](#exercise-21-add-office-ui-fabric)
+* [2.2 Add the base](#exercise-22-add-the-base-css--html)
+* [3.0 Add plain text to the document](#exercise-30-add-plain-text-to-the-document)
+* [3.1 Add HTML to the document](#exercise-31-add-html-to-the-document)
+* [3.2 Add a matrix to the document](#exercise-32-add-a-matrix-to-the-document)
+* [3.3 Add an Office Table to the document](#exercise-33-add-an-office-table-to-the-document)
+* [3.4 Add Office Open XML to the document](#exercise-34-add-office-open-xml-ooxml-to-the-document)
+* [4.0 Add a dialog](#exercise-40-add-a-dialog)
+* [4.1 Get selected data as plain text](#exercise-41-get-selected-data-as-plain-text)
+* [4.2 Get selected data as HTML](#exercise-42-get-selected-data-as-html)
 
 ### Applies to ###
 -  Word Client
@@ -656,7 +667,7 @@ Our first task here is to clean up the project.
 4. Launch your Word add-in and test your work by clicking the **Get selected data (HTML)** button. When the button is clicked, the function will be executed; getting the selected data as HTML and displaying it using the dialog.                                   
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/GetSelectedData.png) 
 
-#### Wrap up  ####
+# Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a document in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric. 
 
 # More Resources #
