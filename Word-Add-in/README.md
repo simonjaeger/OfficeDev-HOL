@@ -157,7 +157,7 @@ Our first task here is to clean up the project.
     ```js
     $(".ms-Dropdown").Dropdown();
     ```  
-    This will use the **Jquery.Dropdown.js** file and initialize any Dropdown components that we add to the view. 
+    This will use the functionality within the **Jquery.Dropdown.js** file and initialize any Dropdown components that we add to the view. 
     
 6. Your **Home.html** file should now look like this: 
     ```html
