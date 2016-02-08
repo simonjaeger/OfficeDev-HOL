@@ -75,7 +75,7 @@ Before we launch our Word add-in we should validate that our start actions are p
 2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
 3. Set **Start Document** to **[New Word Document]**.
 4. Set **Web Project** to your web project; **Word-Add-inWeb**.
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartActuins.png)
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartActions.png)
 5. 
 
 sd
