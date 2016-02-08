@@ -650,6 +650,7 @@ Our first task here is to clean up the project.
     function getSelectedHTML() {
         getSelectedData('html');
     }
+    
     ```
 4. Launch your Word add-in and test your work by clicking the **Get selected data (HTML)** button. When the button is clicked, the function will be executed; getting the selected data as HTML and then displaying it using the dialog.
 
