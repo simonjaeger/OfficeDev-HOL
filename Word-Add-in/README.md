@@ -40,11 +40,22 @@ The first thing that we need to do is to create the project itself. Make sure th
 2. In **Templates**, select **Visual C#**, **Office/SharePoint** and then **Office Add-ins**. This will list the Office add-in templates, choose **Office Add-in**. 
 3. Name your project **"Word-Add-in"** and click the **OK** button to continue. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/NewProject.png)
-4. Next up Visual Studio 2015 will need a bit more information about what you are going to create - in order to set up the required files. Your next step is to decide which type of Office add-in that you want to create. Depending on what you pick, your Office add-in will run in different places and Office applications. For this hands-on lab, we will create a task pane add-in - this means that our Office add-in will run in task-pane beside the Office context (e.g. a document, spreadsheet, slide). So select **Task pane** and click on **Next**. 
+4. Next up Visual Studio 2015 will need a bit more information about what you are going to create - in order to set up the required files. Your next step is to decide which type of Office add-in that you want to create. Depending on what you pick, your Office add-in will run in different places and Office applications. 
+   
+   For this hands-on lab, we will create a task pane add-in - this means that our Office add-in will run in task-pane beside the Office context (e.g. a document, spreadsheet, slide). Select **Task pane** and click on **Next**. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddinType.png)
 5. Finally we need to choose the application. This means that we are defining the Office applications that our Office (taskpane) add-in can run within. Select **Word** and deselect everything else to create a Word add-in. Click **Finish** to complete the wizard.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/TaskpaneAddin.png)
-6. sdds
+6. Using the information you specified in the wizard, Visual Studio 2015 will configure your project. Have a look in the **Solution Explorer** and find your two new projects in the **Word-Add-In** solution. 
+   
+   **Word-Add-in:** This is your manifest project, containing the XML manifest file. This is basically a representation of the information you just specified while creating your Office add-in project. 
+   
+   **Word-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Word add-in. We will make quite a few adjustments to this structure as we continue.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SolutionExplorer.png)
+7. df
+8. 
+
+
 
 
 
