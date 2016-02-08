@@ -366,7 +366,7 @@ Our first task here is to clean up the project.
     $('#add-html').click(addHtml);
     
     ```
-3. In **Home.js**, add the following function to HTML to the document:
+3. In **Home.js**, add the following function to add HTML to the document:
     ```js
     // Add data (HTML) to the current document selection
     function addHtml() {
@@ -403,7 +403,7 @@ Our first task here is to clean up the project.
     $('#add-matrix').click(addMatrix);
     
     ```
-3. In **Home.js**, add the following function to HTML to the document:
+3. In **Home.js**, add the following function to add a matrix to the document:
     ```js
     // Add data (matrix) to the current document selection
     function addMatrix() {
@@ -437,7 +437,7 @@ Our first task here is to clean up the project.
     $('#add-office-table').click(addOfficeTable);
     
     ```
-3. In **Home.js**, add the following function to HTML to the document:
+3. In **Home.js**, add the following function to add an Office Table object to the document:
     ```js
     // Add data (Office Table) to the current document selection
     function addOfficeTable() {
@@ -485,9 +485,9 @@ Our first task here is to clean up the project.
     $('#add-open-xml').click(addOpenXml);
     
     ```
-3. In **Home.js**, add the following function to HTML to the document:
+3. In **Home.js**, add the following function to add OOXML (read from the selected file) to the document:
     ```js
-    // Add data (Open XML) to the current document selection
+    // Add data (OOXM) to the current document selection
     function addOpenXml() {
         // Get the selected file
         var file = $('#ooxml-file').val();
@@ -517,9 +517,6 @@ Our first task here is to clean up the project.
 5. Create a new folder in your web project and name it **OOXML** in the **Solution Explorer**. Add these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
 6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.
-
-
-
 
 #### Exercise 4.0: Add a dialog ####
 
@@ -563,7 +560,7 @@ Our first task here is to clean up the project.
     $('#selected-data-dialog-got-it').click(hideSelectedDataDialog);
     
     ```
-4. In **Home.js**, add the following two functions to HTML to the document:
+4. In **Home.js**, add the following functions to close the dialog:
     ```js
     // Show the selected data dialog
     function showSelectedDataDialog(text) {
@@ -582,13 +579,62 @@ Our first task here is to clean up the project.
     }
     ```
 5. Launch your Word add-in and test your work. You should be able to close the dialog using any of the two buttons.
-6. In **Home.css**, add the following CSS to hide the dialog when your Word add-in has launched.
+6. In **Home.css**, add the following CSS piece to hide the dialog when your Word add-in has launched.
     ```css
     #selected-data-dialog {
         display: none;
     }
     
     ```
+
+#### Exercise 4.1: Get selected data as plain text  ####
+
+1. In **Home.html**, locate the "Exercise: Get selected data (plain text)" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="get-selected-plain-text" class="ms-Button">
+        <span class="ms-Button-icon">
+            <i class="ms-Icon ms-Icon--plus"></i>
+        </span>
+        <span class="ms-Button-label">Get selected data (plain text)</span>
+        <span class="ms-Button-description">Description of the action this button takes</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#get-selected-plain-text').click(getSelectedPlainText);
+    
+    ```
+3. In **Home.js**, add the following functions to get the selected data as plain text:
+    ```js
+    // Get the selected data as plain text
+    function getSelectedPlainText() {
+        getSelectedData('text');
+    }
+
+    // Get the selected data
+    function getSelectedData(coercionType) {
+        Office.context.document.getSelectedDataAsync(coercionType, function (asyncResult) {
+            if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                // TODO: Handle error
+            }
+            else {
+                showSelectedDataDialog(asyncResult.value);
+            }
+        });
+    }
+    ```
+4. Browse the files included in this hands-on lab or head over to <https://github.com/OfficeDev/Word-Add-in-Load-and-write-Open-XML/tree/master/C%23/LoadingAndWritingOOXMLWeb/OOXMLSamples>. Get ahold of the listed OOXML files. You can open these files in any text editor and explore the OOXML data.
+      * Chart.xml
+      * SimpleImage.xml
+      * TableStyled.xml
+      * TableWithDirectFormat.xml
+      * TextBoxWordArt.xml
+      * TextWithStyle.xml
+5. Create a new folder in your web project and name it **OOXML** in the **Solution Explorer**. Add these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
+6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.
+
 
 
 
