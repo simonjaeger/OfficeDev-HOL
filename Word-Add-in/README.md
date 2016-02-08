@@ -340,18 +340,13 @@ Our first task here is to clean up the project.
     ```
 4. In **Home.js**, add the following function to serve as a callback when adding any data to the selection in the document. You can perform validation checks in this function and present errors if something goes wrong during the insertion.
     ```js
-    // Adds data (plain text) to the current document selection
-    function addPlainText() {
-        var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod' +
-            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
-            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
-            'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt ' +
-            'in culpa qui officia deserunt mollit anim id est laborum.';
-
-        // Set selection
-        Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
+    // Callback function for the asynchronous write function
+    function onSelectionSet(asyncResult) {
+        if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+            // TODO: Handle error
+        }
     }
+    
     ```
 5. Launch your Word add-in and test your new functionality by clicking the **Add plain text** button. When the new button is clicked, the function will be executed; adding a piece of plain text onto the document.
 
