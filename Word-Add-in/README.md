@@ -146,19 +146,8 @@ Our first task here is to clean up the project.
     <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title></title>
-        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
-    
-        <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
-        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
-    
-        <link href="../App.css" rel="stylesheet" type="text/css" />
-        <script src="../App.js" type="text/javascript"></script>
-    
-        <link href="Home.css" rel="stylesheet" type="text/css" />
-        <script src="Home.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
     </head>
     <body>
     
