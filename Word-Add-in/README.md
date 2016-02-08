@@ -348,7 +348,7 @@ Our first task here is to clean up the project.
     }
     
     ```
-5. Launch your Word add-in and test your new functionality by clicking the **Add plain text** button. When the new button is clicked, the function will be executed; adding a piece of plain text into the document.
+5. Launch your Word add-in and test your work by clicking the **Add plain text** button. When the button is clicked, the function will be executed; adding a piece of plain text into the document.
 
 
 #### Exercise 3.1: Add HTML to the document ####
@@ -384,7 +384,7 @@ Our first task here is to clean up the project.
         Office.context.document.setSelectedDataAsync(html, { coercionType: 'html' }, onSelectionSet);
     }
     ```
-4. Launch your Word add-in and test your new functionality by clicking the **Add HTML** button. When the new button is clicked, the function will be executed; adding a piece of HTML into the document.
+4. Launch your Word add-in and test your work by clicking the **Add HTML** button. When the button is clicked, the function will be executed; adding a piece of HTML into the document.
 
 
 
