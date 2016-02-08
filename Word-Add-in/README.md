@@ -150,10 +150,10 @@ Our first task here is to clean up the project.
 3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
 4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line in the **<head>** tag. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
-    ```html
-       <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
-    ```     
-    ```xml
+      ```js
+    $(".ms-Dropdown").Dropdown();
+    ```  
+    ```js
     <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
     ```
 5. In **Home.js**, add the following line in the **ready** function of your page.             
