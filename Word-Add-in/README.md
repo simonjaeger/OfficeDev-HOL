@@ -304,6 +304,21 @@ Our first task here is to clean up the project.
 3. Launch your Word add-in to display the new UI. We will add more interactive components in the different sections (in the recently added HTML).                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedAddin2.png)
     
+#### Exercise 3.0: Add plain text to the document ####
+
+1. In **Home.html**, locate the "Add plain text and HTML" section and add the following HTML inside the **div** (section) tags:
+    ```html
+    <button id="add-plain-text" class="ms-Button">
+        <span class="ms-Button-icon">
+            <i class="ms-Icon ms-Icon--plus"></i>
+        </span>
+        <span class="ms-Button-label">Add plain text</span>
+        <span class="ms-Button-description">Description of the action this button takes</span>
+    </button>
+    ``` 
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the newly added button:
+3. In **Home.js**, add the following function to add plain text to the document:
+4. Launch your Word add-in and test your new functionality. When the new button is clicked, the function should be executed; adding a piece of plain text onto the document.
 
 # More Resources #
 - Discover Office development at: <https://msdn.microsoft.com/en-us/office/>
