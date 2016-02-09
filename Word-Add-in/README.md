@@ -27,7 +27,9 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 -  Word Online
 
 ### Prerequisites ###
-// TODO
+- Visual Studio 2015: <https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx>
+- Office Developer Tools: <https://www.visualstudio.com/en-us/features/office-tools-vs.aspx>
+- Office 2013 or Office 2016
 
 ### Solution ###
 Solution | Author(s)
@@ -672,4 +674,4 @@ View the source code files included in this hands-on lab for a final reference o
 
 # More Resources #
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
-- Learn more about Office UI Fabric: <http://dev.office.com/fabric>
+- Learn more about Office UI Fabric: <http://dev.office.com/fabric/>
