@@ -71,7 +71,7 @@ The first thing that we need to do is to create the project itself. Make sure th
    You've now created the basic structure for a taskpane add-in running in Word. 
 
 #### Exercise 1.2: Edit the manifest ####
-We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open and edit the manifest file.
+We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open it and edit the manifest file.
 
 1. In the manifest project **Word-Add-in**, double-click the **Word-Add-inManifest** file. This will open the manifest editor.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/WordAddinManifest.png)
@@ -88,22 +88,22 @@ Before we launch our Word add-in we should validate that our start actions are p
 3. Set **Start Document** to **[New Word Document]**.
 4. Set **Web Project** to your web project; **Word-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartActions.png)
-5. To launch the project, open on the **Debug** tab in the top and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **F5** keyboard shortcut.            
+5. To launch the project, open on the **Debug** tab at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
-6. Once your Word add-in has launched, you can explore the functionality that comes right of the box with the Visual Studio 2015 template.            
+6. Once your Word add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedAddin.png)
 
 
 #### Exercise 2.1: Clean up the project ####
-While the default styling that comes along with the Visual Studio 2015 template for Office add-ins does its job - leveraging the features of the Office UI Fabric can be fantastic. It's a UI toolit made specifically for building Office and Office 365 experiences, so it will certainly help us here.
+While the default styling that comes along with the Visual Studio 2015 template for Office add-ins does its job - leveraging the features of the Office UI Fabric can be fantastic. It's a UI toolkit made specifically for building Office and Office 365 experiences, so it will certainly help us out here.
 
-The Office UI Fabric library comes with everything from styling, components to animations. The majority of the library can be references via a CDN. The heavier parts needs to be downloaded and added to the project itself. We will go through both of these things. 
+The Office UI Fabric library comes with everything from styling, components to animations. The majority of the library can be references via a CDN. The heavier parts needs to be downloaded and added to the project itself. We will go through both of these approaches. 
 
-Our first task here is to clean up the project.
+Our first task is to clean up the project, and remove the default styling and setup.
 
-1. Remove the **Content** and **Images** folders from the project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
+1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup file for your Word add-in. **Remove** everything inside the **body** tags. This should leave you with something like this:
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Word add-in. **Remove** everything inside the **body** tags. This should leave you with this:
     ```html
     <!DOCTYPE html>
     <html>
@@ -158,8 +158,8 @@ Our first task here is to clean up the project.
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
     
     ```
-2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
-3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choose **Add Existing Item**.                                    
+2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file for this component (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
+3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choosing **Add Existing Item**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
 4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
     ```html
@@ -312,7 +312,7 @@ Our first task here is to clean up the project.
         </p>
     </div>
     ``` 
-3. Launch your Word add-in to display the new UI. We will add more interactive components in the different sections (in the recently added HTML).                                     
+3. Launch your Word add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedAddin2.png)
     
 #### Exercise 3.1: Add plain text to the document ####
