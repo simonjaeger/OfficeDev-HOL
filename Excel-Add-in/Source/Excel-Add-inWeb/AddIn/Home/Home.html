@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header" class="ms-bgColor-themePrimary">
+        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Excel add-in</h2>
+    </div>
+    <div id="content">
+        <!-- Introduction -->
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This sample demonstrates a few different ways to interact with the Office context.
+            Reading and writing data from the current user selection and bindings.
+        </p>
+
+        <!-- Exercise Section: Read -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Read</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Reading data from the user selection is easy, press the button down
+            below to test it.
+        </p>
+
+        <!-- Exercise: Read data from selection -->
+        <div class="section">
+            <button id="read-data-from-selection" class="ms-Button">
+                <span class="ms-Button-label">Read data from selection</span>
+            </button>
+        </div>
+
+        <!-- Exercise Section: Write -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Write</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Writing data to the user selection is also very straight forward,
+            press the button down below to test it.
+        </p>
+
+        <!-- Exercise: Write data to selection -->
+        <div class="section">
+            <button id="write-data-to-selection" class="ms-Button ms-Button--primary">
+                <span class="ms-Button-label">Write data to selection</span>
+            </button>
+        </div>
+
+        <!-- Exercise Section: Bindings -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Bindings</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            With bindings you can read and write data to an area without depending on
+            the user selection. Before you can use a binding, you need to create it.
+        </p>
+
+        <!-- Exercise: Create bindings -->
+        <div class="section">
+            <button id="create-binding" class="ms-Button ms-Button">
+                <span class="ms-Button-label">Create binding for "MyTable"</span>
+            </button>
+        </div>
+
+        <!-- Exercise: Write data to binding -->
+        <div class="section">
+            <button id="write-data-to-binding" class="ms-Button ms-Button"
+                    disabled="disabled">
+                <span class="ms-Button-label">Write data to binding</span>
+            </button>
+        </div>
+
+        <!-- Exercise: Read data from binding -->
+        <div class="section">
+            <button id="read-data-from-binding" class="ms-Button ms-Button--primary"
+                    disabled="disabled">
+                <span class="ms-Button-label">Read data from binding</span>
+            </button>
+        </div>
+
+        <!-- Office UI Fabric -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+        </p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
+        </p>
+    </div>
+</body>
+</html>
