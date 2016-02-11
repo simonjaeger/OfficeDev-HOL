@@ -240,7 +240,7 @@ Our first task is to clean up the project, and remove the default styling and se
             below to test it.
         </p>
 
-        <!-- Exercise: Read data from selection -->
+        <!-- Exercise: Read data from the selection -->
         <div class="section">
         </div>
 
@@ -251,7 +251,7 @@ Our first task is to clean up the project, and remove the default styling and se
             press the button down below to test it.
         </p>
 
-        <!-- Exercise: Write data to selection -->
+        <!-- Exercise: Write data to the selection -->
         <div class="section">
         </div>
 
@@ -262,15 +262,15 @@ Our first task is to clean up the project, and remove the default styling and se
             the user selection. Before you can use a binding, you need to create it.
         </p>
 
-        <!-- Exercise: Create bindings -->
+        <!-- Exercise: Create the binding -->
         <div class="section">
         </div>
 
-        <!-- Exercise: Write data to binding -->
+        <!-- Exercise: Write data to the binding -->
         <div class="section">
         </div>
 
-        <!-- Exercise: Read data from binding -->
+        <!-- Exercise: Read data from the binding -->
         <div class="section">
         </div>
 
@@ -289,7 +289,7 @@ Our first task is to clean up the project, and remove the default styling and se
     
 #### Exercise 3.1: Read data from selection ####
 
-1. In **Home.html**, locate the "Read data from selection" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Read data from selection" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="read-data-from-selection" class="ms-Button">
         <span class="ms-Button-label">Read data from selection</span>
@@ -326,7 +326,7 @@ Our first task is to clean up the project, and remove the default styling and se
 
 #### Exercise 3.2: Write data to selection ####
 
-1. In **Home.html**, locate the "Write data to selection" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Write data to selection" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="write-data-to-selection" class="ms-Button ms-Button--primary">
         <span class="ms-Button-label">Write data to selection</span>
@@ -382,11 +382,142 @@ The final thing that we need to do is to make sure that our start document launc
 
 1. Launch your project from Visual Studio 2015. You will notice that Excel starts, but your Excel add-in doesn't. 
 2. In the ribbon menu, go to **Insert**. 
-3. Choose **Add-ins**, **My Add-ins** and finally **Excel-Add-in**.                                  
+3. Choose **Add-ins**, **My Add-ins** and finally **Excel-Add-in** to start your Excel add-in.                                  
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/AddAddin.png)
-4. Now save your start document, close it and stop debugging. This will save the launch bits of your Excel add-in into the start document.
+4. Now save your start document, close it and stop debugging. This will save the launch bits for your Excel add-in into the start document.
 
 Launching your project again from Visual Studio 2015 should now trigger the Excel add-in to start with the custom start document.
+
+
+#### Exercise 5.1: Create a binding to MyTable ####
+Using bindings you can create a connection between parts of the Office context and your Excel add-in. This is way for you to monitor, write and read data at any time to this part. In this exercise, we will create a binding to the table that we created in the custom start document. 
+
+1. In **Home.html**, locate the "Exercise: Create binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="create-binding" class="ms-Button ms-Button">
+        <span class="ms-Button-label">Create binding for "MyTable"</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#create-binding').click(createBinding);
+    
+    ```
+3. In **Home.js**, add the following function to add plain text to the document:
+    ```js
+    // Create a binding named "myTable" for the "MyTable" table in the Excel sheet
+    function createBinding() {
+        Office.context.document.bindings.addFromNamedItemAsync('MyTable',
+            Office.BindingType.Table, { id: 'myTable' }, function (asyncResult) {
+                if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                    // TODO: Handle error
+                }
+                else {
+                    // We only need to create the binding once, so let's disable
+                    // this functionality at this point
+                    $('#create-binding').attr('disabled', 'disabled');
+
+                    // Enable the buttons for interacting with the binding
+                    $('#write-data-to-binding').removeAttr('disabled');
+                    $('#read-data-from-binding').removeAttr('disabled');
+                }
+            });
+    }
+    
+    ```
+
+#### Exercise 5.2: Write data to the binding ####
+1. In **Home.html**, locate the "Exercise: Write data to binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="write-data-to-binding" class="ms-Button ms-Button"
+            disabled="disabled">
+        <span class="ms-Button-label">Write data to binding</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#write-data-to-binding').click(writeDataToBinding);
+    
+    ```
+3. In **Home.js**, add the following functions to write to the binding:
+    ```js
+    // Pass the "myTable" binding to a callback (assuming it has
+    // already been created)
+    function getBinding(callback) {
+        Office.context.document.bindings.getByIdAsync('myTable',
+          function (asyncResult) {
+              if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                  // TODO: Handle error
+              }
+              else {
+                  var binding = asyncResult.value;
+                  callback(binding);
+              }
+          });
+    }
+    
+    // Write data to the "myTable" binding 
+    function writeDataToBinding() {
+        getBinding(function (binding) {
+            // Create the matrix
+            var data = [
+                ['Entry', 'Entry', 'Entry', 'Entry'], // Row 1
+                ['Entry', 'Entry', 'Entry', 'Entry'], // Row 2
+                ['Entry', 'Entry', 'Entry', 'Entry']  // Row 3
+            ];
+
+            // Write data (add rows)
+            binding.addRowsAsync(data,
+                function (asyncResult) {
+                    if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                        // TODO: Handle error
+                    }
+                });
+        });
+    }
+    
+    ```
+4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.
+
+
+#### Exercise 5.3: Read data from the binding ####
+1. In **Home.html**, locate the "Exercise: Read data from binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="read-data-from-binding" class="ms-Button ms-Button--primary"
+            disabled="disabled">
+        <span class="ms-Button-label">Read data from binding</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#read-data-from-binding').click(readDataFromBinding);
+    
+    ```
+3. In **Home.js**, add the following functions to write to the binding:
+    ```js
+    // Read data from the "myTable" binding and log it in the JavaScript Console
+    function readDataFromBinding() {
+        getBinding(function (binding) {
+            // Read data
+            binding.getDataAsync({ coercionType: Office.CoercionType.Table },
+                function (asyncResult) {
+                    if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                        // TODO: Handle error
+                    }
+                    else {
+                        // Log data
+                        console.log(asyncResult.value);
+                    }
+                });
+        });
+    }
+    
+    ```
+4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.
+
 
 # Wrap up  #
 // TODO
