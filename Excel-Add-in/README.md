@@ -514,7 +514,8 @@ Using bindings you can create a connection between parts of the Office context a
     }
     
     ```
-4. Launch your Excel add-in and test your work by first clicking the **Create a binding for "MyTable"** button. This will initialize the binding and enable the other buttons. 
+4. Launch your Excel add-in and test your work by first clicking the **Create a binding for "MyTable"** button. This will initialize the binding and enable the other buttons.                                     
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/LaunchedAddin3.png) 
 5. Click on the **Write data to binding** button to add a few rows to the table. 
 6. Click on the **Read data from binding** button to log the data in the table to the **JavaScript Console**. View the **JavaScript Console** i Visual Studio 2015.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/JSTableOutput.png)
