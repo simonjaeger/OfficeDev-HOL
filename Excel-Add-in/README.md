@@ -318,7 +318,11 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     
     ```
-4. Launch your Excel add-in and test your work by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the JavaScript Console.
+4. Launch your Excel add-in and test your work by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the **JavaScript Console**.
+5. While your Excel add-in is running, switch back to Visual Studio 2015. Use the **Quick Launch** feature in your top right corner to view the **JavaScript Console** (simply by typing "JavaScript Console").                                     
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/QuickLaunch.png)
+6. In the **JavaScript Console**, you should find the selected data logged:                                     
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/SelectedData.png)
 
 #### Exercise 3.2: Add HTML to the document ####
 
