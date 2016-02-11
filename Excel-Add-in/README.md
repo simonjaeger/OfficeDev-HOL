@@ -389,13 +389,13 @@ The final thing that we need to do is to make sure that our start document launc
 Launching your project again from Visual Studio 2015 should now trigger the Excel add-in to start with the custom start document.
 
 
-#### Exercise 5.1: Create a binding to MyTable ####
+#### Exercise 5.1: Create a binding to "MyTable" ####
 Using bindings you can create a connection between parts of the Office context and your Excel add-in. This is way for you to monitor, write and read data at any time to this part. In this exercise, we will create a binding to the table that we created in the custom start document. 
 
 1. In **Home.html**, locate the "Exercise: Create binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="create-binding" class="ms-Button ms-Button">
-        <span class="ms-Button-label">Create binding for "MyTable"</span>
+        <span class="ms-Button-label">Create a binding for "MyTable"</span>
     </button>
     
     ```
@@ -404,7 +404,7 @@ Using bindings you can create a connection between parts of the Office context a
     $('#create-binding').click(createBinding);
     
     ```
-3. In **Home.js**, add the following function to add plain text to the document:
+3. In **Home.js**, add the following function to create a binding to **""MyTable"**. We will name the binding **"myTable"**, which is an identifier used when referencing the binding.
     ```js
     // Create a binding named "myTable" for the "MyTable" table in the Excel sheet
     function createBinding() {
@@ -428,7 +428,7 @@ Using bindings you can create a connection between parts of the Office context a
     ```
 
 #### Exercise 5.2: Write data to the binding ####
-1. In **Home.html**, locate the "Exercise: Write data to binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Write data to the binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="write-data-to-binding" class="ms-Button ms-Button"
             disabled="disabled">
@@ -479,11 +479,9 @@ Using bindings you can create a connection between parts of the Office context a
     }
     
     ```
-4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.
-
 
 #### Exercise 5.3: Read data from the binding ####
-1. In **Home.html**, locate the "Exercise: Read data from binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Read data from the binding" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="read-data-from-binding" class="ms-Button ms-Button--primary"
             disabled="disabled">
