@@ -2,7 +2,7 @@
 
 With the new application model for Office comes a brand new way of extending Office with your own functionality - using the tools and dev stacks that we already know and love. 
 
-This hands-on lab demonstrates a few different ways to interact with the Office context. Adding different types of content, reading selected data from the document and displaying it. In addition, different styles and components from the Office UI Fabric library is used throughout this Office add-in. 
+This hands-on lab demonstrates a few different ways to interact with the Office context.  Reading and writing data from the current user selection and bindings. In addition, different styles and components from the Office UI Fabric library is used throughout this Office add-in. 
 The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
@@ -365,7 +365,7 @@ When bulding an Excel add-in, you can use a custom document as the starting poin
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/TableSize.png)
 4. Select your new table and go to **Design** in the ribbon menu. 
 5. Name your table **"MyTable"** in the **Table Name** field. We will use this name to reference the table in an upcoming exercise.
-6. Save and close the Workbook. 
+6. Save and close the workbook. 
 
 #### Exercise 4.2: Use a custom start document ####
 Now let's add the custon start document to our manifest project (**Excel-Add-in**) and configure Visual Studio 2015 to use it whenver we launch the Excel add-in.
@@ -520,7 +520,7 @@ Using bindings you can create a connection between parts of the Office context a
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/JSTableOutput.png)
 
 # Wrap up  #
-// TODO
+View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a workbook in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
 
 # More Resources #
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
