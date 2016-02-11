@@ -355,7 +355,7 @@ Our first task is to clean up the project, and remove the default styling and se
 4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/Selection.png)
 
-#### Exercise 4.1: Create a start document ####
+#### Exercise 4.1: Create a custom start document ####
 When bulding an Excel add-in, you can choose to use a custom document as the starting point. This is useful when building an Excel add-in that depends on a specific layout or setup. It means that you don't have to set up everything each time you restart your project. 
 
 1. Launch Excel and create a new **Blank workbook**.                                 
@@ -367,15 +367,15 @@ When bulding an Excel add-in, you can choose to use a custom document as the sta
 5. Name your table **"MyTable"** in the **Table Name** field. We will use this name to reference the table in an upcoming exercise.
 6. Save and close the Workbook. 
 
-#### Exercise 4.2: Use a start document ####
+#### Exercise 4.2: Use a custom start document ####
 Now let's add the start document to our manifest project (**Excel-Add-in**) and configure Visual Studio 2015 to use it whenver we launch our Excel add-in.
 
 1. Right-click your manifest project and choose **Add Existing Item...**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectedData.png)
-2. Find and pick your start document. 
-3. Select the manifest project; Excel-Add-in in the Solution Explorer.                                      
+2. Find and choose your custom start document. 
+3. Select the manifest project; **Excel-Add-in** in the **Solution Explorer**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectManifestProject.png)
-4. Set Start Document to your custom start document.                                 
+4. Set **Start Document** to your custom start document.                                 
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/CustomStartDocument.png)
 5. 
 
