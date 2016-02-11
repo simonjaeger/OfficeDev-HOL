@@ -102,7 +102,7 @@ The Office UI Fabric library comes with everything from styling, components to a
 Our first task is to clean up the project, and remove the default styling and setup.
 
 1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
-    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/DeleteFolders.png)
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
 2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Excel add-in. **Remove** everything inside the **body** tags. This should leave you with this:
     ```html
     <!DOCTYPE html>
@@ -158,21 +158,8 @@ Our first task is to clean up the project, and remove the default styling and se
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
     
     ```
-2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file for this component (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
-3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choosing **Add Existing Item**.                                    
-    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/AddExisting.png)
-4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
-    ```html
-    <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
-    
-    ```
-5. In **Home.js**, add the following line in the **ready** function of your page.             
-    ```js
-    $(".ms-Dropdown").Dropdown();
-    ```  
-    This will use the functionality within the **Jquery.Dropdown.js** file and initialize any Dropdown components that we add to the view. 
-    
-6. Your **Home.html** file should now look like this: 
+2. In **Home.html** remove the CSS reference to **"../../Content/Office.css"**, as we have removed this file and will be using Office UI Fabric instead.    
+2. Your **Home.html** file should now look like this: 
     ```html
     <!DOCTYPE html>
     <html>
@@ -181,8 +168,7 @@ Our first task is to clean up the project, and remove the default styling and se
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <title></title>
         <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
-
-        <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+        
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
     
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
@@ -199,20 +185,6 @@ Our first task is to clean up the project, and remove the default styling and se
     
     </body>
     </html>
-    ``` 
-    Your **Home.js** file should look like this:
-    ```js
-    (function () {
-        "use strict";
-    
-        // The initialize function must be run each time a new page is loaded
-        Office.initialize = function (reason) {
-           $(document).ready(function () {
-               // Initialize Office UI Fabric components (dropdowns)
-               $(".ms-Dropdown").Dropdown();
-            });
-        };
-    })();
     ``` 
 
 #### Exercise 2.3: Add the base (CSS + HTML) ####
@@ -259,48 +231,40 @@ Our first task is to clean up the project, and remove the default styling and se
     <div id="content">
         <!-- Introduction -->
         <p class="ms-font-m ms-fontColor-neutralSecondary">
-            This sample demonstrates a few different ways to interact with the Office context. Adding different types of content and reading data from the document.
+            This sample demonstrates a few different ways to interact with the Office context.
+            Reading and writing data from the current user selection and bindings.
         </p>
-
-        <!-- Exercise Section: Write -->
-        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Write</p>
-        <p class="ms-font-m ms-fontColor-neutralSecondary">
-            Here is a few different ways for adding content, using different data types.
-        </p>
-
-        <!-- Exercise: Add plain text and HTML -->
-        <div class="section">
-        </div>
-
-        <!-- Exercise: Add matrix -->
-        <div class="section">
-            <!-- TODO: Replace with code -->
-        </div>
-
-        <!-- Exercise: Add Office Table -->
-        <div class="section">
-        </div>
-
-        <!-- Exercise: Add OOXML -->
-        <div class="section">
-        </div>
 
         <!-- Exercise Section: Read -->
         <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Read</p>
         <p class="ms-font-m ms-fontColor-neutralSecondary">
-            Here is a couple of different functions for getting the selected data, in two different formats.
+            Reading data from the user selection is easy, press the button down
+            below to test it.
         </p>
 
-        <!-- Exercise: Selected data dialog -->
+        <!-- Exercise: Read data from selection -->
 
+        <!-- Exercise Section: Write -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Write</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Writing data to the user selection is also very straight forward,
+            press the button down below to test it.
+        </p>
 
-        <!-- Exercise: Get selected data (plain text) -->
-        <div class="section">
-        </div>
+        <!-- Exercise: Write data to selection -->
 
-        <!-- Exercise: Get selected data (HTML) -->
-        <div class="section">
-        </div>
+        <!-- Exercise Section: Bindings -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Bindings</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            With bindings you can read and write data to an area without depending on
+            the user selection. Before you can use a binding, you need to create it.
+        </p>
+
+        <!-- Exercise: Create bindings -->
+
+        <!-- Exercise: Write data to binding -->
+
+        <!-- Exercise: Read data from binding -->
 
         <!-- Office UI Fabric -->
         <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
