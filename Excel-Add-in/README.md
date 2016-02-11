@@ -324,7 +324,35 @@ Our first task is to clean up the project, and remove the default styling and se
 6. In the **JavaScript Console**, you should find the selected data logged:                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectedData.png)
 
-#### Exercise 3.2: Add HTML to the document ####
+#### Exercise 3.2: Write data to selection ####
+
+1. In **Home.html**, locate the "Write data to selection" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="write-data-to-selection" class="ms-Button ms-Button--primary">
+        <span class="ms-Button-label">Write data to selection</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#write-data-to-selection').click(writeDataToSelection);
+    
+    ```
+3. In **Home.js**, add the following function to add plain text to the document:
+    ```js
+    // Write data to the current selection 
+    function writeDataToSelection() {
+        Office.context.document.setSelectedDataAsync('Hello #Office365Dev', {
+            coercionType: Office.CoercionType.Text
+        }, function (asyncResult) {
+            if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                // TODO: Handle error
+            }
+        });
+    }
+    
+    ```
+4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.
 
 # Wrap up  #
 // TODO
