@@ -316,6 +316,7 @@ Our first task is to clean up the project, and remove the default styling and se
                 }
             });
     }
+    
     ```
 4. Launch your Excel add-in and test your work by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the JavaScript Console.
 
