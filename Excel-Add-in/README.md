@@ -355,6 +355,19 @@ Our first task is to clean up the project, and remove the default styling and se
 4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/Selection.png)
 
+
+#### Exercise 4.1: Create a start document ####
+When bulding an Excel add-in, you can choose to use a custom document as the starting point. This is useful when building an Excel add-in that depends on a specific layout or setup. It means that you don't have to set up everything each time you restart your project. 
+
+1. Launch Excel and create a new **Blank workbook**.                                 
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/NewWorkbook.png)
+2. In the ribbon menu, go to **Insert** and add a new **Table**. 
+3. Select an area which is 4x1 cells in size. Check the box **My table has headers** and click **OK**.                             
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/TableSize.png)
+4. Select your new table and go to **Design** in the ribbon menu. 
+5. Name your table **"MyTable"** in the **Table Name** field. 
+6. Save and close the Workbook. 
+
 # Wrap up  #
 // TODO
 
