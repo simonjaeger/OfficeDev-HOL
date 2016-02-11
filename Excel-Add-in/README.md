@@ -352,7 +352,8 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     
     ```
-4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.
+4. Launch your Excel add-in and test your work by clicking the **Write data to selection** button. When the button is clicked, the function will be executed; writing data to the current selection.                                     
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/Selection.png)
 
 # Wrap up  #
 // TODO
