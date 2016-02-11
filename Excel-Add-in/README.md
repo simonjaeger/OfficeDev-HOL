@@ -103,7 +103,8 @@ Our first task is to clean up the project, and remove the default styling and se
 
 1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Excel add-in. **Remove** everything inside the **body** tags. This should leave you with this:
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Excel add-in. **Remove** everything inside the **body** tags.
+3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
     ```html
     <!DOCTYPE html>
     <html>
@@ -113,7 +114,6 @@ Our first task is to clean up the project, and remove the default styling and se
         <title></title>
         <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
     
-        <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
     
         <link href="../App.css" rel="stylesheet" type="text/css" />
@@ -127,7 +127,7 @@ Our first task is to clean up the project, and remove the default styling and se
     </body>
     </html>
     ```
-3. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+4. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
     ```js
     var app = (function () {
         "use strict";
@@ -136,7 +136,7 @@ Our first task is to clean up the project, and remove the default styling and se
         return app;
     })();
     ```
-4. In **Home.js**, **remove** the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Excel add-in, these will no longer be used. You should end up with this:            
+5. In **Home.js**, **remove** the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Excel add-in, these will no longer be used. You should end up with this:            
     ```js
     (function () {
         "use strict";
@@ -148,8 +148,7 @@ Our first task is to clean up the project, and remove the default styling and se
         };
     })();
     ```
-5. In **App.css**, **remove** everything, leaving you with an empty file.
-
+6. In **App.css**, **remove** everything, leaving you with an empty file.
 
 #### Exercise 2.2: Add Office UI Fabric ####
 1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
@@ -158,7 +157,6 @@ Our first task is to clean up the project, and remove the default styling and se
     <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
     
     ```
-2. In **Home.html** remove the CSS reference to **"../../Content/Office.css"**, as we have removed this file and will be using Office UI Fabric instead.    
 2. Your **Home.html** file should now look like this: 
     ```html
     <!DOCTYPE html>
@@ -243,6 +241,8 @@ Our first task is to clean up the project, and remove the default styling and se
         </p>
 
         <!-- Exercise: Read data from selection -->
+        <div class="section">
+        </div>
 
         <!-- Exercise Section: Write -->
         <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Write</p>
@@ -252,6 +252,8 @@ Our first task is to clean up the project, and remove the default styling and se
         </p>
 
         <!-- Exercise: Write data to selection -->
+        <div class="section">
+        </div>
 
         <!-- Exercise Section: Bindings -->
         <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Bindings</p>
@@ -261,10 +263,16 @@ Our first task is to clean up the project, and remove the default styling and se
         </p>
 
         <!-- Exercise: Create bindings -->
+        <div class="section">
+        </div>
 
         <!-- Exercise: Write data to binding -->
+        <div class="section">
+        </div>
 
         <!-- Exercise: Read data from binding -->
+        <div class="section">
+        </div>
 
         <!-- Office UI Fabric -->
         <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
@@ -279,51 +287,37 @@ Our first task is to clean up the project, and remove the default styling and se
 3. Launch your Excel add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/LaunchedAddin2.png)
     
-#### Exercise 3.1: Add plain text to the document ####
+#### Exercise 3.1: Read data from selection ####
 
-1. In **Home.html**, locate the "Exercise: Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Read data from selection" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
-    <button id="add-plain-text" class="ms-Button">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus"></i>
-        </span>
-        <span class="ms-Button-label">Add plain text</span>
-        <span class="ms-Button-description">Description of the action this button takes</span>
+    <button id="read-data-from-selection" class="ms-Button">
+        <span class="ms-Button-label">Read data from selection</span>
     </button>
     
     ```
 2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
     ```js
     // Add event handlers
-    $('#add-plain-text').click(addPlainText);
+    $('#read-data-from-selection').click(readDataFromSelection);
     
     ```
 3. In **Home.js**, add the following function to add plain text to the document:
     ```js
-    // Adds data (plain text) to the current document selection
-    function addPlainText() {
-        var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod' +
-            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
-            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
-            'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt ' +
-            'in culpa qui officia deserunt mollit anim id est laborum.';
-
-        // Set selection
-        Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
+    // Read data from the current selection and log it in the JavaScript Console
+    function readDataFromSelection() {
+        Office.context.document.getSelectedDataAsync(Office.CoercionType.Text,
+            function (asyncResult) {
+                if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                    // TODO: Handle error
+                }
+                else {
+                    console.log('Selection: ' + asyncResult.value);
+                }
+            });
     }
     ```
-4. In **Home.js**, add the following function to serve as a callback when adding any data to the selection in the document. You can perform validation checks in this function and present errors if something goes wrong during the insertion.
-    ```js
-    // Callback function for the asynchronous write function
-    function onSelectionSet(asyncResult) {
-        if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-            // TODO: Handle error
-        }
-    }
-    
-    ```
-5. Launch your Excel add-in and test your work by clicking the **Add plain text** button. When the button is clicked, the function will be executed; adding a piece of plain text into the document.
+4. Launch your Excel add-in and test your work by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the JavaScript Console.
 
 #### Exercise 3.2: Add HTML to the document ####
 
