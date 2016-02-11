@@ -378,7 +378,8 @@ Now let's add the custon start document to our manifest project (**Excel-Add-in*
 4. Set **Start Document** to your custom start document.                                 
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/CustomStartDocument.png)
 
-The final thing that we need to do is to make sure that our start document launches our Excel add-in when Visual Studio 2015 triggers it. Because this type of action is stored within the document itself, we need to go through a few simple steps to get this going.
+The final thing that we need to do is to make sure that our start document launches our Excel add-in when Visual Studio 2015 triggers it. Because this type of action is stored within the document itself, we need to go through a few simple steps to get this going. 
+
 1. Launch your project from Visual Studio 2015. You will notice that Excel starts, but your Excel add-in doesn't. 
 2. In the ribbon menu, go to **Insert**. 
 3. Choose **Add-ins**, **My Add-ins** and finally **Excel-Add-in**.                                  
