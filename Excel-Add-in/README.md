@@ -371,7 +371,7 @@ When bulding an Excel add-in, you can choose to use a custom document as the sta
 Now let's add the start document to our manifest project (**Excel-Add-in**) and configure Visual Studio 2015 to use it whenver we launch our Excel add-in.
 
 1. Right-click your manifest project and choose **Add Existing Item...**.                                      
-    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectedData.png)
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectManifestProject.png)
 2. Find and choose your custom start document. 
 3. Select the manifest project; **Excel-Add-in** in the **Solution Explorer**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectManifestProject.png)
