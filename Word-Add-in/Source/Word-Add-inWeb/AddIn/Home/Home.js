@@ -32,7 +32,9 @@
             'in culpa qui officia deserunt mollit anim id est laborum.';
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(text, {
+            coercionType: Office.CoercionType.Text
+        }, onSelectionSet);
     }
 
     // Add data (HTML) to the current document selection
@@ -44,7 +46,9 @@
         var html = elements.html();
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(html, { coercionType: 'html' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(html, {
+            coercionType: Office.CoercionType.Html
+        }, onSelectionSet);
     }
 
     // Add data (matrix) to the current document selection
@@ -55,7 +59,9 @@
                 ["Entry", "Entry"]];
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(matrix, { coercionType: 'matrix' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(matrix, {
+            coercionType: Office.CoercionType.Matrix
+        }, onSelectionSet);
     }
 
     // Add data (Office Table) to the current document selection
@@ -65,7 +71,9 @@
         table.rows = [['Entry', 'Entry'], ['Entry', 'Entry'], ['Entry', 'Entry']];
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(table, {
+            coercionType: Office.CoercionType.Table
+        }, onSelectionSet);
     }
 
     // Add data (OOXM) to the current document selection
@@ -80,7 +88,9 @@
             dataType: 'text',
             success: function (data) {
                 // Set selection
-                Office.context.document.setSelectedDataAsync(data, { coercionType: 'ooxml' }, onSelectionSet);
+                Office.context.document.setSelectedDataAsync(data, {
+                    coercionType: Office.CoercionType.Ooxml
+                }, onSelectionSet);
             },
             error: function (e) {
                 // TODO: Handle error
@@ -113,12 +123,12 @@
 
     // Get the selected data as plain text
     function getSelectedPlainText() {
-        getSelectedData('text');
+        getSelectedData(Office.CoercionType.Text);
     }
 
     // Get the selected data as HTML
     function getSelectedHTML() {
-        getSelectedData('html');
+        getSelectedData(Office.CoercionType.Html);
     }
 
     // Get the selected data
