@@ -170,7 +170,7 @@ Our first task is to clean up the project, and remove the default styling and se
     <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
     
     ```
-5. In **Home.js**, add the following line in the **ready** function of your page.             
+5. In **Home.js**, add the following line inside the **document.ready** function of your page.             
     ```js
     $(".ms-Dropdown").Dropdown();
     ```  
@@ -349,7 +349,6 @@ Our first task is to clean up the project, and remove the default styling and se
         Office.context.document.setSelectedDataAsync(text, {
             coercionType: Office.CoercionType.Text
         }, onSelectionSet);
-
     }
     ```
 4. In **Home.js**, add the following function to serve as a callback when adding any data to the selection in the document. You can perform validation checks in this function and present errors if something goes wrong during the insertion.
@@ -462,6 +461,8 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     ```
 4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
+
+A TableData object may seem identical to a matrix. In fact, they are a bit different when dealing with these two approaches in JavaScript. The TableData object splits the header and rows into different properties (making it easier to identify these two sections), whereas a matrix is simply a primitive array.
 
 #### Exercise 3.5: Add Office Open XML (OOXML) to the document ####
 
