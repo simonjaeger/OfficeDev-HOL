@@ -22,6 +22,11 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [4.2 Get selected data as plain text](#exercise-42-get-selected-data-as-plain-text)
 * [4.3 Get selected data as HTML](#exercise-43-get-selected-data-as-html)
 
+Short of time and just want the final sample? Clone this repository and open the solution file: **\\Word-Add-in\\Source\\Word-Add-in.sln**. 
+    ```
+    git clone https://github.com/simonjaeger/OfficeDev-HOL.git
+    ```
+
 ### Applies to ###
 -  Word Client
 -  Word Online
@@ -115,7 +120,6 @@ Our first task is to clean up the project, and remove the default styling and se
         <title></title>
         <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
     
-        <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
     
         <link href="../App.css" rel="stylesheet" type="text/css" />
