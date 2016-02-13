@@ -29,7 +29,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 ### Prerequisites ###
 - Visual Studio 2015: <https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx>
 - Office Developer Tools: <https://www.visualstudio.com/en-us/features/office-tools-vs.aspx>
-- Office 2013 or Office 2016
+- Office 2013 (Service Pack 1) or Office 2016
 
 ### Solution ###
 Solution | Author(s)
@@ -39,6 +39,7 @@ Word-Add-in | Simon Jäger (**Microsoft**)
 ### Version history ###
 Version  | Date | Comments
 ---------| -----| --------
+1.1  | February 13th 2016 | Minor updates
 1.0  | February 8th 2016 | Initial release
 
 ### Disclaimer ###
@@ -76,8 +77,8 @@ We need to make sure that we understand the manifest file. This file is essentia
 1. In the manifest project **Word-Add-in**, double-click the **Word-Add-inManifest** file. This will open the manifest editor.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/WordAddinManifest.png)
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.
+3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Word-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/EditManifest.png)
-3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Word-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.
 
 #### Exercise 1.3: Launch the project ####
 Before we launch our Word add-in we should validate that our start actions are proper.
@@ -103,7 +104,8 @@ Our first task is to clean up the project, and remove the default styling and se
 
 1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Word add-in. **Remove** everything inside the **body** tags. This should leave you with this:
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Word add-in. **Remove** everything inside the **body** tags. 
+3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
     ```html
     <!DOCTYPE html>
     <html>
@@ -127,7 +129,7 @@ Our first task is to clean up the project, and remove the default styling and se
     </body>
     </html>
     ```
-3. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+4. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
     ```js
     var app = (function () {
         "use strict";
@@ -136,7 +138,7 @@ Our first task is to clean up the project, and remove the default styling and se
         return app;
     })();
     ```
-4. In **Home.js**, **remove** the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
+5. In **Home.js**, **remove** the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
     ```js
     (function () {
         "use strict";
@@ -148,7 +150,7 @@ Our first task is to clean up the project, and remove the default styling and se
         };
     })();
     ```
-5. In **App.css**, **remove** everything, leaving you with an empty file.
+6. In **App.css**, **remove** everything, leaving you with an empty file.
 
 
 #### Exercise 2.2: Add Office UI Fabric ####
@@ -159,7 +161,7 @@ Our first task is to clean up the project, and remove the default styling and se
     
     ```
 2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Dropdown component that needs this. **Download** the JavaScript file for this component (**Jquery.Dropdown.js**) at <https://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Dropdown/Jquery.Dropdown.js> or get it by browsing the files included in this hands-on lab. 
-3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choosing **Add Existing Item**.                                    
+3. Add the **Jquery.Dropdown.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choosing **Add Existing Item...**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
 4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
     ```html
@@ -320,11 +322,7 @@ Our first task is to clean up the project, and remove the default styling and se
 1. In **Home.html**, locate the "Exercise: Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-plain-text" class="ms-Button">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus"></i>
-        </span>
         <span class="ms-Button-label">Add plain text</span>
-        <span class="ms-Button-description">Description of the action this button takes</span>
     </button>
     
     ```
@@ -346,7 +344,10 @@ Our first task is to clean up the project, and remove the default styling and se
             'in culpa qui officia deserunt mollit anim id est laborum.';
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(text, { coercionType: 'text' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(text, {
+            coercionType: Office.CoercionType.Text
+        }, onSelectionSet);
+
     }
     ```
 4. In **Home.js**, add the following function to serve as a callback when adding any data to the selection in the document. You can perform validation checks in this function and present errors if something goes wrong during the insertion.
@@ -366,11 +367,7 @@ Our first task is to clean up the project, and remove the default styling and se
 1. In **Home.html**, locate the "Exercise: Add plain text and HTML" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-html" class="ms-Button ms-Button--primary">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus"></i>
-        </span>
         <span class="ms-Button-label">Add HTML</span>
-        <span class="ms-Button-description">Description of the action this button takes</span>
     </button>
     
     ```
@@ -390,7 +387,9 @@ Our first task is to clean up the project, and remove the default styling and se
         var html = elements.html();
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(html, { coercionType: 'html' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(html, {
+            coercionType: Office.CoercionType.Html
+        }, onSelectionSet);
     }
     ```
 4. Launch your Word add-in and test your work by clicking the **Add HTML** button. When the button is clicked, the function will be executed; adding a piece of HTML into the document.
@@ -400,10 +399,6 @@ Our first task is to clean up the project, and remove the default styling and se
 1. In **Home.html**, locate the "Exercise: Add matrix" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="add-matrix" class="ms-Button ms-Button--compound">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus">
-            </i>
-        </span>
         <span class="ms-Button-label">Add matrix</span>
         <span class="ms-Button-description">
             Description of the action this button takes
@@ -426,7 +421,9 @@ Our first task is to clean up the project, and remove the default styling and se
                 ["Entry", "Entry"]];
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(matrix, { coercionType: 'matrix' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(matrix, {
+            coercionType: Office.CoercionType.Matrix
+        }, onSelectionSet);
     }
     ```
 4. Launch your Word add-in and test your work by clicking the **Add matrix** button. When the button is clicked, the function will be executed; adding a matrix as a table into the document.
@@ -438,10 +435,8 @@ Our first task is to clean up the project, and remove the default styling and se
     <button id="add-office-table" class="ms-Button ms-Button--command">
         <span class="ms-Button-icon">
             <i class="ms-Icon ms-Icon--plus"></i>
-        </span> <span class="ms-Button-label">Add Office Table</span>
-        <span class="ms-Button-description">
-            Description of the action this button takes
         </span>
+        <span class="ms-Button-label">Add Office Table</span>
     </button>
     
     ```
@@ -459,7 +454,9 @@ Our first task is to clean up the project, and remove the default styling and se
         table.rows = [['Entry', 'Entry'], ['Entry', 'Entry'], ['Entry', 'Entry']];
 
         // Set selection
-        Office.context.document.setSelectedDataAsync(table, { coercionType: 'table' }, onSelectionSet);
+        Office.context.document.setSelectedDataAsync(table, {
+            coercionType: Office.CoercionType.Table
+        }, onSelectionSet);
     }
     ```
 4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
@@ -487,9 +484,6 @@ Our first task is to clean up the project, and remove the default styling and se
             </i>
         </span>
         <span class="ms-Button-label">Add OOXML</span>
-        <span class="ms-Button-description">
-            Description of the action this button takes
-        </span>
     </button>
     
     ```
@@ -512,7 +506,9 @@ Our first task is to clean up the project, and remove the default styling and se
             dataType: 'text',
             success: function (data) {
                 // Set selection
-                Office.context.document.setSelectedDataAsync(data, { coercionType: 'ooxml' }, onSelectionSet);
+                Office.context.document.setSelectedDataAsync(data, {
+                    coercionType: Office.CoercionType.Ooxml
+                }, onSelectionSet);
             },
             error: function (e) {
                 // TODO: Handle error
@@ -527,7 +523,7 @@ Our first task is to clean up the project, and remove the default styling and se
       * TableWithDirectFormat.xml
       * TextBoxWordArt.xml
       * TextWithStyle.xml
-5. Create a new folder in your web project and name it **OOXML** in the **Solution Explorer**. Add these files into this folder by right-clicking it and choosing **Add Existing Item**.                                      
+5. Create a new folder in your web project and name it **OOXML** in the **Solution Explorer**. Add these files into this folder by right-clicking it and choosing **Add Existing Item...**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/OOXML.png)
 6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.                                   
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/Chart.png) 
@@ -606,11 +602,7 @@ Our first task is to clean up the project, and remove the default styling and se
 1. In **Home.html**, locate the "Exercise: Get selected data (plain text)" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-selected-plain-text" class="ms-Button">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus"></i>
-        </span>
         <span class="ms-Button-label">Get selected data (plain text)</span>
-        <span class="ms-Button-description">Description of the action this button takes</span>
     </button>
     
     ```
@@ -623,7 +615,7 @@ Our first task is to clean up the project, and remove the default styling and se
     ```js
     // Get the selected data as plain text
     function getSelectedPlainText() {
-        getSelectedData('text');
+        getSelectedData(Office.CoercionType.Text);
     }
 
     // Get the selected data
@@ -645,11 +637,7 @@ Our first task is to clean up the project, and remove the default styling and se
 1. In **Home.html**, locate the "Exercise: Get selected data (HTML)" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-selected-html" class="ms-Button ms-Button--primary">
-        <span class="ms-Button-icon">
-            <i class="ms-Icon ms-Icon--plus"></i>
-        </span>
         <span class="ms-Button-label">Get selected data (HTML)</span>
-        <span class="ms-Button-description">Description of the action this button takes</span>
     </button>
     
     ```
@@ -662,7 +650,7 @@ Our first task is to clean up the project, and remove the default styling and se
     ```js
     // Get the selected data as HTML
     function getSelectedHTML() {
-        getSelectedData('html');
+        getSelectedData(Office.CoercionType.Html);
     }
     
     ```
