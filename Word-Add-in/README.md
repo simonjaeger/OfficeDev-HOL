@@ -462,7 +462,7 @@ Our first task is to clean up the project, and remove the default styling and se
     ```
 4. Launch your Word add-in and test your work by clicking the **Add Office Table** button. When the button is clicked, the function will be executed; adding an Office Table object as a table into the document.
 
-A TableData object may seem identical to a matrix. In fact, they are a bit different when dealing with these two approaches in JavaScript. The TableData object splits the header and rows into different properties (making it easier to identify these two sections), whereas a matrix is simply a primitive array.
+An TableData object (<https://msdn.microsoft.com/en-us/library/office/fp161002.aspx>) may seem identical to a matrix at first. In fact, they are a bit different when dealing with these two approaches in JavaScript. The TableData object splits the header and rows into different properties (making it easier to identify these two sections), whereas a matrix is simply a primitive array.
 
 #### Exercise 3.5: Add Office Open XML (OOXML) to the document ####
 
