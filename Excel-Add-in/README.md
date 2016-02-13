@@ -22,6 +22,8 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [4.2 Get selected data as plain text](#exercise-42-get-selected-data-as-plain-text)
 * [4.3 Get selected data as HTML](#exercise-43-get-selected-data-as-html)
 
+Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Excel-Add-in\\Source\\Excel-Add-in.sln**.           
+    
 ### Applies to ###
 -  Excel Client
 -  Excel Online
@@ -29,7 +31,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 ### Prerequisites ###
 - Visual Studio 2015: <https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx>
 - Office Developer Tools: <https://www.visualstudio.com/en-us/features/office-tools-vs.aspx>
-- Office 2013 or Office 2016
+- Office 2013 (Service Pack 1) or Office 2016
 
 ### Solution ###
 Solution | Author(s)
@@ -39,6 +41,7 @@ Excel-Add-in | Simon Jäger (**Microsoft**)
 ### Version history ###
 Version  | Date | Comments
 ---------| -----| --------
+1.1  | February 13th 2016 | Minor updates
 1.0  | February 11th 2016 | Initial release
 
 ### Disclaimer ###
@@ -76,8 +79,8 @@ We need to make sure that we understand the manifest file. This file is essentia
 1. In the manifest project **Excel-Add-in**, double-click the **Excel-Add-inManifest** file. This will open the manifest editor.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/Manifest.png)
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/EditManifest.png)
 3. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Excel-Add-inWeb**). When launching your Excel add-in, this page will be the first thing that gets loaded and displayed.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/EditManifest.png)
 
 #### Exercise 1.3: Launch the project ####
 Before we launch our Excel add-in we should validate that our start actions are proper.
@@ -88,10 +91,12 @@ Before we launch our Excel add-in we should validate that our start actions are 
 3. Set **Start Document** to **[New Excel Document]**.
 4. Set **Web Project** to your web project; **Excel-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartActions.png)
-5. To launch the project, open on the **Debug** tab at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **{F5}** keyboard shortcut.            
+5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 6. Once your Excel add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/LaunchedAddin.png)
+7. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StopDebugging.png)
 
 
 #### Exercise 2.1: Clean up the project ####
@@ -296,13 +301,13 @@ Our first task is to clean up the project, and remove the default styling and se
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **document.ready** function) for the click event of the button:
     ```js
     // Add event handlers
     $('#read-data-from-selection').click(readDataFromSelection);
     
     ```
-3. In **Home.js**, add the following function to add plain text to the document:
+3. In **Home.js**, add the following function to read data from the selection (below the **Office.initialize** function):
     ```js
     // Read data from the current selection and log it in the JavaScript Console
     function readDataFromSelection() {
@@ -318,7 +323,7 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     
     ```
-4. Launch your Excel add-in and test your work by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the **JavaScript Console**.
+4. Launch your Excel add-in and test your work by first entering a value into a cell (such as *"Hello #Office365Dev"*. Then proceed by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the **JavaScript Console**.
 5. While your Excel add-in is running, switch back to Visual Studio 2015. Use the **Quick Launch** box in your top right corner to locate the **JavaScript Console** (simply by typing "JavaScript Console").                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/QuickLaunch.png)
 6. In the **JavaScript Console**, you should find the selected data logged:                                     
@@ -333,12 +338,12 @@ Our first task is to clean up the project, and remove the default styling and se
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **document.ready** function) for the click event of the button:
     ```js
     $('#write-data-to-selection').click(writeDataToSelection);
     
     ```
-3. In **Home.js**, add the following function to add plain text to the document:
+3. In **Home.js**, add the following function to write data to the selection:
     ```js
     // Write data to the current selection 
     function writeDataToSelection() {
@@ -364,7 +369,8 @@ When bulding an Excel add-in, you can use a custom document as the starting poin
 3. Select an area which is 4x1 cells in size. Check the box **My table has headers** and click **OK**.                             
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/TableSize.png)
 4. Select your new table and go to **Design** in the ribbon menu. 
-5. Name your table **"MyTable"** in the **Table Name** field. We will use this name to reference the table in an upcoming exercise.
+5. Name your table **"MyTable"** in the **Table Name** field. We will use this name to reference the table in an upcoming exercise.                             
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/TableName.png)
 6. Save and close the workbook. 
 
 #### Exercise 4.2: Use a custom start document ####
@@ -399,7 +405,7 @@ Using bindings you can create a connection between parts of the Office context a
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **document.ready** function) for the click event of the button:
     ```js
     $('#create-binding').click(createBinding);
     
@@ -436,7 +442,7 @@ Using bindings you can create a connection between parts of the Office context a
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **document.ready** function) for the click event of the button:
     ```js
     $('#write-data-to-binding').click(writeDataToBinding);
     
@@ -489,7 +495,7 @@ Using bindings you can create a connection between parts of the Office context a
     </button>
     
     ```
-2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **document.ready** function) for the click event of the button:
     ```js
     $('#read-data-from-binding').click(readDataFromBinding);
     
