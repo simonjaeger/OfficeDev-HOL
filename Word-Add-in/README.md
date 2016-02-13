@@ -22,8 +22,8 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [4.2 Get selected data as plain text](#exercise-42-get-selected-data-as-plain-text)
 * [4.3 Get selected data as HTML](#exercise-43-get-selected-data-as-html)
 
-Short of time and just want the final sample? Clone this repository and open the solution file: **Word-Add-in\\Source\\Word-Add-in.sln**.           
-    ```> git clone https://github.com/simonjaeger/OfficeDev-HOL.git```
+Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Word-Add-in\\Source\\Word-Add-in.sln**.           
+    
 
 ### Applies to ###
 -  Word Client
