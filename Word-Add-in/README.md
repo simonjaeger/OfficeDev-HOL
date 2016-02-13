@@ -334,7 +334,7 @@ Our first task is to clean up the project, and remove the default styling and se
     $('#add-plain-text').click(addPlainText);
     
     ```
-3. In **Home.js**, add the following function to add plain text to the document:
+3. In **Home.js**, add the following function to add plain text to the document (below the **Office.initialize** function):
     ```js
     // Adds data (plain text) to the current document selection
     function addPlainText() {
