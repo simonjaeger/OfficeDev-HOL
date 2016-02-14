@@ -1,0 +1,36 @@
+﻿#header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 80px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#header h2 {
+    position: relative;
+    margin-left: 22px;
+    margin-top: 30px;
+    text-wrap: none;
+    white-space: nowrap;
+}
+
+#content {
+    position: absolute;
+    top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.section-title {
+    margin-bottom: -5px;
+}
+
+.section {
+    margin-bottom: 10px;
+}
+
+.half-section {
+    position: relative;
+    width: 50%;
+}

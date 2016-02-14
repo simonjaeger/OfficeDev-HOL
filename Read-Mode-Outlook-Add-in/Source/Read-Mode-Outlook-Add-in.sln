@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read-Mode-Outlook-Add-in", "Read-Mode-Outlook-Add-in\Read-Mode-Outlook-Add-in.csproj", "{2E4293E4-0D89-47D1-8909-3B780FBCE625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read-Mode-Outlook-Add-inWeb", "Read-Mode-Outlook-Add-inWeb\Read-Mode-Outlook-Add-inWeb.csproj", "{D6321206-97F6-40B1-A82A-780ED00D1FFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E4293E4-0D89-47D1-8909-3B780FBCE625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4293E4-0D89-47D1-8909-3B780FBCE625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4293E4-0D89-47D1-8909-3B780FBCE625}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2E4293E4-0D89-47D1-8909-3B780FBCE625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4293E4-0D89-47D1-8909-3B780FBCE625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4293E4-0D89-47D1-8909-3B780FBCE625}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D6321206-97F6-40B1-A82A-780ED00D1FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6321206-97F6-40B1-A82A-780ED00D1FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6321206-97F6-40B1-A82A-780ED00D1FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6321206-97F6-40B1-A82A-780ED00D1FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

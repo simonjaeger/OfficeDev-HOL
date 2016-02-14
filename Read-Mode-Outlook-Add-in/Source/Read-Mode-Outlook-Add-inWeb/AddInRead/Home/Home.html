@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header" class="ms-bgColor-themePrimary">
+        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Outlook Add-in (Read Mode)</h2>
+    </div>
+    <div id="content">
+        <!-- Introduction -->
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This sample demonstrates a few different ways to interact with the Office context.
+            Accessing different types of data from a mailbox item (message or appointment) in read mode.
+        </p>
+
+        <div class="ms-Grid">
+            <div class="ms-Grid-row">
+                <!-- Exercise Section: Get subject -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6" style="padding-left: 0px;">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get subject</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Get the item subject and display it by clicking the button down below.
+                    </p>
+
+                    <!-- Exercise: Get subject -->
+                    <button id="get-subject" class="ms-Button">
+                        <span class="ms-Button-label">Get subject</span>
+                    </button>
+                </div>
+
+                <!-- Exercise Section: Get sender -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get sender</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Get the item sender and display it by clicking the button down below.
+                    </p>
+
+                    <!-- Exercise: Get sender -->
+                    <button id="get-sender" class="ms-Button ms-Button--primary">
+                        <span class="ms-Button-label">Get sender</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ms-Grid-row">
+                <!-- Exercise Section: Get body -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6" style="padding-left: 0px;">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get body</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Get the item body by clicking the button down below.
+                        This requires a minimum mailbox requirement set version of 1.3.
+                    </p>
+
+                    <!-- Exercise: Get body -->
+                    <button id="get-body" class="ms-Button">
+                        <span class="ms-Button-label">Get body</span>
+                    </button>
+                </div>
+
+                <!-- Office UI Fabric -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+                    </p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise: Dialog -->
+        <div id="data-dialog" class="ms-Dialog ms-Dialog--lgHeader">
+            <div class="ms-Overlay"></div>
+            <div class="ms-Dialog-main">
+                <button class="ms-Dialog-button ms-Dialog-button--close"><i class="ms-Icon ms-Icon--x"></i></button>
+                <div class="ms-Dialog-header">
+                    <p id="data-dialog-title" class="ms-Dialog-title">
+                        <!-- Dialog title -->
+                    </p>
+                </div>
+                <div class="ms-Dialog-inner">
+                    <div class="ms-Dialog-content">
+                        <p id="data-dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                            <!-- Dialog text -->
+                        </p>
+                    </div>
+                    <div class="ms-Dialog-actions">
+                        <div class="ms-Dialog-actionsRight">
+                            <button id="data-dialog-more" class="ms-Dialog-action ms-Button ms-Button--primary">
+                                <span class="ms-Button-label">OK</span>
+                            </button>
+                            <button id="data-dialog-got-it" class="ms-Dialog-action ms-Button">
+                                <span class="ms-Button-label">Got it</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
