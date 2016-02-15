@@ -157,6 +157,144 @@ Our first task is to clean up the project, and remove the default styling and se
 6. In **App.css**, **remove** everything, leaving you with an empty file.
 7. In **Home.css**, **remove** everything, leaving you with an empty file.
 
+
+
+
+#### Exercise 2.2: Add Office UI Fabric ####
+1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
+    ```html
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+    
+    ```
+    
+2. Your **Home.html** file should now look like this: 
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+        <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
+
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
+    
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+    ``` 
+
+#### Exercise 2.3: Add the base (CSS + HTML) ####
+1. In **App.css**, add the following basic CSS (this should be entire file). We will do much of the styling through already defined classes in the Office UI Fabric. But some basic layouting will do us great!
+    ```css
+    #header {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 80px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #header h2 {
+        position: relative;
+        margin-left: 22px;
+        margin-top: 20px;
+        text-wrap: none;
+        white-space: nowrap;
+        line-height: 22px;
+    }
+
+    #content {
+        position: absolute;
+        top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .section-title {
+        margin-bottom: -5px;
+    }
+
+    .section {
+        margin-bottom: 10px;
+    }
+    ``` 
+2. In **Home.html**, add the following chunk of HTML inside the **body** tags. This will set the stage for the next array of exercises to come. 
+    ```html
+    <!-- Header -->
+    <div id="header" class="ms-bgColor-themePrimary">
+        <h2 class="ms-font-xl ms-fontWeight-semibold ms-fontColor-white">
+            HOL: Outlook Add-in
+            <br />
+            (Compose Mode)
+        </h2>
+    </div>
+    <div id="content">
+        <!-- Introduction -->
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This sample demonstrates a few different ways to interact with the Office context.
+            Setting different properties of a mailbox item (message or appointment) in compose mode.
+        </p>
+
+        <!-- Exercise Section: Set subject -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Set subject</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Set the item subject by clicking the button down below.
+        </p>
+
+        <!-- Exercise: Set subject -->
+        <div class="section">
+        </div>
+
+        <!-- Exercise Section: Set recipients -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Set recipients</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Set the item recipients by clicking the button down below.
+        </p>
+
+        <!-- Exercise: Set recipients -->
+        <div class="section">
+        </div>
+
+        <!-- Exercise Section: Set body -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Set body</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Set the item body by clicking the button down below.
+            This requires a minimum mailbox requirement set version of 1.3.
+        </p>
+
+        <!-- Exercise: Set body -->
+        <div class="section">
+        </div>
+
+        <!-- Office UI Fabric -->
+        <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+        </p>
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
+        </p>
+    </div>
+    ``` 
+3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/LaunchedComposeMailAddin2.png)
+
+
+
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
 
