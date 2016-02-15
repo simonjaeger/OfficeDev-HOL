@@ -157,9 +157,6 @@ Our first task is to clean up the project, and remove the default styling and se
 6. In **App.css**, **remove** everything, leaving you with an empty file.
 7. In **Home.css**, **remove** everything, leaving you with an empty file.
 
-
-
-
 #### Exercise 2.2: Add Office UI Fabric ####
 1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
     ```html
@@ -292,6 +289,39 @@ Our first task is to clean up the project, and remove the default styling and se
     ``` 
 3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/LaunchedComposeMailAddin2.png)
+
+#### Exercise 3.1: Set the item subject ####
+1. In **Home.html**, locate the "Exercise: Get subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="set-subject" class="ms-Button">
+        <span class="ms-Button-label">Set subject</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    // Add event handlers
+    $('#set-subject').click(setSubject);
+    
+    ```
+3. In **Home.js**, add the following functions to get the item subject (below the **Office.initialize** function):
+    ```js
+    // Set the item subject
+    function setSubject() {
+        var _item = Office.context.mailbox.item;
+        var subject = _item.subject;
+        subject.setAsync('Hello #Office365Dev', onDataSet)
+    }
+
+    // Callback function for the asynchronous write functions
+    function onDataSet(asyncResult) {
+        if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+            // TODO: Handle error
+        }
+    }
+    ```
+4. Launch your mail add-in and test your work by clicking the **Set subject** button. When the button is clicked, the function will be executed; setting the item subject in the mailbox item.
+
 
 
 
