@@ -73,10 +73,30 @@ We need to make sure that we understand the manifest file. This file is essentia
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.      
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/GeneralAddinManifest.png)
-3. In the **Compose Form** tab section, find the **Activation** part. This is what determines the potential activation of your mail add-in. By default, both **Item is a message** and **Item is an appointment** should be checked. 
-4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Compose-Mode-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed.       
+3. In the **Compose Form** tab section, find the **Activation** part. This is what determines the potential activation of your mail add-in. By default, both **Email messages** and **Appointments** should be checked. 
+4. Pay attention down below to the **Source location** property. This points to a specific file in your web project (**Compose-Mode-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/ComposeFormAddinManifest.png)
 
+#### Exercise 1.3: Launch the project ####
+Before we launch our mail add-in we should validate that our start actions are proper.
+
+1. Select the manifest project; **Compose-Mode-Outlook-Add-in** in the **Solution Explorer**.                                     
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/SelectManifestProject.png)
+2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
+4. Set **Web Project** to your web project; **Compose-Mode-Outlook-Add-inWeb**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/StartActions.png)
+5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
+6. When launching your mail add-in for the first time, Visual Studoo 2015 needs to install the manifest file. This is where you should use your Office 365 Developer Tenant (if you haven't signed up for one yet, get yours for free at <http://dev.office.com/devprogram>). Enter the credentials of a user (**[username]@[your domain].onmicrosoft.com**) belonging to your Office 365 Developer Tenant and click on the **Connect** button.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ConnectToExchange.png)
+7. Once Outlook has launched, you'll notice that your mail add-in doesn't start right away. We need to start it manually. Create a new message and click on the **Office Add-ins** button.             
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/AddAddins.png)
+8. Select **Compose-Mode-Outlook-Add-in** and click **Start**.              
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/AddAddin.png)
+9. Once your mail add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/LaunchedComposeMailAddin.png)
+10. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StopDebugging.png)
 
 
 # Wrap up  #
