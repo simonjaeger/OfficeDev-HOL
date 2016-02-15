@@ -42,7 +42,29 @@ Version  | Date | Comments
 ----------
 
 # Exercises #
+#### Exercise 1.1: Create the project ####
+The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites before launching Visual Studio 2015. 
 
+1. Click **File**, **New** and finally the **Project** button.
+2. In **Templates**, select **Visual C#**, **Office/SharePoint** and then **Office Add-ins**. This will list the Office add-in templates, choose **Office Add-in**. 
+3. Name your project **"Compose-Mode-Outlook-Add-in"** and click the **OK** button to continue. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/NewProject.png)
+4. Next up Visual Studio 2015 will need a bit more information about what you are going to create - in order to set up the required files. Your next step is to decide which type of Office add-in that you want to create. Depending on what you pick, your Office add-in will run in different Office applications and contexts. 
+   
+   For this hands-on lab, we will create a mail add-in - this means that our Office add-in will run in in Outlook as a view beside the Office context (e.g. a message or appointment). Select **Mail** and click on **Next**. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/MailAddinType.png)
+5. Finally we need to choose the supported modes for our mail add-in. This means that we are defining the contexts that our mail add-in can run within; read, compose or both. If you choose **Read form**, the mail add-in will be able to run when a user is viewing a mailbox item. In **Compose form**, the mail add-in can run when a user is creating or editing a mailbox item. 
+   
+   In our case, select **Compose form** for both **Email message** and **Appointment**. Deselect everything else to create a compose mode mail add-in. Click **Finish** to complete the wizard.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/ComposeMailAddin.png)
+6. Using the information you specified in the wizard, Visual Studio 2015 will configure your project. Have a look in the **Solution Explorer** and find your two new projects in the **Compose-Mode-Outlook-Add-in** solution. 
+   
+   **Compose-Mode-Outlook-Add-in:** This is your manifest project, containing the XML manifest file. This is basically a representation of the information you just specified while creating your Office add-in project. 
+   
+   **Compose-Mode-Outlook-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Outlook add-in. We will make quite a few adjustments to this structure as we continue.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/SolutionExplorer.png)
+   
+   You've now created the basic structure for a mail add-in running in Outlook. 
 
 
 
