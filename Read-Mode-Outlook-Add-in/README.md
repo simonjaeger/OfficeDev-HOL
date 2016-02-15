@@ -468,7 +468,8 @@ As we are going to extract property values from the mailbox item, let's have a m
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
 5. In the **General** tab section, find the **Mailbox requirement set** property and set it to **1.3**.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/RequirementSet.png)
-4. Launch your mail add-in and test your work by clicking the **Get body** button. When the button is clicked, the function will be executed; displaying the item body using the data dialog.
+4. Launch your mail add-in and test your work by clicking the **Get body** button. When the button is clicked, the function will be executed; displaying the item body using the data dialog.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin4.png)
 
 
 # Wrap up  #
