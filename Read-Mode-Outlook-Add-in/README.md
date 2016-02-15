@@ -62,6 +62,17 @@ The first thing that we need to do is to create the project itself. Make sure th
    
    You've now created the basic structure for a mail add-in running in Outlook. 
 
+#### Exercise 1.2: Edit the manifest ####
+We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open it and edit the manifest file.
+
+1. In the manifest project **Read-Mode-Outlook-Add-in**, double-click the **Read-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
+2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/GeneralAddinManifest.png)
+3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your Outlook add-in. By default, both **Item is a message** and **Item is an appointment** should be included. 
+4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadFormAddinManifest.png)
+
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
