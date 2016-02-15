@@ -389,6 +389,7 @@ Our first task is to clean up the project, and remove the default styling and se
             'in culpa qui officia deserunt mollit anim id est laborum.';
         body.setAsync(text, onDataSet)
     }
+    
     ```
 4. Setting the item body is an asynchronous function that requires a minimum mailbox requirement set version of 1.3. There are different ways of ensuring that your user has at least version 1.3, a good way is to set it in the manifest.       
          
