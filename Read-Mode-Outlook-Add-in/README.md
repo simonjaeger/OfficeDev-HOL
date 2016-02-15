@@ -65,12 +65,12 @@ The first thing that we need to do is to create the project itself. Make sure th
 #### Exercise 1.2: Edit the manifest ####
 We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open it and edit the manifest file.
 
-1. In the manifest project **Read-Mode-Outlook-Add-in**, double-click the **Read-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.
+1. In the manifest project **Read-Mode-Outlook-Add-in**, double-click the **Read-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.      
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
-2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like. 
+2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.      
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/GeneralAddinManifest.png)
 3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your Outlook add-in. By default, both **Item is a message** and **Item is an appointment** should be included. 
-4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed. 
+4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadFormAddinManifest.png)
 
 
