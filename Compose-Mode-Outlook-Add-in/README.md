@@ -291,7 +291,7 @@ Our first task is to clean up the project, and remove the default styling and se
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/LaunchedComposeMailAddin2.png)
 
 #### Exercise 3.1: Set the item subject ####
-1. In **Home.html**, locate the "Exercise: Get subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Set subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="set-subject" class="ms-Button">
         <span class="ms-Button-label">Set subject</span>
@@ -304,7 +304,7 @@ Our first task is to clean up the project, and remove the default styling and se
     $('#set-subject').click(setSubject);
     
     ```
-3. In **Home.js**, add the following functions to get the item subject (below the **Office.initialize** function):
+3. In **Home.js**, add the following functions to set the item subject (below the **Office.initialize** function):
     ```js
     // Set the item subject
     function setSubject() {
@@ -321,6 +321,83 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     ```
 4. Launch your mail add-in and test your work by clicking the **Set subject** button. When the button is clicked, the function will be executed; setting the item subject in the mailbox item.
+
+#### Exercise 3.2: Set the item recipients ####
+1. In **Home.html**, locate the "Exercise: Set recipients" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="set-recipients" class="ms-Button">
+        <span class="ms-Button-label">Set recipients</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#set-recipients').click(setRecipients);
+    
+    ```
+3. In **Home.js**, add the following function to set the item recipients:
+    ```js
+    // Set the item recipients
+    function setRecipients() {
+        var _item = Office.context.mailbox.item;
+        var _userProfile = Office.context.mailbox.userProfile;
+        var user = {
+            displayName: _userProfile.displayName,
+            emailAddress: _userProfile.emailAddress
+        };
+
+        // Check if the item is a message or appointment
+        // in order to determine which properties to set
+        if (_item.itemType === Office.MailboxEnums.ItemType.Message) {
+            _item.to.setAsync([user], onDataSet);
+            _item.cc.setAsync([user], onDataSet);
+            _item.bcc.setAsync([user], onDataSet);
+        }
+        else if (_item.itemType === Office.MailboxEnums.ItemType.Appointment) {
+            _item.requiredAttendees.setAsync([user], onDataSet);
+        }
+    }
+    ```
+4. Launch your mail add-in and test your work by clicking the **Set recipients** button. When the button is clicked, the function will be executed; setting the item recipients of the mailbox item.
+
+
+
+#### Exercise 3.3: Set the item body ####
+1. In **Home.html**, locate the "Exercise: Set body" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="set-body" class="ms-Button ms-Button--primary">
+        <span class="ms-Button-label">Set body</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#set-body').click(setBody);
+    
+    ```
+3. In **Home.js**, add the following function to set the item body (below the **Office.initialize** function):
+    ```js
+    // Set the item body
+    function setBody() {
+        var _item = Office.context.mailbox.item;
+        var body = _item.body;
+        var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod' +
+            'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
+            'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
+            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+            'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt ' +
+            'in culpa qui officia deserunt mollit anim id est laborum.';
+        body.setAsync(text, onDataSet)
+    }
+    ```
+4. Setting the item body is an asynchronous function that requires a minimum mailbox requirement set version of 1.3. There are different ways of ensuring that your user has at least version 1.3, a good way is to set it in the manifest.       
+         
+   In the manifest project **Compose-Mode-Outlook-Add-in**, double-click the **Compose-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.      
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
+5. In the **General** tab section, find the **Mailbox requirement set** property and set it to **1.3**.       
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/RequirementSet.png)
+4. Launch your mail add-in and test your work by clicking the **Set body** button. When the button is clicked, the function will be executed; setting the item body.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin4.png)
 
 
 
