@@ -8,6 +8,15 @@ The objective is to get familiar with some of the possiblities that we have when
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
 
 * [1.1 Create the project](#exercise-11-create-the-project)
+* [1.2 Edit the manifest](#exercise-12-edit-the-manifest)
+* [1.3 Launch the project](#exercise-13-launch-the-project)
+* [2.1 Clean up the project](#exercise-21-clean-up-the-project)
+* [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
+* [2.3 Add the base](#exercise-23-add-the-base-css--html)
+* [3.1 Add a dialog](#exercise-31-add-a-dialog)
+* [4.1 Get the item subject](#exercise-41-get-the-item-subject)
+* [4.2 Get the item sender](#exercise-41-get-the-item-sender)
+* [4.3 Get the item body](#exercise-41-get-the-item-body)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Read-Mode-Outlook-Add-in\\Source\\Read-Mode-Outlook-Add-in.sln**.           
     
@@ -293,7 +302,6 @@ Our first task is to clean up the project, and remove the default styling and se
 3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
 
-    
 #### Exercise 3.1: Add a dialog ####
 As we are going to extract property values from the mailbox item, let's have a more sophisticated approach than the **JavaScript Console**. We can use an Office UI Fabric dialog to display this data in a more user-friendly way.  
 
@@ -365,7 +373,6 @@ As we are going to extract property values from the mailbox item, let's have a m
     ```
 
 #### Exercise 4.1: Get the item subject ####
-
 1. In **Home.html**, locate the "Exercise: Get subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-subject" class="ms-Button">
@@ -392,7 +399,6 @@ As we are going to extract property values from the mailbox item, let's have a m
 4. Launch your mail add-in and test your work by clicking the **Get subject** button. When the button is clicked, the function will be executed; displaying the item subject using the data dialog.
 
 #### Exercise 4.2: Get the item sender ####
-
 1. In **Home.html**, locate the "Exercise: Get sender" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-sender" class="ms-Button ms-Button--primary">
@@ -429,7 +435,6 @@ As we are going to extract property values from the mailbox item, let's have a m
 4. Launch your mail add-in and test your work by clicking the **Get sender** button. When the button is clicked, the function will be executed; displaying the item sender using the data dialog.
 
 #### Exercise 4.3: Get the item body ####
-
 1. In **Home.html**, locate the "Exercise: Get body" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-body" class="ms-Button">
@@ -462,7 +467,7 @@ As we are going to extract property values from the mailbox item, let's have a m
         });
     }
     ```
-4. Getting the item body is an asynchronous function that requires a minimum mailbox requirement set version of 1.3. There are different ways of ensuring that your user has at least version 1.3 - a good way is to set it in the manifest.       
+4. Getting the item body is an asynchronous function that requires a minimum mailbox requirement set version of 1.3. There are different ways of ensuring that your user has at least version 1.3, a good way is to set it in the manifest.       
          
    In the manifest project **Read-Mode-Outlook-Add-in**, double-click the **Read-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.      
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
@@ -470,7 +475,6 @@ As we are going to extract property values from the mailbox item, let's have a m
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/RequirementSet.png)
 4. Launch your mail add-in and test your work by clicking the **Get body** button. When the button is clicked, the function will be executed; displaying the item body using the data dialog.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin4.png)
-
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
