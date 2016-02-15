@@ -364,7 +364,7 @@ As we are going to extract property values from the mailbox item, let's have a m
     
     ```
 
-#### Exercise 3.2: Get the item subject ####
+#### Exercise 4.1: Get the item subject ####
 
 1. In **Home.html**, locate the "Exercise: Get subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
@@ -391,7 +391,7 @@ As we are going to extract property values from the mailbox item, let's have a m
     ```
 4. Launch your mail add-in and test your work by clicking the **Get subject** button. When the button is clicked, the function will be executed; displaying the item subject using the data dialog.
 
-#### Exercise 3.3: Get the item sender ####
+#### Exercise 4.2: Get the item sender ####
 
 1. In **Home.html**, locate the "Exercise: Get sender" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
     ```html
@@ -427,6 +427,48 @@ As we are going to extract property values from the mailbox item, let's have a m
     }
     ```
 4. Launch your mail add-in and test your work by clicking the **Get sender** button. When the button is clicked, the function will be executed; displaying the item sender using the data dialog.
+
+#### Exercise 4.3: Get the item body ####
+
+1. In **Home.html**, locate the "Exercise: Get body" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="get-body" class="ms-Button">
+        <span class="ms-Button-label">Get body</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#get-body').click(getBody);
+    
+    ```
+3. In **Home.js**, add the following function to get the item body (below the **Office.initialize** function):
+    ```js
+    // Get the body of the item and display it as 
+    // plain text
+    function getBody() {
+        var _item = Office.context.mailbox.item;
+        var body = _item.body;
+
+        // Get the body asynchronous as text
+        body.getAsync(Office.CoercionType.Text, function (asyncResult) {
+            if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                // TODO: Handle error
+            }
+            else {
+                // Show data
+                showDataDialog('Body', asyncResult.value.trim());
+            }
+        });
+    }
+    ```
+4. Getting the item body is an asynchronous function that requires a minimum mailbox requirement set version of 1.3. There are different ways of ensuring that your user has at least version 1.3 - a good way is to set it in the manifest.       
+         
+   In the manifest project **Read-Mode-Outlook-Add-in**, double-click the **Read-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.      
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
+5. In the **General** tab section, find the **Mailbox requirement set** property and set it to **1.3**.       
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/RequirementSet.png)
+4. Launch your mail add-in and test your work by clicking the **Get body** button. When the button is clicked, the function will be executed; displaying the item body using the data dialog.
 
 
 # Wrap up  #
