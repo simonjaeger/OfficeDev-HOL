@@ -364,7 +364,69 @@ As we are going to extract property values from the mailbox item, let's have a m
     
     ```
 
+#### Exercise 3.2: Get the item subject ####
 
+1. In **Home.html**, locate the "Exercise: Get subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="get-subject" class="ms-Button">
+        <span class="ms-Button-label">Get subject</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#get-subject').click(getSubject);
+    
+    ```
+3. In **Home.js**, add the following function to get the item subject (below the **Office.initialize** function):
+    ```js
+    // Get the item subject and display it
+    function getSubject() {
+        var _item = Office.context.mailbox.item;
+        var subject = _item.subject;
+
+        // Show data
+        showDataDialog('Subject', subject);
+    }
+    ```
+4. Launch your mail add-in and test your work by clicking the **Get subject** button. When the button is clicked, the function will be executed; displaying the item subject using the data dialog.
+
+#### Exercise 3.3: Get the item sender ####
+
+1. In **Home.html**, locate the "Exercise: Get sender" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+    ```html
+    <button id="get-sender" class="ms-Button ms-Button--primary">
+        <span class="ms-Button-label">Get sender</span>
+    </button>
+    
+    ```
+2. In **Home.js**, add an event handler (below the initialization of the Office UI Fabric components, in the **ready** function) for the click event of the button:
+    ```js
+    $('#get-sender').click(getSender);
+    
+    ```
+3. In **Home.js**, add the following function to get the item sender (below the **Office.initialize** function):
+    ```js
+    // Get the item sender and display it
+    function getSender() {
+        var _item = Office.context.mailbox.item;
+        var sender;
+
+        // Check if the item is a message or appointment
+        // in order to determine which property that contains
+        // the sender
+        if (_item.itemType === Office.MailboxEnums.ItemType.Message) {
+            sender = _item.from;
+        }
+        else if (_item.itemType === Office.MailboxEnums.ItemType.Appointment) {
+            sender = _item.organizer;
+        }
+
+        // Show data
+        showDataDialog('Sender', sender.displayName);
+    }
+    ```
+4. Launch your mail add-in and test your work by clicking the **Get sender** button. When the button is clicked, the function will be executed; displaying the item sender using the data dialog.
 
 
 # Wrap up  #
