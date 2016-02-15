@@ -13,6 +13,9 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [2.1 Clean up the project](#exercise-21-clean-up-the-project)
 * [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
 * [2.3 Add the base](#exercise-23-add-the-base-css--html)
+* [3.1 Set the item subject](#exercise-31-set-the-item-subject)
+* [3.2 Set the item recipients](#exercise-32-set-the-item-recipients)
+* [3.3 Set the item body](#exercise-33-set-the-item-body)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Compose-Mode-Outlook-Add-in\\Source\\Compose-Mode-Outlook-Add-in.sln**.           
     
