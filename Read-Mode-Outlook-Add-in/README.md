@@ -46,7 +46,6 @@ Version  | Date | Comments
 ----------
 
 # Exercises #
-
 #### Exercise 1.1: Create the project ####
 The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites before launching Visual Studio 2015. 
 
@@ -79,7 +78,7 @@ We need to make sure that we understand the manifest file. This file is essentia
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.      
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/GeneralAddinManifest.png)
 3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your mail add-in. By default, both **Item is a message** and **Item is an appointment** should be included. 
-4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.       
+4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadFormAddinManifest.png)
 
 #### Exercise 1.3: Launch the project ####
@@ -109,7 +108,7 @@ Our first task is to clean up the project, and remove the default styling and se
 
 1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Word add-in. **Remove** everything inside the **body** tags. 
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your mail add-in. **Remove** everything inside the **body** tags. 
 3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
     ```html
     <!DOCTYPE html>
@@ -143,7 +142,7 @@ Our first task is to clean up the project, and remove the default styling and se
         return app;
     })();
     ```
-5. In **Home.js**, **remove** the **displayItemDetails()** function and the call to **app.initialize()**. We are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
+5. In **Home.js**, **remove** the **displayItemDetails()** function and the call to **app.initialize()**. We are remaking the structure of the mail add-in, these will no longer be used. You should end up with this:            
     ```js
     (function () {
         "use strict";
