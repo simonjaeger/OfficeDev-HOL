@@ -49,9 +49,9 @@ The first thing that we need to do is to create the project itself. Make sure th
    
    For this hands-on lab, we will create a mail add-in - this means that our Office add-in will run in in Outlook as a view beside the Office context (e.g. a message or appointment). Select **Mail** and click on **Next**. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/MailAddinType.png)
-5. Finally we need to choose the supported modes for our Outlook add-in. This means that we are defining the contexts that our Outlook add-in can run within; read, compose or both. If you choose **Read form**, the Outlook add-in will be able to run when a user is viewing a mailbox item. In **Compose form**, the Outlook add-in can run when a user is creating or editing a mailbox item. 
+5. Finally we need to choose the supported modes for our mail add-in. This means that we are defining the contexts that our mail add-in can run within; read, compose or both. If you choose **Read form**, the mail add-in will be able to run when a user is viewing a mailbox item. In **Compose form**, the mail add-in can run when a user is creating or editing a mailbox item. 
    
-   In our case, select **Read form** for both **Email message** and **Appointment**. Deselect everything else to create a read mode Outlook add-in. Click **Finish** to complete the wizard.
+   In our case, select **Read form** for both **Email message** and **Appointment**. Deselect everything else to create a read mode mail add-in. Click **Finish** to complete the wizard.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadMailAddin.png)
 6. Using the information you specified in the wizard, Visual Studio 2015 will configure your project. Have a look in the **Solution Explorer** and find your two new projects in the **Read-Mode-Outlook-Add-in** solution. 
    
@@ -69,9 +69,28 @@ We need to make sure that we understand the manifest file. This file is essentia
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.      
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/GeneralAddinManifest.png)
-3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your Outlook add-in. By default, both **Item is a message** and **Item is an appointment** should be included. 
+3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your mail add-in. By default, both **Item is a message** and **Item is an appointment** should be included. 
 4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your Word add-in, this page will be the first thing that gets loaded and displayed.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadFormAddinManifest.png)
+
+#### Exercise 1.3: Launch the project ####
+Before we launch our mail add-in we should validate that our start actions are proper.
+
+
+1. Select the manifest project; **Read-Mode-Outlook-Add-in** in the **Solution Explorer**.                                     
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/SelectManifestProject.png)
+2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
+4. Set **Web Project** to your web project; **Read-Mode-Outlook-Add-inWeb**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/StartActions.png)
+5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
+6. When launching your mail add-in for the first time, Visual Studoo 2015 needs to install the manifest file. This is where you should use your Office 365 Developer Tenant (if you haven't signed up for one yet, get yours for free at <http://dev.office.com/devprogram>). Enter the credentials of a user (**[username]@[your domain].onmicrosoft.com**) belonging to your Office 365 Developer Tenant and click on the **Connect** button.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/ConnectToExchange.png)
+7. Once Outlook has launched, you'll notice that your mail add-in doesn't start right away. We need to start it manually. Select a message in your mailbox (send yourself one if needed) and click on the **Read-Mode-Outlook-Add-in** above it. Once your mail add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/LaunchedReadMailAddin.png)
+8. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StopDebugging.png)
+
 
 
 # Wrap up  #
