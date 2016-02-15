@@ -188,7 +188,6 @@ Our first task is to clean up the project, and remove the default styling and se
         <title></title>
         <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
 
-        <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
     
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">

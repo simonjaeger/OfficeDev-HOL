@@ -83,13 +83,216 @@ Before we launch our mail add-in we should validate that our start actions are p
 4. Set **Web Project** to your web project; **Read-Mode-Outlook-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/StartActions.png)
 5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StartProject.png)
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 6. When launching your mail add-in for the first time, Visual Studoo 2015 needs to install the manifest file. This is where you should use your Office 365 Developer Tenant (if you haven't signed up for one yet, get yours for free at <http://dev.office.com/devprogram>). Enter the credentials of a user (**[username]@[your domain].onmicrosoft.com**) belonging to your Office 365 Developer Tenant and click on the **Connect** button.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ConnectToExchange.png)
 7. Once Outlook has launched, you'll notice that your mail add-in doesn't start right away. We need to start it manually. Select a message in your mailbox (send yourself one if needed) and click on the **Read-Mode-Outlook-Add-in** above it. Once your mail add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin.png)
 8. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StopDebugging.png)
+
+#### Exercise 2.1: Clean up the project ####
+While the default styling that comes along with the Visual Studio 2015 template for Office add-ins does its job - leveraging the features of the Office UI Fabric can be fantastic. It's a UI toolkit made specifically for building Office and Office 365 experiences, so it will certainly help us out here.
+
+The Office UI Fabric library comes with everything from styling, components to animations. The majority of the library can be references via a CDN. The heavier parts needs to be downloaded and added to the project itself. We will go through both of these approaches. 
+
+Our first task is to clean up the project, and remove the default styling and setup.
+
+1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Word add-in. **Remove** everything inside the **body** tags. 
+3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
+
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+
+    ```
+4. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+    ```js
+    var app = (function () {
+        "use strict";
+    
+        var app = {};
+        return app;
+    })();
+    ```
+5. In **Home.js**, **remove** the **displayItemDetails()** function and the call to **app.initialize()**. We are remaking the structure of the Word add-in, these will no longer be used. You should end up with this:            
+    ```js
+    (function () {
+        "use strict";
+    
+        // The initialize function must be run each time a new page is loaded
+        Office.initialize = function (reason) {
+            $(document).ready(function () {
+            });
+        };
+    })();
+    ```
+6. In **App.css**, **remove** everything, leaving you with an empty file.
+7. In **Home.css**, **remove** everything, leaving you with an empty file.
+
+
+
+#### Exercise 2.2: Add Office UI Fabric ####
+1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
+    ```html
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+    
+    ```
+    
+2. Your **Home.html** file should now look like this: 
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+        <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
+
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
+    
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+    ``` 
+
+#### Exercise 2.3: Add the base (CSS + HTML) ####
+1. In **App.css**, add the following basic CSS (this should be entire file). We will do much of the styling through already defined classes in the Office UI Fabric. But some basic layouting will do us great!
+    ```css
+    #header {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 80px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #header h2 {
+        position: relative;
+        margin-left: 22px;
+        margin-top: 30px;
+        text-wrap: none;
+        white-space: nowrap;
+    }
+
+    #content {
+        position: absolute;
+        top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .section-title {
+        margin-bottom: -5px;
+    }
+
+    .section {
+        margin-bottom: 10px;
+    }
+    ``` 
+2. In **Home.html**, add the following chunk of HTML inside the **body** tags. This will set the stage for the next array of exercises to come. 
+    ```html
+    <!-- Header -->
+    <div id="header" class="ms-bgColor-themePrimary">
+        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Outlook Add-in (Read Mode)</h2>
+    </div>
+    <div id="content">
+        <!-- Introduction -->
+        <p class="ms-font-m ms-fontColor-neutralSecondary">
+            This sample demonstrates a few different ways to interact with the Office context.
+            Accessing different types of data for a mailbox item (message or appointment) in read mode.
+        </p>
+
+        <div class="ms-Grid">
+            <div class="ms-Grid-row">
+                <!-- Exercise Section: Get subject -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6" style="padding-left: 0px;">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get subject</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Get the item subject and display it by clicking the button down below.
+                    </p>
+
+                    <!-- Exercise: Get subject -->
+
+                </div>
+
+                <!-- Exercise Section: Get sender -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get sender</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Get the item sender and display it by clicking the button down below.
+                    </p>
+
+                    <!-- Exercise: Get sender -->
+
+                </div>
+            </div>
+
+            <div class="ms-Grid-row">
+                <!-- Exercise Section: Get body -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6" style="padding-left: 0px;">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get body</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Get the item body by clicking the button down below.
+                        This requires a minimum mailbox requirement set version of 1.3.
+                    </p>
+
+                    <!-- Exercise: Get body -->
+
+                </div>
+
+                <!-- Office UI Fabric -->
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+                    </p>
+                    <p class="ms-font-m ms-fontColor-neutralSecondary">
+                        Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise: Dialog -->
+
+    </div>
+    ``` 
+3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
+   
 
 
 
