@@ -98,6 +98,64 @@ Before we launch our mail add-in we should validate that our start actions are p
 10. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StopDebugging.png)
 
+#### Exercise 2.1: Clean up the project ####
+While the default styling that comes along with the Visual Studio 2015 template for Office add-ins does its job - leveraging the features of the Office UI Fabric can be fantastic. It's a UI toolkit made specifically for building Office and Office 365 experiences, so it will certainly help us out here.
+
+The Office UI Fabric library comes with everything from styling, components to animations. The majority of the library can be references via a CDN. The heavier parts needs to be downloaded and added to the project itself. We will go through both of these approaches. 
+
+Our first task is to clean up the project, and remove the default styling and setup.
+
+1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your mail add-in. **Remove** everything inside the **body** tags. 
+3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
+
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+
+    ```
+4. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+    ```js
+    var app = (function () {
+        "use strict";
+    
+        var app = {};
+        return app;
+    })();
+    ```
+5. In **Home.js**, remove the **setSubject()**, **getSubject()** and **addToRecipients()** functions (and the corresponding click event handler registrations in the **document.ready** function). 
+6. In **Home.js**, remove the call to **app.initialize()**. We are remaking the structure of the mail add-in, these will no longer be used. You should end up with this:            
+    ```js
+    (function () {
+        "use strict";
+    
+        // The initialize function must be run each time a new page is loaded
+        Office.initialize = function (reason) {
+            $(document).ready(function () {
+            });
+        };
+    })();
+    ```
+6. In **App.css**, **remove** everything, leaving you with an empty file.
+7. In **Home.css**, **remove** everything, leaving you with an empty file.
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
