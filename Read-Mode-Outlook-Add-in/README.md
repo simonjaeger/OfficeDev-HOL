@@ -292,7 +292,78 @@ Our first task is to clean up the project, and remove the default styling and se
     ``` 
 3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
-   
+
+    
+#### Exercise 3.1: Add a dialog ####
+As we are going to extract property values from the mailbox item, let's have a more sophisticated approach than the **JavaScript Console**. We can use an Office UI Fabric dialog to display this data in a more user-friendly way.  
+
+1. In **Home.html**, locate the "Exercise: Data dialog" section (commented) and add the following HTML piece right after. This is an Office UI Fabric styled dialog. 
+    ```html
+    <div id="data-dialog" class="ms-Dialog ms-Dialog--lgHeader">
+        <div class="ms-Overlay"></div>
+        <div class="ms-Dialog-main">
+            <button class="ms-Dialog-button ms-Dialog-button--close">
+                <i class="ms-Icon ms-Icon--x"></i>
+            </button>
+            <div class="ms-Dialog-header">
+                <p id="data-dialog-title" class="ms-Dialog-title">
+                    <!-- Dialog title -->
+                </p>
+            </div>
+            <div class="ms-Dialog-inner">
+                <div class="ms-Dialog-content">
+                    <p id="data-dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                        <!-- Dialog text -->
+                    </p>
+                </div>
+                <div class="ms-Dialog-actions">
+                    <div class="ms-Dialog-actionsRight">
+                        <button id="data-dialog-more" class="ms-Dialog-action ms-Button ms-Button--primary">
+                            <span class="ms-Button-label">OK</span>
+                        </button>
+                        <button id="data-dialog-got-it" class="ms-Dialog-action ms-Button">
+                            <span class="ms-Button-label">Got it</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    ```
+2. Launch your mail add-in and test your work. You should find a dialog covering up most of your display area.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin3.png)
+3. In **Home.js**, add two event handlers (below the initialization of the Office UI Fabric components, in the **ready** function) for the dialog. This will allow us to close it.
+    ```js
+    // Add event handlers
+    $('#data-dialog-more').click(hideDataDialog);
+    $('#data-dialog-got-it').click(hideDataDialog);
+    
+    ```
+4. In **Home.js**, add the following functions to show and close the dialog:
+    ```js
+    // Show the data dialog
+    function showDataDialog(title, text) {
+        // Set the dialog title and text
+        $('#data-dialog-title').text(title);
+        $('#data-dialog-text').text(text);
+        $('#data-dialog').show();
+    }
+
+    // Hide the data dialog
+    function hideDataDialog() {
+        $('#data-dialog').hide();
+    }
+    ```
+5. Launch your mail add-in and test your work. You should be able to close the dialog using any of the two buttons.
+6. In **Home.css**, add the following CSS piece to hide the dialog when your mail add-in has launched.
+    ```css
+    #data-dialog {
+        display: none;
+    }
+    
+    ```
+
 
 
 
