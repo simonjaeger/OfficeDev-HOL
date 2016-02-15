@@ -8,6 +8,11 @@ The objective is to get familiar with some of the possiblities that we have when
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
 
 * [1.1 Create the project](#exercise-11-create-the-project)
+* [1.2 Edit the manifest](#exercise-12-edit-the-manifest)
+* [1.3 Launch the project](#exercise-13-launch-the-project)
+* [2.1 Clean up the project](#exercise-21-clean-up-the-project)
+* [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
+* [2.3 Add the base](#exercise-23-add-the-base-css--html)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Compose-Mode-Outlook-Add-in\\Source\\Compose-Mode-Outlook-Add-in.sln**.           
     
@@ -38,7 +43,8 @@ Version  | Date | Comments
 
 # Exercises #
 
-// TODO
+
+
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
@@ -46,3 +52,4 @@ View the source code files included in this hands-on lab for a final reference o
 # More Resources #
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
 - Learn more about Office UI Fabric: <http://dev.office.com/fabric/>
+- Developing Outlook add-ins – where to integrate and what you can do: <http://simonjaeger.com/developing-outlook-add-ins-where-to-integrate-and-what-you-can-do/>
