@@ -2,7 +2,7 @@
 
 With the new application model for Office comes a brand new way of extending Office with your own functionality - using the tools and dev stacks that we already know and love. 
 
-This hands-on lab demonstrates a few different ways to interact with the Office context.  Reading and writing data from the current user selection and bindings. In addition, different styles and components from the Office UI Fabric library is used throughout this Office add-in. 
+This hands-on lab demonstrates a few different ways to interact with the Office context.  Reading and writing data from the current user selection and bindings. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
 The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
@@ -108,7 +108,7 @@ Our first task is to clean up the project, and remove the default styling and se
 
 1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Excel add-in. **Remove** everything inside the **body** tags.
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your Excel add-in. Remove everything inside the **body** tags.
 3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
     ```html
     <!DOCTYPE html>
@@ -132,7 +132,7 @@ Our first task is to clean up the project, and remove the default styling and se
     </body>
     </html>
     ```
-4. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+4. In **App.js**, remove the **initialize()** function defined on the **app** object, as this will not be used:            
     ```js
     var app = (function () {
         "use strict";
@@ -141,7 +141,7 @@ Our first task is to clean up the project, and remove the default styling and se
         return app;
     })();
     ```
-5. In **Home.js**, **remove** the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Excel add-in, these will no longer be used. You should end up with this:            
+5. In **Home.js**, remove the **getDataFromSelection()** function and the call to **app.initialize()**. We are remaking the structure of the Excel add-in, these will no longer be used. You should end up with this:            
     ```js
     (function () {
         "use strict";
@@ -153,7 +153,7 @@ Our first task is to clean up the project, and remove the default styling and se
         };
     })();
     ```
-6. In **App.css**, **remove** everything, leaving you with an empty file.
+6. In **App.css**, remove everything, leaving you with an empty file.
 
 #### Exercise 2.2: Add Office UI Fabric ####
 1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
@@ -229,7 +229,7 @@ Our first task is to clean up the project, and remove the default styling and se
     ```html
     <!-- Header -->
     <div id="header" class="ms-bgColor-themePrimary">
-        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Excel add-in</h2>
+        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Excel Add-in</h2>
     </div>
     <div id="content">
         <!-- Introduction -->
@@ -282,7 +282,7 @@ Our first task is to clean up the project, and remove the default styling and se
         <!-- Office UI Fabric -->
         <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
         <p class="ms-font-m ms-fontColor-neutralSecondary">
-            Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+            Different styles and components from the Office UI Fabric library are used throughout this Office add-in.
         </p>
         <p class="ms-font-m ms-fontColor-neutralSecondary">
             Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>

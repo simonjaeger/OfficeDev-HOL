@@ -98,7 +98,7 @@
         });
     }
 
-    // Callback function for the asynchronous write function
+    // Callback function for the asynchronous write functions
     function onSelectionSet(asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
             // TODO: Handle error

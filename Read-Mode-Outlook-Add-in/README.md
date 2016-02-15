@@ -2,7 +2,7 @@
 
 With the new application model for Office comes a brand new way of extending Office with your own functionality - using the tools and dev stacks that we already know and love. 
 
-This hands-on lab demonstrates a few different ways to interact with the Office context.  Accessing different types of data for a mailbox item (message or appointment) in read mode. In addition, different styles and components from the Office UI Fabric library is used throughout this Office add-in. 
+This hands-on lab demonstrates a few different ways to interact with the Office context.  Accessing different types of data for a mailbox item (message or appointment) in read mode. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
 The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
@@ -108,7 +108,7 @@ Our first task is to clean up the project, and remove the default styling and se
 
 1. Remove the **Content** and **Images** folders from the web project. You can do this by right-clicking these folders in the **Solution Explorer** and choosing the **Delete** option.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/DeleteFolders.png)
-2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your mail add-in. **Remove** everything inside the **body** tags. 
+2. In your **Solution Explorer**, find the **Home.html** file - which is the startup page for your mail add-in. Remove everything inside the **body** tags. 
 3. In **Home.html** remove the CSS reference to **"../../Content/Office.css"** - we have removed this file and will be using Office UI Fabric instead. This should leave you with this:
     ```html
     <!DOCTYPE html>
@@ -133,7 +133,7 @@ Our first task is to clean up the project, and remove the default styling and se
     </html>
 
     ```
-4. In **App.js**, **remove** the **initialize()** function defined on the **app** object, as this will not be used:            
+4. In **App.js**, remove the **initialize()** function defined on the **app** object, as this will not be used:            
     ```js
     var app = (function () {
         "use strict";
@@ -142,7 +142,7 @@ Our first task is to clean up the project, and remove the default styling and se
         return app;
     })();
     ```
-5. In **Home.js**, **remove** the **displayItemDetails()** function and the call to **app.initialize()**. We are remaking the structure of the mail add-in, these will no longer be used. You should end up with this:            
+5. In **Home.js**, remove the **displayItemDetails()** function and the call to **app.initialize()**. We are remaking the structure of the mail add-in, these will no longer be used. You should end up with this:            
     ```js
     (function () {
         "use strict";
@@ -154,8 +154,8 @@ Our first task is to clean up the project, and remove the default styling and se
         };
     })();
     ```
-6. In **App.css**, **remove** everything, leaving you with an empty file.
-7. In **Home.css**, **remove** everything, leaving you with an empty file.
+6. In **App.css**, remove everything, leaving you with an empty file.
+7. In **Home.css**, remove everything, leaving you with an empty file.
 
 
 
@@ -285,7 +285,7 @@ Our first task is to clean up the project, and remove the default styling and se
                 <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
                     <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
                     <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        Different styles and components from the Office UI Fabric library is used throughout this Office add-in.
+                        Different styles and components from the Office UI Fabric library are used throughout this Office add-in.
                     </p>
                     <p class="ms-font-m ms-fontColor-neutralSecondary">
                         Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
@@ -304,7 +304,7 @@ Our first task is to clean up the project, and remove the default styling and se
 #### Exercise 3.1: Add a dialog ####
 As we are going to extract property values from the mailbox item, let's have a more sophisticated approach than the **JavaScript Console**. We can use an Office UI Fabric dialog to display this data in a more user-friendly way.  
 
-1. In **Home.html**, locate the "Exercise: Data dialog" section (commented) and add the following HTML piece right after. This is an Office UI Fabric styled dialog. 
+1. In **Home.html**, locate the "Exercise: Data dialog" comment and add the following HTML piece below it. This is an Office UI Fabric styled dialog. 
     ```html
     <div id="data-dialog" class="ms-Dialog ms-Dialog--lgHeader">
         <div class="ms-Overlay"></div>
@@ -372,7 +372,7 @@ As we are going to extract property values from the mailbox item, let's have a m
     ```
 
 #### Exercise 4.1: Get the item subject ####
-1. In **Home.html**, locate the "Exercise: Get subject" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Get subject" comment and add the following HTML piece below it. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-subject" class="ms-Button">
         <span class="ms-Button-label">Get subject</span>
@@ -398,7 +398,7 @@ As we are going to extract property values from the mailbox item, let's have a m
 4. Launch your mail add-in and test your work by clicking the **Get subject** button. When the button is clicked, the function will be executed; displaying the item subject using the data dialog.
 
 #### Exercise 4.2: Get the item sender ####
-1. In **Home.html**, locate the "Exercise: Get sender" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Get sender" comment and add the following HTML piece below it. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-sender" class="ms-Button ms-Button--primary">
         <span class="ms-Button-label">Get sender</span>
@@ -434,7 +434,7 @@ As we are going to extract property values from the mailbox item, let's have a m
 4. Launch your mail add-in and test your work by clicking the **Get sender** button. When the button is clicked, the function will be executed; displaying the item sender using the data dialog.
 
 #### Exercise 4.3: Get the item body ####
-1. In **Home.html**, locate the "Exercise: Get body" section (commented) and add the following HTML piece inside the **div** (section) tags. This is an Office UI Fabric styled button. 
+1. In **Home.html**, locate the "Exercise: Get body" section comment add the following HTML piece below it. This is an Office UI Fabric styled button. 
     ```html
     <button id="get-body" class="ms-Button">
         <span class="ms-Button-label">Get body</span>
