@@ -481,3 +481,4 @@ View the source code files included in this hands-on lab for a final reference o
 # More Resources #
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
 - Learn more about Office UI Fabric: <http://dev.office.com/fabric/>
+- Developing Outlook add-ins – where to integrate and what you can do: <http://simonjaeger.com/developing-outlook-add-ins-where-to-integrate-and-what-you-can-do/>
