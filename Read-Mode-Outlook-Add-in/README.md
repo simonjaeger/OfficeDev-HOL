@@ -38,7 +38,28 @@ Version  | Date | Comments
 
 # Exercises #
 
-// TODO
+#### Exercise 1.1: Create the project ####
+The first thing that we need to do is to create the project itself. Make sure that you have installed all of the required prerequisites before launching Visual Studio 2015. 
+
+1. Click **File**, **New** and finally the **Project** button.
+2. In **Templates**, select **Visual C#**, **Office/SharePoint** and then **Office Add-ins**. This will list the Office add-in templates, choose **Office Add-in**. 
+3. Name your project **"Read-Mode-Outlook-Add-in"** and click the **OK** button to continue. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/NewProject.png)
+4. Next up Visual Studio 2015 will need a bit more information about what you are going to create - in order to set up the required files. Your next step is to decide which type of Office add-in that you want to create. Depending on what you pick, your Office add-in will run in different Office applications and contexts. 
+   
+   For this hands-on lab, we will create a task pane add-in - this means that our Office add-in will run in a view beside the Office context (e.g. a document, spreadsheet, slide). Select **Mail** and click on **Next**. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/MailAddinType.png)
+5. Finally we need to choose the host applications. This means that we are defining the Office applications that our Office (task pane) add-in can run within. Select **Word** and deselect everything else to create a "Word-only" add-in. Click **Finish** to complete the wizard.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadMailAddin.png)
+6. Using the information you specified in the wizard, Visual Studio 2015 will configure your project. Have a look in the **Solution Explorer** and find your two new projects in the **Word-Add-In** solution. 
+   
+   **Read-Mode-Outlook-Add-in:** This is your manifest project, containing the XML manifest file. This is basically a representation of the information you just specified while creating your Office add-in project. 
+   
+   **Read-Mode-Outlook-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Word add-in. We will make quite a few adjustments to this structure as we continue.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/SolutionExplorer.png)
+   
+   You've now created the basic structure for a taskpane add-in running in Word. 
+
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
