@@ -15,8 +15,8 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [2.3 Add the base](#exercise-23-add-the-base-css--html)
 * [3.1 Add a dialog](#exercise-31-add-a-dialog)
 * [4.1 Get the item subject](#exercise-41-get-the-item-subject)
-* [4.2 Get the item sender](#exercise-41-get-the-item-sender)
-* [4.3 Get the item body](#exercise-41-get-the-item-body)
+* [4.2 Get the item sender](#exercise-42-get-the-item-sender)
+* [4.3 Get the item body](#exercise-43-get-the-item-body)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Read-Mode-Outlook-Add-in\\Source\\Read-Mode-Outlook-Add-in.sln**.           
     
