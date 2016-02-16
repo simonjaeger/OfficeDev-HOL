@@ -843,7 +843,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
 2. Right-click and choose **Add New Folder**, name it **Controllers**. 
-3. Right-click the **Controllers** folder and choose **Web API Controller Class (v2.1)**. Name it **SSOController** and click on the **OK** button.        
+3. Right-click on the **Controllers** folder and choose **Web API Controller Class (v2.1)**. Name it **SSOController** and click on the **OK** button.        
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SSO.png) 
 4. In **SSOController.cs**, remove every method leaving you with an empty class:  
     ```csharp
@@ -861,7 +861,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
 2. Right-click and choose **Add New Folder**, name it **App_Start**. 
-3. Right-click the **App_Start** folder and choose **Add Class...**, name it **WebApiConfig.cs**.        
+3. Right-click on the **App_Start** folder and choose **Add Class...**, name it **WebApiConfig.cs**.        
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/WebApiConfig.png)
 4. In **WebApiConfig.cs**, remove everything and add the following code piece. This class will configure the route for the Web API (this determines how we call it). 
     ```csharp
@@ -907,7 +907,61 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     using Newtonsoft.Json.Serialization;
     
     ```
-5. 
+
+
+xercise 6.4: Add the models ####
+
+1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
+2. Right-click and choose **Add New Folder**, name it **Models**. 
+3. Right-click on the **Models** folder and choose **Add Class...**. Name it **CredentialsModel** and click on the **OK** button.
+4. In **CredentialsModel.cs**, replace everything with the following code piece.  
+    ```csharp
+    namespace Single_Sign_On_Outlook_Add_inWeb.Models
+    {
+        public class CredentialsModel
+        {
+            public string Username { get; set; }
+            public string Password { get; set; }
+        }
+    }
+    ```
+5. Right-click on the **Models** folder and choose **Add Class...**. Name it **UserModel** and click on the **OK** button.
+6. In **UserModel.cs**, replace everything with the following code piece.  
+    ```csharp
+    namespace Single_Sign_On_Outlook_Add_inWeb.Models
+    {
+        public class UserModel
+        {
+            // The display name of the user
+            public string DisplayName { get; set; }
+
+            // The credentials used to verify someone as the  user
+            public CredentialsModel Credentials { get; set; }
+        }
+    }
+    ```
+7. Right-click on the **Models** folder and choose **Add Class...**. Name it **UserRequestModel** and click on the **OK** button.
+8. In **UserRequestModel.cs**, replace everything with the following code piece.  
+    ```csharp
+    namespace Single_Sign_On_Outlook_Add_inWeb.Models
+    {
+        public class UserRequestModel
+        {
+            // The raw identity token given by the mail add-in
+            public string IdentityToken { get; set; }
+
+            // The source location of the add-in
+            public string HostUri { get; set; }
+
+            // Credentials for a user in the web service - may be null.
+            // Used when mapping web service users and Office 365 users.
+            public CredentialsModel Credentials { get; set; }
+        }
+    }
+
+    ```
+
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
