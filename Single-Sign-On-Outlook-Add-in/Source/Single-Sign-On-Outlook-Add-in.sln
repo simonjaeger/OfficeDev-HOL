@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Single-Sign-On-Outlook-Add-in", "Single-Sign-On-Outlook-Add-in\Single-Sign-On-Outlook-Add-in.csproj", "{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Single-Sign-On-Outlook-Add-inWeb", "Single-Sign-On-Outlook-Add-inWeb\Single-Sign-On-Outlook-Add-inWeb.csproj", "{98AFEB6D-4BD1-4449-90E6-414A3982A055}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A948E62-BAB6-4176-B9A4-85E81AEE73A6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{98AFEB6D-4BD1-4449-90E6-414A3982A055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98AFEB6D-4BD1-4449-90E6-414A3982A055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98AFEB6D-4BD1-4449-90E6-414A3982A055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98AFEB6D-4BD1-4449-90E6-414A3982A055}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

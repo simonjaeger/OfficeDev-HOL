@@ -1,0 +1,19 @@
+﻿#sign-in {
+    display: none;
+    float: right;
+}
+
+#spinner {
+    float: right;
+    width: 32px;
+    height: 32px;
+    margin-right: -3px;
+}
+
+.ms-Spinner-circle {
+    background-color: #0078D7;
+}
+
+#data-dialog {
+    display: none;
+}
