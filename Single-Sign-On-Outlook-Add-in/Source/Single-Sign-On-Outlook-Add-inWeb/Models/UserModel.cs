@@ -1,11 +1,11 @@
-﻿namespace Single_Sign_On_Outlook_Add_inWeb.Models
-{
-    public class UserModel
+﻿    namespace Single_Sign_On_Outlook_Add_inWeb.Models
     {
-        // The display name of the user
-        public string DisplayName { get; set; }
+        public class UserModel
+        {
+            // The display name of the user
+            public string DisplayName { get; set; }
 
-        // The credentials used to verify someone as the  user
-        public CredentialsModel Credentials { get; set; }
+            // The credentials used to verify someone as the  user
+            public CredentialsModel Credentials { get; set; }
+        }
     }
-}

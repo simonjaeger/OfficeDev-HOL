@@ -1,79 +1,80 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title></title>
-    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+﻿    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
 
-    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
 
-    <script src="../../Scripts/Spinner.js"></script>
+        <script src="../../Scripts/Spinner.js"></script>
 
-    <link href="../App.css" rel="stylesheet" type="text/css" />
-    <script src="../App.js" type="text/javascript"></script>
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
 
-    <link href="Home.css" rel="stylesheet" type="text/css" />
-    <script src="Home.js" type="text/javascript"></script>
-</head>
-<body>
-    <!-- Header -->
-    <div id="header" class="ms-bgColor-themePrimary">
-        <h2 class="ms-font-xl ms-fontWeight-semibold ms-fontColor-white">
-            HOL: Single Sign-On Outlook Add-in
-        </h2>
-    </div>
-    <div id="content">
-        <div class="ms-Grid">
-            <div class="ms-Grid-row">
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md5" style="padding-left: 0px;">
-                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: SSO</p>
-                    <!-- Introduction -->
-                    <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        This sample demonstrates how to implement a single sign-on experience within an Outlook add-in.
-                        <br />
-                        <br />
-                        Check the "Keep me signed in" box to enable SSO before clicking the "Sign in" button.
-                    </p>
-                </div>
-
-                <!-- Exercise Section: SSO -->
-                <div class="ms-Grid-col ms-u-sm7 ms-u-md7" style="padding-top: 15px;">
-                    <!-- Exercise: Username -->
-                    <div class="ms-TextField">
-                        <label class="ms-Label">Username</label>
-                        <input id="username" class="ms-TextField-field" type="text" disabled>
-                        <span class="ms-TextField-description">This should be an entry in your user service</span>
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <!-- Header -->
+        <div id="header" class="ms-bgColor-themePrimary">
+            <h2 class="ms-font-xl ms-fontWeight-semibold ms-fontColor-white">
+                HOL: Single Sign-On Outlook Add-in
+            </h2>
+        </div>
+        <div id="content">
+            <div class="ms-Grid">
+                <div class="ms-Grid-row">
+                    <div class="ms-Grid-col ms-u-sm5 ms-u-md5" style="padding-left: 0px;">
+                        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: SSO</p>
+                        <!-- Introduction -->
+                        <p class="ms-font-m ms-fontColor-neutralSecondary">
+                            This sample demonstrates how to implement a single sign-on experience within an Outlook add-in.
+                            <br />
+                            <br />
+                            Check the "Keep me signed in" box to enable SSO before clicking the "Sign in" button.
+                        </p>
                     </div>
 
-                    <!-- Exercise: Password -->
-                    <div class="ms-TextField">
-                        <label class="ms-Label">Password</label>
-                        <input id="password" class="ms-TextField-field" type="password" disabled>
-                    </div>
+                    <!-- Exercise Section: SSO -->
+                    <div class="ms-Grid-col ms-u-sm7 ms-u-md7" style="padding-top: 15px;">
+                        <!-- Exercise: Username -->
+                        <div class="ms-TextField">
+                            <label class="ms-Label">Username</label>
+                            <input id="username" class="ms-TextField-field" type="text" disabled>
+                            <span class="ms-TextField-description">This should be an entry in your user service</span>
+                        </div>
 
-                    <div class="ms-Grid">
-                        <div class="ms-Grid-row">
-                            <div class="ms-Grid-col ms-u-sm7 ms-u-md7">
-                                <!-- Exercise: ChoiceField -->
-                                <div class="ms-ChoiceField">
-                                    <input id="demo-checkbox-unselected" class="ms-ChoiceField-input" type="checkbox" checked disabled>
-                                    <label for="demo-checkbox-unselected" class="ms-ChoiceField-field">
-                                        <span class="ms-Label">Keep me signed in</span>
-                                    </label>
+                        <!-- Exercise: Password -->
+                        <div class="ms-TextField">
+                            <label class="ms-Label">Password</label>
+                            <input id="password" class="ms-TextField-field" type="password" disabled>
+                        </div>
+
+                        <div class="ms-Grid">
+                            <div class="ms-Grid-row">
+                                <div class="ms-Grid-col ms-u-sm7 ms-u-md7">
+                                    <!-- Exercise: ChoiceField -->
+                                    <div class="ms-ChoiceField">
+                                        <input id="demo-checkbox-unselected" class="ms-ChoiceField-input" type="checkbox" checked disabled>
+                                        <label for="demo-checkbox-unselected" class="ms-ChoiceField-field">
+                                            <span class="ms-Label">Keep me signed in</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="ms-Grid-col ms-u-sm5 ms-u-md5">
-                                <!-- Exercise: Sign in button -->
-                                <button id="sign-in" class="ms-Button ms-Button--primary" disabled>
-                                    <span class="ms-Button-label">Sign in</span>
-                                </button>
+                                <div class="ms-Grid-col ms-u-sm5 ms-u-md5">
+                                    <!-- Exercise: Sign in button -->
+                                    <button id="sign-in" class="ms-Button ms-Button--primary" disabled>
+                                        <span class="ms-Button-label">Sign in</span>
+                                    </button>
 
-                                <!-- Exercise: Spinner -->
-                                <div id="spinner" class="ms-Spinner ms-Spinner--large">
+                                    <!-- Exercise: Spinner -->
+                                    <div id="spinner" class="ms-Spinner ms-Spinner--large">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,35 +82,34 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Exercise: Data dialog -->
-    <div id="dialog" class="ms-Dialog ms-Dialog--lgHeader">
-        <div class="ms-Overlay"></div>
-        <div class="ms-Dialog-main">
-            <button class="ms-Dialog-button ms-Dialog-button--close">
-                <i class="ms-Icon ms-Icon--x"></i>
-            </button>
-            <div class="ms-Dialog-header">
-                <p id="dialog-title" class="ms-Dialog-title">
-                    <!-- Dialog title -->
-                </p>
-            </div>
-            <div class="ms-Dialog-inner">
-                <div class="ms-Dialog-content">
-                    <p id="dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
-                        <!-- Dialog text -->
+        <!-- Exercise: Data dialog -->
+        <div id="dialog" class="ms-Dialog ms-Dialog--lgHeader">
+            <div class="ms-Overlay"></div>
+            <div class="ms-Dialog-main">
+                <button class="ms-Dialog-button ms-Dialog-button--close">
+                    <i class="ms-Icon ms-Icon--x"></i>
+                </button>
+                <div class="ms-Dialog-header">
+                    <p id="dialog-title" class="ms-Dialog-title">
+                        <!-- Dialog title -->
                     </p>
                 </div>
-                <div class="ms-Dialog-actions">
-                    <div class="ms-Dialog-actionsRight">
-                        <button id="dialog-ok" class="ms-Dialog-action ms-Button ms-Button--primary">
-                            <span class="ms-Button-label">OK</span>
-                        </button>
+                <div class="ms-Dialog-inner">
+                    <div class="ms-Dialog-content">
+                        <p id="dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                            <!-- Dialog text -->
+                        </p>
+                    </div>
+                    <div class="ms-Dialog-actions">
+                        <div class="ms-Dialog-actionsRight">
+                            <button id="dialog-ok" class="ms-Dialog-action ms-Button ms-Button--primary">
+                                <span class="ms-Button-label">OK</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>

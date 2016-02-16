@@ -996,7 +996,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
     
 
-#### Exercise 6.6: Add the (fake) user service implementation ####
+#### Exercise 6.6: Add the user service implementation ####
 
 1. Right-click on the **Services** folder and choose **Add Class...**. Name it **"UserService"** and click on the **OK** button.
 2. In **UserService.cs**, replace everything with the following code piece.  
@@ -1082,7 +1082,23 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     
 #### Exercise 6.7: Finish the SSO Controller ####
     
-1. In **SSOController.cs** (in the **Controllers** folder, add the following code piece within the class.
+1. Click on **Tools** in the Visual Studio 2015 top menu. 
+2. Click on **NuGet Package Manager** and choose **Package Manager Console**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/PackageManager.png)
+3. In the **Package Manager Console**, select the web project (**Single-Sign-On-Outlook-Add-in**) as the **Default project**. 
+4. Enter and run **Install-Package Microsoft.Exchange.WebServices** to install the Exchange Web Services Managed API.
+5. In **SSOController.cs** (in the **Controllers** folder), add the following using statements at the top of the file:
+    ```csharp
+    using Microsoft.Exchange.WebServices.Auth.Validation;
+    using Single_Sign_On_Outlook_Add_inWeb.Models;
+    using Single_Sign_On_Outlook_Add_inWeb.Services;
+    using System;
+    using System.Security.Cryptography;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    ```
+2. In **SSOController.cs**, add the following code piece within the class.
     ```csharp
     private static readonly IUserService _userService = new UserService();
 
