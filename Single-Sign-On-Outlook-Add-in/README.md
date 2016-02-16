@@ -1083,10 +1083,11 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 #### Exercise 6.7: Finish the SSO Controller ####
     
 1. Click on **Tools** in the Visual Studio 2015 top menu. 
-2. Click on **NuGet Package Manager** and choose **Package Manager Console**.
+2. Select **NuGet Package Manager** and choose **Package Manager Console**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/PackageManager.png)
 3. In the **Package Manager Console**, select the web project (**Single-Sign-On-Outlook-Add-in**) as the **Default project**. 
 4. Enter and run **Install-Package Microsoft.Exchange.WebServices** to install the Exchange Web Services Managed API.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/PackageManagerConsole.png)
 5. In **SSOController.cs** (in the **Controllers** folder), add the following using statements at the top of the file:
     ```csharp
     using Microsoft.Exchange.WebServices.Auth.Validation;
