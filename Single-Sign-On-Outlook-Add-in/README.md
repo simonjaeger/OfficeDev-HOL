@@ -353,7 +353,7 @@ Our first task is to clean up the project, and remove the default styling and se
 4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form. You will see that the input fields are disabled, we will enable them later on as part of the initalization logic.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin3.png)
 
-#### Exercise 4.2: Add the Office UI Fabric Spinner ####
+#### Exercise 4.2: Add the Spinner ####
 1. In **Home.html**, locate the "Exercise: Spinner" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
     ```html
     <div id="spinner" class="ms-Spinner ms-Spinner--large">
@@ -378,6 +378,72 @@ Our first task is to clean up the project, and remove the default styling and se
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin4.png)
 
 
+
+
+
+#### Exercise 4.1: Add a dialog ####
+
+1. In **Home.html**, locate the "Exercise: Data dialog" comment and add the following HTML piece below it. This is an Office UI Fabric styled dialog. 
+    ```html
+    <div id="dialog" class="ms-Dialog ms-Dialog--lgHeader">
+        <div class="ms-Overlay"></div>
+        <div class="ms-Dialog-main">
+            <button class="ms-Dialog-button ms-Dialog-button--close">
+                <i class="ms-Icon ms-Icon--x"></i>
+            </button>
+            <div class="ms-Dialog-header">
+                <p id="dialog-title" class="ms-Dialog-title">
+                    <!-- Dialog title -->
+                </p>
+            </div>
+            <div class="ms-Dialog-inner">
+                <div class="ms-Dialog-content">
+                    <p id="dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                        <!-- Dialog text -->
+                    </p>
+                </div>
+                <div class="ms-Dialog-actions">
+                    <div class="ms-Dialog-actionsRight">
+                        <button id="dialog-ok" class="ms-Dialog-action ms-Button ms-Button--primary">
+                            <span class="ms-Button-label">OK</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    ```
+2. Launch your mail add-in and test your work. You should find a dialog covering up most of your display area.             
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin5.png)
+3. In **Home.js**, add the following event handler (below the initialization of input field values) for the dialog. This will allow us to close it.
+    ```js
+    $('#dialog-ok').click(hideDialog);
+    
+    ```
+4. In **Home.js**, add the following functions to show and close the dialog:
+    ```js
+    // Show the dialog
+    function showDialog(title, text) {
+        // Set the dialog title and text
+        $('#dialog-title').text(title);
+        $('#dialog-text').text(text);
+        $('#dialog').show();
+    }
+
+    // Hide the dialog
+    function hideDialog() {
+        $('#dialog').hide();
+    }
+    ```
+5. Launch your mail add-in and test your work. You should be able to close the dialog using the **OK** button.
+6. In **Home.css**, add the following CSS piece to hide the dialog when your mail add-in has launched.
+    ```css
+    #dialog {
+        display: none;
+    }
+    
+    ```
 
 
 # Wrap up  #
