@@ -377,11 +377,7 @@ Our first task is to clean up the project, and remove the default styling and se
 4. Launch your mail add-in and view your work. You should be able to see the Office UI Spinner. We will use this when we are waiting for a response from the backend.             
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin4.png)
 
-
-
-
-
-#### Exercise 4.1: Add a dialog ####
+#### Exercise 4.3: Add the dialog ####
 
 1. In **Home.html**, locate the "Exercise: Data dialog" comment and add the following HTML piece below it. This is an Office UI Fabric styled dialog. 
     ```html
@@ -444,6 +440,396 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     
     ```
+
+#### Exercise 5.1: Add the authentication logic (add-in) ####
+In order to authenticate and create a single sign-on experience, we need to perform a couple of things:
+- **Add-in:** Get the ID token of the current Office 365 user.
+- **Add-in:** Send the ID token to the Web API and check if the ID token has already been mapped.
+- **Web API:** If a mapping is found (no user credentials needed)
+    -  **Add-in:** Return the user data and sign in automatically (SSO).  
+- **Web API:** If a mappiung is not found (user credentials needed)
+    - **Add-in:** Let the user sign in using their credentials.
+    - **Add-in:** Send the ID token and user credentials to the Web API.
+    - **Web API:** If the provided credentials are correct, map the ID token with the user in the Web API.
+    - **Web API:** Notify the mail add-in.
+    - **Add-in:** Reload the mail add-in and experience SSO.
+
+We need to implement two parts to achieve the above; the front-end (add-in) and backend (Web API). Let's begin with the add-in side of things.
+
+1. In **Home.js**, add the following function to get the current ID token (for the Office 365 user) and send it along with optional credentials to the Web API. 
+    ```js
+    // Try to authenticate, if credentials for a user is provided - we
+    // will try to map it with the Office 365 user in the backend
+    function authenticate(credentials, callback) {
+        Office.context.mailbox.getUserIdentityTokenAsync(function (asyncResult) {
+            if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                // TODO: Handle error
+                callback();
+            }
+            else {
+                var token = asyncResult.value;
+
+                // POST the credentials to the Web API
+                $.ajax({
+                    type: 'POST',
+                    url: '../../api/sso',
+                    data: JSON.stringify({
+                        identityToken: token,
+                        hostUri: window.location.href.split('?')[0],
+                        credentials: credentials
+                    }),
+                    contentType: 'application/json;charset=utf-8'
+                }).done(function (response) {
+                    // TODO: Validate response
+                    callback(response);
+                });
+            }
+        });
+    }
+    
+    ```
+
+#### Exercise 5.2: Add the sign in button ####
+1. In **Home.html**, locate the "Exercise: Sign in button" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
+    ```html
+    <button id="sign-in" class="ms-Button ms-Button--primary" disabled>
+        <span class="ms-Button-label">Sign in</span>
+    </button>
+    
+    ```
+2. In **Home.css**, add the following CSS piece. This will place the sign in button within the form and hide it.
+    ```css
+    #sign-in {
+        display: none;
+        float: right;
+    }
+    
+    ```
+2. In **Home.js**, add an event handler for the click event of the sign in button:
+    ```js
+    $('#sign-in').click(signIn);
+    
+    ```
+3. In **Home.js**, add the following function to perform the sign in logic (described in Exercise 5.1).
+    ```js
+    // Sign in using the provided credentials
+    function signIn() {
+        // Show spinner and hide button
+        $('#sign-in').hide();
+        $('#spinner').show();
+
+        // Disable input fields
+        $('#username').attr('disabled', 'disabled');
+        $('#password').attr('disabled', 'disabled');
+
+        // Get credentials
+        var credentials = {
+            username: $('#username').val(),
+            password: $('#password').val(),
+        }
+
+        // Authenticate
+        authenticate(credentials, function (response) {
+            if (!response) {
+                // Hide spinner and show button
+                $('#sign-in').show();
+                $('#spinner').hide();
+
+                // Enable input fields
+                $('#username').removeAttr('disabled');
+                $('#password').removeAttr('disabled');
+
+                // Display error
+                showDialog('Oops!', 'Something happened... make sure that ' +
+                    'the credentials are valid (for an entry in the user service).');
+            }
+            else {
+                // Reload page and try SSO
+                location.reload();
+            }
+        });
+    }
+    ```
+    
+#### Exercise 5.3: Enable the sign in button ####
+3. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the SSO logic when the mail add-in is initialized. This will enable the sign in form if SSO is not possible (no mapping of the user in the Web API).
+    ```js
+    // Authenticate silently (without credentials)
+    authenticate(null, function (response) {
+        // Hide spinner and show button
+        $('#sign-in').show();
+        $('#spinner').hide();
+
+        if (!response) {
+            // Enable sign-in
+            $('#sign-in').removeAttr('disabled');
+            $('#username').removeAttr('disabled');
+            $('#password').removeAttr('disabled');
+        }
+        else {
+            // Display user data
+            showDialog('Hi developer!', 'Office 365 user ' + '(' +
+                Office.context.mailbox.userProfile.emailAddress + ') ' +
+                'has automatically signed in as user: ' +
+                response.displayName + ' (' +
+                response.credentials.username + ').');
+        }
+    ```
+    
+6. Your **Home.html** file should now look like this: 
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title></title>
+        <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+        <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+
+        <script src="../../Scripts/Spinner.js"></script>
+
+        <link href="../App.css" rel="stylesheet" type="text/css" />
+        <script src="../App.js" type="text/javascript"></script>
+
+        <link href="Home.css" rel="stylesheet" type="text/css" />
+        <script src="Home.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <!-- Header -->
+        <div id="header" class="ms-bgColor-themePrimary">
+            <h2 class="ms-font-xl ms-fontWeight-semibold ms-fontColor-white">
+                HOL: Single Sign-On Outlook Add-in
+            </h2>
+        </div>
+        <div id="content">
+            <div class="ms-Grid">
+                <div class="ms-Grid-row">
+                    <div class="ms-Grid-col ms-u-sm5 ms-u-md5" style="padding-left: 0px;">
+                        <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: SSO</p>
+                        <!-- Introduction -->
+                        <p class="ms-font-m ms-fontColor-neutralSecondary">
+                            This sample demonstrates how to implement a single sign-on experience within an Outlook add-in.
+                            <br />
+                            <br />
+                            Check the "Keep me signed in" box to enable SSO before clicking the "Sign in" button.
+                        </p>
+                    </div>
+
+                    <!-- Exercise Section: SSO -->
+                    <div class="ms-Grid-col ms-u-sm7 ms-u-md7" style="padding-top: 15px;">
+                        <!-- Exercise: Username -->
+                        <div class="ms-TextField">
+                            <label class="ms-Label">Username</label>
+                            <input id="username" class="ms-TextField-field" type="text" disabled>
+                            <span class="ms-TextField-description">This should be an entry in your user service</span>
+                        </div>
+
+                        <!-- Exercise: Password -->
+                        <div class="ms-TextField">
+                            <label class="ms-Label">Password</label>
+                            <input id="password" class="ms-TextField-field" type="password" disabled>
+                        </div>
+
+                        <div class="ms-Grid">
+                            <div class="ms-Grid-row">
+                                <div class="ms-Grid-col ms-u-sm7 ms-u-md7">
+                                    <!-- Exercise: ChoiceField -->
+                                    <div class="ms-ChoiceField">
+                                        <input id="demo-checkbox-unselected" class="ms-ChoiceField-input" type="checkbox" checked disabled>
+                                        <label for="demo-checkbox-unselected" class="ms-ChoiceField-field">
+                                            <span class="ms-Label">Keep me signed in</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="ms-Grid-col ms-u-sm5 ms-u-md5">
+                                    <!-- Exercise: Sign in button -->
+                                    <button id="sign-in" class="ms-Button ms-Button--primary" disabled>
+                                        <span class="ms-Button-label">Sign in</span>
+                                    </button>
+
+                                    <!-- Exercise: Spinner -->
+                                    <div id="spinner" class="ms-Spinner ms-Spinner--large">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise: Data dialog -->
+        <div id="dialog" class="ms-Dialog ms-Dialog--lgHeader">
+            <div class="ms-Overlay"></div>
+            <div class="ms-Dialog-main">
+                <button class="ms-Dialog-button ms-Dialog-button--close">
+                    <i class="ms-Icon ms-Icon--x"></i>
+                </button>
+                <div class="ms-Dialog-header">
+                    <p id="dialog-title" class="ms-Dialog-title">
+                        <!-- Dialog title -->
+                    </p>
+                </div>
+                <div class="ms-Dialog-inner">
+                    <div class="ms-Dialog-content">
+                        <p id="dialog-text" class="ms-Dialog-subText" style="max-height: 95px; overflow-y: hidden;">
+                            <!-- Dialog text -->
+                        </p>
+                    </div>
+                    <div class="ms-Dialog-actions">
+                        <div class="ms-Dialog-actionsRight">
+                            <button id="dialog-ok" class="ms-Dialog-action ms-Button ms-Button--primary">
+                                <span class="ms-Button-label">OK</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+
+
+    ```  
+    Your **Home.js** file should look like this:
+    ```js
+    (function () {
+        "use strict";
+
+        // The Office initialize function must be run each time a new page is loaded
+        Office.initialize = function (reason) {
+            $(document).ready(function () {
+                // Initialize Office UI Fabric components (spinner)
+                if (typeof fabric !== "") {
+                    if ('Spinner' in fabric) {
+                        var element = document.querySelector('.ms-Spinner');
+                        if (element) {
+                            var component = new fabric['Spinner'](element);
+                        }
+                    }
+                }
+
+                // Initialize input fields
+                $('#username').val('#Office365Dev');
+                $('#password').val('#Office365Dev');
+
+                // Add event handlers
+                $('#sign-in').click(signIn);
+                $('#dialog-ok').click(hideDialog);
+
+                // Authenticate silently (without credentials)
+                authenticate(null, function (response) {
+                    // Hide spinner and show button
+                    $('#sign-in').show();
+                    $('#spinner').hide();
+
+                    if (!response) {
+                        // Enable sign-in
+                        $('#sign-in').removeAttr('disabled');
+                        $('#username').removeAttr('disabled');
+                        $('#password').removeAttr('disabled');
+                    }
+                    else {
+                        // Display user data
+                        showDialog('Hi developer!', 'Office 365 user ' + '(' +
+                            Office.context.mailbox.userProfile.emailAddress + ') ' +
+                            'has automatically signed in as user: ' +
+                            response.displayName + ' (' +
+                            response.credentials.username + ').');
+                    }
+                });
+            });
+        };
+
+        // Try to authenticate, if credentials for a user is provided - we
+        // will try to map it with the Office 365 user in the backend
+        function authenticate(credentials, callback) {
+            Office.context.mailbox.getUserIdentityTokenAsync(function (asyncResult) {
+                if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+                    // TODO: Handle error
+                    callback();
+                }
+                else {
+                    var token = asyncResult.value;
+
+                    // POST the credentials to the Web API
+                    $.ajax({
+                        type: 'POST',
+                        url: '../../api/sso',
+                        data: JSON.stringify({
+                            identityToken: token,
+                            hostUri: window.location.href.split('?')[0],
+                            credentials: credentials
+                        }),
+                        contentType: 'application/json;charset=utf-8'
+                    }).done(function (response) {
+                        // TODO: Validate response
+                        callback(response);
+                    });
+                }
+            });
+        }
+
+        // Sign in using the provided credentials
+        function signIn() {
+            // Show spinner and hide button
+            $('#sign-in').hide();
+            $('#spinner').show();
+
+            // Disable input fields
+            $('#username').attr('disabled', 'disabled');
+            $('#password').attr('disabled', 'disabled');
+
+            // Get credentials
+            var credentials = {
+                username: $('#username').val(),
+                password: $('#password').val(),
+            }
+
+            // Authenticate
+            authenticate(credentials, function (response) {
+                if (!response) {
+                    // Hide spinner and show button
+                    $('#sign-in').show();
+                    $('#spinner').hide();
+
+                    // Enable input fields
+                    $('#username').removeAttr('disabled');
+                    $('#password').removeAttr('disabled');
+
+                    // Display error
+                    showDialog('Oops!', 'Something happened... make sure that ' +
+                        'the credentials are valid (for an entry in the user service).');
+                }
+                else {
+                    // Reload page and try SSO
+                    location.reload();
+                }
+            });
+        }
+
+        // Show the dialog
+        function showDialog(title, text) {
+            // Set the dialog title and text
+            $('#dialog-title').text(title);
+            $('#dialog-text').text(text);
+            $('#dialog').show();
+        }
+
+        // Hide the dialog
+        function hideDialog() {
+            $('#dialog').hide();
+        }
+    })();
+    ``` 
+
+    
+
 
 
 # Wrap up  #

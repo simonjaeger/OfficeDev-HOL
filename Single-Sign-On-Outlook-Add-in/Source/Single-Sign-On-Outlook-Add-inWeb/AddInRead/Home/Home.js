@@ -17,8 +17,8 @@
             }
 
             // Initialize input fields
-            $('#username').val('#Office365Dev'),
-            $('#password').val('#Office365Dev'),
+            $('#username').val('#Office365Dev');
+            $('#password').val('#Office365Dev');
 
             // Add event handlers
             $('#sign-in').click(signIn);

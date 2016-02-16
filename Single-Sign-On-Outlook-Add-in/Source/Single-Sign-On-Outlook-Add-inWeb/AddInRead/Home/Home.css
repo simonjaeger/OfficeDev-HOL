@@ -1,9 +1,4 @@
-﻿#sign-in {
-    display: none;
-    float: right;
-}
-
-#spinner {
+﻿#spinner {
     float: right;
     width: 32px;
     height: 32px;
@@ -17,3 +12,9 @@
 #dialog {
     display: none;
 }
+
+#sign-in {
+    display: none;
+    float: right;
+}
+
