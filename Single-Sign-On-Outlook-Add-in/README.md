@@ -842,8 +842,8 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
-2. Right-click and choose **Add New Folder**, name it **Controllers**. 
-3. Right-click on the **Controllers** folder and choose **Web API Controller Class (v2.1)**. Name it **SSOController** and click on the **OK** button.        
+2. Right-click and choose **Add New Folder**, name it **"Controllers"**. 
+3. Right-click on the **Controllers** folder and choose **Web API Controller Class (v2.1)**. Name it **"SSOController"** and click on the **OK** button.        
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SSO.png) 
 4. In **SSOController.cs**, remove every method leaving you with an empty class:  
     ```csharp
@@ -860,8 +860,8 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 #### Exercise 6.2: Add the Web API configuration ####
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
-2. Right-click and choose **Add New Folder**, name it **App_Start**. 
-3. Right-click on the **App_Start** folder and choose **Add Class...**, name it **WebApiConfig.cs**.        
+2. Right-click and choose **Add New Folder**, name it **"App_Start"**. 
+3. Right-click on the **App_Start** folder and choose **Add Class...**, name it **"WebApiConfig"**.        
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/WebApiConfig.png)
 4. In **WebApiConfig.cs**, remove everything and add the following code piece. This class will configure the route for the Web API (this determines how we call it). 
     ```csharp
@@ -884,7 +884,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 #### Exercise 6.3: Add the Global Application Class ####
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
-2. Right-click and choose **Add Global Application Class**. Name it **Global** and click on the **OK** button.       
+2. Right-click and choose **Add Global Application Class**. Name it **"Global"** and click on the **OK** button.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/Global.png)
 3. In **Global.asax.cs**, find the **Application_Start** method and add the following code piece inside of it. 
     ```csharp
@@ -910,10 +910,9 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
 #### Exercise 6.4: Add the models ####
 
-1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
-2. Right-click and choose **Add New Folder**, name it **Models**. 
-3. Right-click on the **Models** folder and choose **Add Class...**. Name it **CredentialsModel** and click on the **OK** button.
+1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
+2. Right-click and choose **Add New Folder**, name it **"Models"**. 
+3. Right-click on the **Models** folder and choose **Add Class...**. Name it **"CredentialsModel"** and click on the **OK** button.
 4. In **CredentialsModel.cs**, replace everything with the following code piece.  
     ```csharp
     namespace Single_Sign_On_Outlook_Add_inWeb.Models
@@ -926,7 +925,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     }
     
     ```
-5. Right-click on the **Models** folder and choose **Add Class...**. Name it **UserModel** and click on the **OK** button.
+5. Right-click on the **Models** folder and choose **Add Class...**. Name it **"UserModel"** and click on the **OK** button.
 6. In **UserModel.cs**, replace everything with the following code piece.  
     ```csharp
     namespace Single_Sign_On_Outlook_Add_inWeb.Models
@@ -942,7 +941,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     }
     
     ```
-7. Right-click on the **Models** folder and choose **Add Class...**. Name it **UserRequestModel** and click on the **OK** button.
+7. Right-click on the **Models** folder and choose **Add Class...**. Name it **"UserRequestModel"** and click on the **OK** button.
 8. In **UserRequestModel.cs**, replace everything with the following code piece.  
     ```csharp
     namespace Single_Sign_On_Outlook_Add_inWeb.Models
@@ -963,6 +962,123 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
     ```
 
+
+#### Exercise 6.5: Add the user service interface ####
+
+1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
+2. Right-click and choose **Add New Folder**, name it **"Services"**. 
+3. Right-click on the **Services** folder and choose **Add Class...**. Name it **"IUserService"** and click on the **OK** button.
+4. In **IUserService.cs**, replace everything with the following code piece.  
+    ```csharp
+    using Single_Sign_On_Outlook_Add_inWeb.Models;
+    using System.Threading.Tasks;
+
+    namespace Single_Sign_On_Outlook_Add_inWeb.Services
+    {
+        interface IUserService
+        {
+            // Try to get a user service user mapped to an Office 365 user 
+            // with the UUID - created by the Exchange Web Services Managed API. 
+            Task<UserModel> GetUserAsync(string uuid);
+
+            // Get a unique salt for the UUID - which is used when hashing 
+            // it for user mapping. If it doesn't exist in the store - it
+            // will be randomly generated. 
+            Task<byte[]> GetUUIDSaltAsync(string uuid);
+
+            // Map a user service user to an Office 365 user with the 
+            // UUID. If the mapping is successful, the user is returned.
+            Task<UserModel> MapUserAsync(string uuid, CredentialsModel credentials);
+        }
+    }
+
+    
+    ```
+    
+
+#### Exercise 6.6: Add the (fake) user service implementation ####
+
+1. Right-click on the **Services** folder and choose **Add Class...**. Name it **"UserService"** and click on the **OK** button.
+2. In **UserService.cs**, replace everything with the following code piece.  
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Single_Sign_On_Outlook_Add_inWeb.Models;
+
+    namespace Single_Sign_On_Outlook_Add_inWeb.Services
+    {
+        public class UserService : IUserService
+        {
+            private readonly List<UserModel> _users;
+            private readonly Dictionary<string, UserModel> _ssoMap;
+            private readonly Dictionary<string, byte[]> _saltMap;
+            private readonly Random _random;
+
+            public UserService()
+            {
+                _users = new List<UserModel>();
+                _ssoMap = new Dictionary<string, UserModel>();
+                _saltMap = new Dictionary<string, byte[]>();
+                _random = new Random();
+
+                // Add a new user that we will use in the mail add-in
+                _users.Add(new UserModel
+                {
+                    DisplayName = "Office 365 Developer",
+                    Credentials = new CredentialsModel
+                    {
+                        Username = "#Office365Dev",
+                        Password = "#Office365Dev"
+                    }
+                });
+            }
+
+            // Try to get a user service user mapped to an Office 365 user 
+            // with the UUID - created by the Exchange Web Services Managed API. 
+            public async Task<UserModel> GetUserAsync(string uuid)
+            {
+                if (_ssoMap.ContainsKey(uuid))
+                    return _ssoMap[uuid];
+                return null;
+            }
+
+            // Get a unique salt for the UUID - which is used when hashing 
+            // it for user mapping. If it doesn't exist in the store - it
+            // will be randomly generated. 
+            public async Task<byte[]> GetUUIDSaltAsync(string uuid)
+            {
+                // Check if a salt for the UUID already exists
+                if (_saltMap.ContainsKey(uuid))
+                    return _saltMap[uuid];
+
+                // Generate a new unique salt and add it
+                var salt = new byte[16];
+                _random.NextBytes(salt);
+
+                _saltMap.Add(uuid, salt);
+                return salt;
+            }
+
+            // Map a user service user to an Office 365 user with the 
+            // UUID. If the mapping is successful, the user is returned.
+            public async Task<UserModel> MapUserAsync(string uuid, CredentialsModel credentials)
+            {
+                var user = _users.FirstOrDefault(u => 
+                           u.Credentials.Username.Equals(credentials.Username) &&
+                           u.Credentials.Password.Equals(credentials.Password));
+
+                if (user == null)
+                    return null;
+
+                _ssoMap.Add(uuid, user);
+                return user;
+            }
+        }
+    }
+
+    ```
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
