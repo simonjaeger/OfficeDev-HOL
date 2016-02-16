@@ -174,7 +174,7 @@ Our first task is to clean up the project, and remove the default styling and se
     if (typeof fabric !== "") {
         if ('Spinner' in fabric) {
             var element = document.querySelector('.ms-Spinner');
-            if (typeof element !== "undefined") {
+            if (element) {
                 var component = new fabric['Spinner'](element);
             }
         }
@@ -223,7 +223,7 @@ Our first task is to clean up the project, and remove the default styling and se
                 if (typeof fabric !== "") {
                     if ('Spinner' in fabric) {
                         var element = document.querySelector('.ms-Spinner');
-                        if (typeof element !== "undefined") {
+                        if (element) {
                             var component = new fabric['Spinner'](element);
                         }
                     }

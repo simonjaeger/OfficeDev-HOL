@@ -10,7 +10,7 @@
             if (typeof fabric !== "") {
                 if ('Spinner' in fabric) {
                     var element = document.querySelector('.ms-Spinner');
-                    if (typeof element !== undefined) {
+                    if (element) {
                         var component = new fabric['Spinner'](element);
                     }
                 }
