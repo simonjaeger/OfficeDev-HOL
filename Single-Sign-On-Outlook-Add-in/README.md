@@ -92,7 +92,7 @@ We need to make sure that we understand the manifest file. This file is essentia
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/GeneralAddinManifest.png)
 3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your mail add-in. By default, **Item is a message** should be included. 
 4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Single-Sign-On-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed. 
-5. Below the **Source location** property, you will find the **Requested height (px)** property. This a way for your mail add-in to ask for a certain height in pixels when displayed within Outlook. Be aware though, it doesn't mean that it will be granted. Change this to **300** - as we want a bit more height for our mail add-in to display the sign-in form. 
+5. Below the **Source location** property, you will find the **Requested height (px)** property. This a way for your mail add-in to ask for a certain height in pixels when displayed within Outlook. Be aware though, it doesn't mean that it will be granted. Change this to **300** - as we want a bit more height for our mail add-in to display the sign in form. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/ReadFormAddinManifest.png)
 
 #### Exercise 1.3: Launch the project ####
@@ -361,13 +361,13 @@ Our first task is to clean up the project, and remove the default styling and se
     </div>
     
     ```
-2. In **Home.js**, add some default values to our input fields (below the initialization of the Office UI Fabric components, in the **ready** function) when the mail add-in is initialized:
+2. In **Home.js**, add these default values to our input fields (below the initialization of the Office UI Fabric components, in the **ready** function) when the mail add-in is initialized:
     ```js
     $('#username').val('#Office365Dev');
     $('#password').val('#Office365Dev');
     
     ```
-4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form. You will see that the input fields are disabled, we will enable them later on as part of the initalization logic.            
+4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign in form. You will see that the input fields are disabled, we will enable them later on as part of the initalization logic.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin3.png)
 
 #### Exercise 3.2: Add the Spinner ####
@@ -459,21 +459,21 @@ Our first task is to clean up the project, and remove the default styling and se
     ```
 
 #### Exercise 4.1: Add the authentication logic ####
-In order to authenticate and create a single sign-on experience, we need to perform a couple of things:
+In order to authenticate and create a single sign-on experience, we need to perform a few things (in order):
 - **Add-in:** Get the identity token of the current Office 365 user.
-- **Add-in:** Send the identity token to the Web API and check if the identity token has already been mapped.
+- **Add-in:** Send the identity token to the Web API and check if the identity token has already been mapped to a user in the user service.
 - **Web API:** If a mapping is found (no user credentials needed)
     -  **Add-in:** Return the user data and sign in automatically (single sign-on).  
 - **Web API:** If a mappiung is not found (user credentials needed)
     - **Add-in:** Let the user sign in using their credentials.
     - **Add-in:** Send the identity token and user credentials to the Web API.
-    - **Web API:** If the provided credentials are correct, map the identity token with the user in the Web API.
+    - **Web API:** If the provided credentials are correct, map the Office 365 user with the user in the user service.
     - **Web API:** Notify the mail add-in.
     - **Add-in:** Reload the mail add-in and experience single sign-on.
 
 We need to implement two parts to achieve the above; the front-end (add-in) and backend (Web API). Let's begin with the add-in side of things.
 
-1. In **Home.js**, add the following function to get the current ID token (for the Office 365 user) and send it along with optional credentials to the Web API. 
+1. In **Home.js**, add the following function to get the current identity token (for the Office 365 user) and send it along with optional credentials to the Web API. 
     ```js
     // Try to authenticate, if credentials for a user is provided - we
     // will try to map it with the Office 365 user in the backend
@@ -572,7 +572,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
     
 #### Exercise 4.3: Enable the sign in button ####
-1. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the single sign-on logic when the mail add-in is initialized. This will enable the sign in form if single sign-on is not possible (no mapping of the user in the Web API).
+1. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the single sign-on logic when the mail add-in has initialized. This will enable the sign in form if single sign-on is not possible (no mapping for the Office 365 user in the user service).
     ```js
     // Authenticate silently (without credentials)
     authenticate(null, function (response) {
@@ -1210,12 +1210,12 @@ When we are mapping an Office 365 user with a user in the **UserService** instan
     }
 
     ```
-3. Launch your mail add-in and test your work. Use the form to sign in with the credentials defined of a user in the **UserService.cs** class. When the sign in is completed, the mail add-in will reload and automatically sign in. 
+3. Launch your mail add-in and test your work. Use the form to sign in with the credentials of a user in the **UserService** class. When the sign in is completed, the mail add-in will reload and automatically sign in (single sign-on). 
    
    If you restart Outlook and the mail add-in, you will find that the user is automatically signed in every time (as long as you keep your application running, because the mapping is in-memory and not persisted).
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin7.png)
    
-   You could also launch your mail-addin in Outlook Web Access (<https://outlook.office.com/owa/>) and experience the SSO.
+   You could also launch your mail add-in in Outlook Web Access (<https://outlook.office.com/owa/>) and experience the SSO. Also, if you wanted to release a mail add-in with single sign-on to the Office Store - you should give the users a way to sign out (release the mapping) as well.
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
