@@ -908,8 +908,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     
     ```
 
-
-xercise 6.4: Add the models ####
+#### Exercise 6.4: Add the models ####
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
