@@ -14,7 +14,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
 * [2.3 Add the base](#exercise-23-add-the-base-css--html)
 
-Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Read-Mode-Outlook-Add-in\\Source\\Read-Mode-Outlook-Add-in.sln**.           
+Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Single-Sign-On-Outlook-Add-in\\Source\\Single-Sign-On-Outlook-Add-in.sln**.           
     
 ### Applies to ###
 -  Outlook Client
@@ -29,7 +29,7 @@ Short of time and just want the final sample? Clone this repository (```git clon
 ### Solution ###
 Solution | Author(s)
 ---------|----------
-Read-Mode-Outlook-Add-in | Simon Jäger (**Microsoft**)
+Single-Sign-On-Outlook-Add-in | Simon Jäger (**Microsoft**)
 
 ### Version history ###
 Version  | Date | Comments
@@ -47,51 +47,52 @@ The first thing that we need to do is to create the project itself. Make sure th
 
 1. Click **File**, **New** and finally the **Project** button.
 2. In **Templates**, select **Visual C#**, **Office/SharePoint** and then **Office Add-ins**. This will list the Office add-in templates, choose **Office Add-in**. 
-3. Name your project **"Read-Mode-Outlook-Add-in"** and click the **OK** button to continue. 
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/NewProject.png)
+3. Name your project **"Single-Sign-On-Outlook-Add-in"** and click the **OK** button to continue. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/NewProject.png)
 4. Next up Visual Studio 2015 will need a bit more information about what you are going to create - in order to set up the required files. Your next step is to decide which type of Office add-in that you want to create. Depending on what you pick, your Office add-in will run in different Office applications and contexts. 
    
    For this hands-on lab, we will create a mail add-in - this means that our Office add-in will run in in Outlook as a view beside the Office context (e.g. a message or appointment). Select **Mail** and click on **Next**. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/MailAddinType.png)
 5. Finally we need to choose the supported modes for our mail add-in. This means that we are defining the contexts that our mail add-in can run within; read, compose or both. If you choose **Read form**, the mail add-in will be able to run when a user is viewing a mailbox item. In **Compose form**, the mail add-in can run when a user is creating or editing a mailbox item. 
    
-   In our case, select **Read form** for both **Email message** and **Appointment**. Deselect everything else to create a read mode mail add-in. Click **Finish** to complete the wizard.
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadMailAddin.png)
-6. Using the information you specified in the wizard, Visual Studio 2015 will configure your project. Have a look in the **Solution Explorer** and find your two new projects in the **Read-Mode-Outlook-Add-in** solution. 
+   In our case, select **Read form** for **Email message**. Deselect everything else to create a read mode mail add-in. Click **Finish** to complete the wizard.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/ReadMailAddin.png)
+6. Using the information you specified in the wizard, Visual Studio 2015 will configure your project. Have a look in the **Solution Explorer** and find your two new projects in the **Single-Sign-On-Outlook-Add-in** solution. 
    
-   **Read-Mode-Outlook-Add-in:** This is your manifest project, containing the XML manifest file. This is basically a representation of the information you just specified while creating your Office add-in project. 
+   **Single-Sign-On-Outlook-Add-in:** This is your manifest project, containing the XML manifest file. This is basically a representation of the information you just specified while creating your Office add-in project. 
    
-   **Read-Mode-Outlook-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Outlook add-in. We will make quite a few adjustments to this structure as we continue.
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/SolutionExplorer.png)
+   **Single-Sign-On-Outlook-Add-inWeb:** This is your web project for the Office add-in. This contains all of the different source files that makes up your Outlook add-in. We will make quite a few adjustments to this structure as we continue.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SolutionExplorer.png)
    
    You've now created the basic structure for a mail add-in running in Outlook. 
 
 #### Exercise 1.2: Edit the manifest ####
 We need to make sure that we understand the manifest file. This file is essential for your add-in; it tells Office where everything is hosted (locally throughout this hands-on lab) and where it can be launched. So let's open it and edit the manifest file.
 
-1. In the manifest project **Read-Mode-Outlook-Add-in**, double-click the **Read-Mode-Outlook-Add-inManifest** file. This will open the manifest editor.      
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/OutlookAddinManifest.png)
+1. In the manifest project **Single-Sign-On-Outlook-Add-in**, double-click the **Single-Sign-On-Outlook-Add-inManifest** file. This will open the manifest editor.      
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/OutlookAddinManifest.png)
 2. In the **General** tab section, find and edit the **Display name** and **Provider name** to anything you'd like.      
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/GeneralAddinManifest.png)
-3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your mail add-in. By default, both **Item is a message** and **Item is an appointment** should be included. 
-4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Read-Mode-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed.       
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ReadFormAddinManifest.png)
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/GeneralAddinManifest.png)
+3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your mail add-in. By default, **Item is a message** should be included. 
+4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Single-Sign-On-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed. 
+5. Below the **Source location** property, you will find the **Requested height (px)** property. This a way for your mail add-in to ask for a certain height in pixels when displayed within Outlook. It doesn't mean that it will be granted. Change this to **300** - as we want a bit more height in this mail add-in to display the sign-in form. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/ReadFormAddinManifest.png)
 
 #### Exercise 1.3: Launch the project ####
 Before we launch our mail add-in we should validate that our start actions are proper.
 
 
-1. Select the manifest project; **Read-Mode-Outlook-Add-in** in the **Solution Explorer**.                                     
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/SelectManifestProject.png)
+1. Select the manifest project; **Single-Sign-On-Outlook-Add-in** in the **Solution Explorer**.                                     
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectManifestProject.png)
 2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
-4. Set **Web Project** to your web project; **Read-Mode-Outlook-Add-inWeb**.
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/StartActions.png)
+4. Set **Web Project** to your web project; **Single-Sign-On-Outlook-Add-inWeb**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/StartActions.png)
 5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 6. When launching your mail add-in for the first time, Visual Studoo 2015 needs to install the manifest file. This is where you should use your Office 365 Developer Tenant (if you haven't signed up for one yet, get yours for free at <http://dev.office.com/devprogram>). Enter the credentials of a user (**[username]@[your domain].onmicrosoft.com**) belonging to your Office 365 Developer Tenant and click on the **Connect** button.            
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ConnectToExchange.png)
-7. Once Outlook has launched, you'll notice that your mail add-in doesn't start right away. We need to start it manually. Select a message in your mailbox (send yourself one if needed) and click on the **Read-Mode-Outlook-Add-in** above it. Once your mail add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin.png)
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/ConnectToExchange.png)
+7. Once Outlook has launched, you'll notice that your mail add-in doesn't start right away. We need to start it manually. Select a message in your mailbox (send yourself one if needed) and click on the **Single-Sign-On-Outlook-Add-in** above it. Once your mail add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedReadMailAddin.png)
 8. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/StopDebugging.png)
 
@@ -295,7 +296,7 @@ Our first task is to clean up the project, and remove the default styling and se
     </div>
     ``` 
 3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
 
 
 
@@ -307,3 +308,4 @@ View the source code files included in this hands-on lab for a final reference o
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
 - Learn more about Office UI Fabric: <http://dev.office.com/fabric/>
 - Developing Outlook add-ins – where to integrate and what you can do: <http://simonjaeger.com/developing-outlook-add-ins-where-to-integrate-and-what-you-can-do/>
+- Single sign-on for Outlook add-ins with ease: <http://simonjaeger.com/single-sign-on-for-outlook-add-ins-with-ease/>
