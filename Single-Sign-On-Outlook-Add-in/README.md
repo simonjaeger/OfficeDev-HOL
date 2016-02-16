@@ -320,7 +320,7 @@ Our first task is to clean up the project, and remove the default styling and se
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin2.png)
 
 
-#### Exercise 4.1: Add the input fields ####
+#### Exercise 3.1: Add the input fields ####
 1. In **Home.html**, locate the "Exercise: Username" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
     ```html
     <div class="ms-TextField">
@@ -357,7 +357,7 @@ Our first task is to clean up the project, and remove the default styling and se
 4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form. You will see that the input fields are disabled, we will enable them later on as part of the initalization logic.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin3.png)
 
-#### Exercise 4.2: Add the Spinner ####
+#### Exercise 3.2: Add the Spinner ####
 1. In **Home.html**, locate the "Exercise: Spinner" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
     ```html
     <div id="spinner" class="ms-Spinner ms-Spinner--large">
@@ -381,7 +381,7 @@ Our first task is to clean up the project, and remove the default styling and se
 4. Launch your mail add-in and view your work. You should be able to see the Office UI Spinner. We will use this when we are waiting for a response from the backend.             
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin4.png)
 
-#### Exercise 4.3: Add the dialog ####
+#### Exercise 3.3: Add the dialog ####
 
 1. In **Home.html**, locate the "Exercise: Data dialog" comment and add the following HTML piece below it. This is an Office UI Fabric styled dialog. 
     ```html
@@ -445,7 +445,7 @@ Our first task is to clean up the project, and remove the default styling and se
     
     ```
 
-#### Exercise 5.1: Add the authentication logic ####
+#### Exercise 4.1: Add the authentication logic ####
 In order to authenticate and create a single sign-on experience, we need to perform a couple of things:
 - **Add-in:** Get the identity token of the current Office 365 user.
 - **Add-in:** Send the identity token to the Web API and check if the identity token has already been mapped.
@@ -496,7 +496,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     
     ```
 
-#### Exercise 5.2: Add the sign in button ####
+#### Exercise 4.2: Add the sign in button ####
 1. In **Home.html**, locate the "Exercise: Sign in button" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
     ```html
     <button id="sign-in" class="ms-Button ms-Button--primary" disabled>
@@ -558,7 +558,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     }
     ```
     
-#### Exercise 5.3: Enable the sign in button ####
+#### Exercise 4.3: Enable the sign in button ####
 1. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the single sign-on logic when the mail add-in is initialized. This will enable the sign in form if single sign-on is not possible (no mapping of the user in the Web API).
     ```js
     // Authenticate silently (without credentials)
@@ -842,7 +842,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 3. Launch your mail add-in and test your work. Quickly after launching, your sign in form should be enabled. If you try to sign in, you will be prompted by the dialog that we created - saying that an error occurred. Which is true as we haven't created our Web API yet, we will do that next.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin6.png)
 
-#### Exercise 6.1: Add the Web API Controller ####
+#### Exercise 5.1: Add the Web API Controller ####
 Now let's create the backend for our mail add-in. We will create a Web API to respond and validate any requests for single sign-on. To get started, we should add a Web API Controller to the project - this will trigger Visual Studio to download the required NuGet packages.
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
@@ -862,7 +862,7 @@ Now let's create the backend for our mail add-in. We will create a Web API to re
     }
     ```
 
-#### Exercise 6.2: Add the Web API configuration ####
+#### Exercise 5.2: Add the Web API configuration ####
 We need to configure a router for the Web API, this means that we define how you should structure the URLs to access the Controllers and its operations. It's very straight forward. 
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
@@ -887,7 +887,7 @@ We need to configure a router for the Web API, this means that we define how you
     
     ```
     
-#### Exercise 6.3: Add the Global Application Class ####
+#### Exercise 5.3: Add the Global Application Class ####
 In order to use the Web API configuration class (**WebApiConfig.cs**), we need to trigger the **Register** method upon the initialization of the web application. We can do that using a **Global Application Class** with the **Application_Start** method.
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
@@ -915,7 +915,7 @@ In order to use the Web API configuration class (**WebApiConfig.cs**), we need t
     
     ```
 
-#### Exercise 6.4: Add the models ####
+#### Exercise 5.4: Add the models ####
 We will use three different models (objects) when building the authentication/mapping logic. These are:
 - **CredentialsModel:** Represents the basic values needed to validate someone as a user (UserModel). This model is merely a demonstration of an authentication mechanism. Make sure that your usage of credentials meets the security requirements of your application. You could either implement a token flow (i.e. using one-time tokens or the OAuth protocol) for your web service or POST directly over HTTPS (with an HTML FORM) to your API.  
       
@@ -976,7 +976,7 @@ We will use three different models (objects) when building the authentication/ma
     ```
 
 
-#### Exercise 6.5: Add the user service interface ####
+#### Exercise 5.5: Add the user service interface ####
 Let's create an interface to define the three different operations we need to create a single sign-on experience:
 - **GetUserAsync:** Get an already mapped user in the service using the Office 365 unique user identifier (UUID).
 - **GetUUIDSaltAsync:** Create or get an existing unique salt for the Office 365 unique user identifier (UUID) - used creating the UUID.
@@ -1013,7 +1013,7 @@ Let's create an interface to define the three different operations we need to cr
     ```
     
 
-#### Exercise 6.6: Add the user service implementation ####
+#### Exercise 5.6: Add the user service implementation ####
 In order to get going and test this out - we need to implement the IUserService interface. In this exercise we will implement the three needed methods (**GetUserAsync**, **GetUUIDSaltAsync** and **MapUserAsync**) by creating a fake user service.
 
 We will simulate a persisted solution for users, salts and mappings with simple Dictionary objects. While it will be simple to implement, it is not persisted to disk and will only be available as long as your web application is running (so keep the debugging session going to keep the data). 
@@ -1100,7 +1100,7 @@ We will simulate a persisted solution for users, salts and mappings with simple 
 
     ```
     
-#### Exercise 6.7: Finish the SSO Controller ####
+#### Exercise 5.7: Finish the SSO Controller ####
 The last step is to complete the Web API Controller. We will create a POST method to handle everything. This method will accept a **UserRequestModel** object to be passed in this request body. The **Credentials** property on the request body is optional, but without it we will not perform a mapping between an Office 365 user and a user in the **UserService** instance. 
 
 Before we do anything that has to do with user lookups or user mappings - we need to validate the identity token in the request. We can of course write this validation code if we want to (<http://simonjaeger.com/dissecting-and-validating-the-exchange-identity-token/>). But we can save ourselves a lot of time (and errors) by using the **Exchange Web Services Managed API** - available as a NuGet package.
