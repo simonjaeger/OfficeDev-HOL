@@ -482,6 +482,9 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
                 }).done(function (response) {
                     // TODO: Validate response
                     callback(response);
+                }).fail(function (error) {
+                    // TODO: Handle error
+                    callback();
                 });
             }
         });
@@ -552,7 +555,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
     
 #### Exercise 5.3: Enable the sign in button ####
-3. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the SSO logic when the mail add-in is initialized. This will enable the sign in form if SSO is not possible (no mapping of the user in the Web API).
+1. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the SSO logic when the mail add-in is initialized. This will enable the sign in form if SSO is not possible (no mapping of the user in the Web API).
     ```js
     // Authenticate silently (without credentials)
     authenticate(null, function (response) {
@@ -574,9 +577,10 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
                 response.displayName + ' (' +
                 response.credentials.username + ').');
         }
+    });
     ```
     
-6. Your **Home.html** file should now look like this: 
+2. Your **Home.html** file should now look like this: 
     ```html
     <!DOCTYPE html>
     <html>
@@ -696,7 +700,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
 
     ```  
-    Your **Home.js** file should look like this:
+    Your **Home.js** file should now look like this:
     ```js
     (function () {
         "use strict";
@@ -770,6 +774,9 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
                     }).done(function (response) {
                         // TODO: Validate response
                         callback(response);
+                    }).fail(function (error) {
+                        // TODO: Handle error
+                        callback();
                     });
                 }
             });
@@ -828,7 +835,8 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     })();
     ``` 
 
-    
+3. Launch your mail add-in and test your work. Quickly after launching, your sign in form should be enabled. If you try to sign in, you will be prompted by the dialog that we created - saying that an error occurred. Which is true as we haven't created our Web API yet, we will do that next.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin6.png)
 
 
 

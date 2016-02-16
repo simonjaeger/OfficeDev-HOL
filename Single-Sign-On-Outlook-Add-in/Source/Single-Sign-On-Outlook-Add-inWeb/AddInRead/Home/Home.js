@@ -72,6 +72,9 @@
                 }).done(function (response) {
                     // TODO: Validate response
                     callback(response);
+                }).fail(function (error) {
+                    // TODO: Handle error
+                    callback();
                 });
             }
         });
