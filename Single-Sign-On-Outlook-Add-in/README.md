@@ -441,18 +441,18 @@ Our first task is to clean up the project, and remove the default styling and se
     
     ```
 
-#### Exercise 5.1: Add the authentication logic (add-in) ####
+#### Exercise 5.1: Add the authentication logic ####
 In order to authenticate and create a single sign-on experience, we need to perform a couple of things:
 - **Add-in:** Get the identity token of the current Office 365 user.
 - **Add-in:** Send the identity token to the Web API and check if the identity token has already been mapped.
 - **Web API:** If a mapping is found (no user credentials needed)
-    -  **Add-in:** Return the user data and sign in automatically (SSO).  
+    -  **Add-in:** Return the user data and sign in automatically (single sign-on).  
 - **Web API:** If a mappiung is not found (user credentials needed)
     - **Add-in:** Let the user sign in using their credentials.
     - **Add-in:** Send the identity token and user credentials to the Web API.
     - **Web API:** If the provided credentials are correct, map the identity token with the user in the Web API.
     - **Web API:** Notify the mail add-in.
-    - **Add-in:** Reload the mail add-in and experience SSO.
+    - **Add-in:** Reload the mail add-in and experience single sign-on.
 
 We need to implement two parts to achieve the above; the front-end (add-in) and backend (Web API). Let's begin with the add-in side of things.
 
@@ -555,7 +555,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
     
 #### Exercise 5.3: Enable the sign in button ####
-1. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the SSO logic when the mail add-in is initialized. This will enable the sign in form if SSO is not possible (no mapping of the user in the Web API).
+1. In **Home.js**, add the following code in the **document.ready** function (below the event handlers) to perform the single sign-on logic when the mail add-in is initialized. This will enable the sign in form if single sign-on is not possible (no mapping of the user in the Web API).
     ```js
     // Authenticate silently (without credentials)
     authenticate(null, function (response) {
@@ -839,6 +839,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin6.png)
 
 #### Exercise 6.1: Add the Web API Controller ####
+Now let's create the backend for our mail add-in. We will create a Web API to respond and validate any requests for single sign-on. To get started, we should add a Web API Controller to the project - this will trigger Visual Studio to download the required NuGet packages.
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.       
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
@@ -858,6 +859,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
 
 #### Exercise 6.2: Add the Web API configuration ####
+We need to configure a router for the Web API, this means that we define how you should structure the URLs to access the Controllers and its operations. It's very straight forward. 
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
 2. Right-click and choose **Add New Folder**, name it **"App_Start"**. 
@@ -882,6 +884,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
     
 #### Exercise 6.3: Add the Global Application Class ####
+In order to use the Web API configuration class (**WebApiConfig.cs**), we need to trigger the **Register** method upon the initialization of the web application. We can do that using a **Global Application Class** with the **Application_Start** method.
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
 2. Right-click and choose **Add Global Application Class**. Name it **"Global"** and click on the **OK** button.       
@@ -970,7 +973,7 @@ We will use three different models (objects) when building the authentication/ma
 
 
 #### Exercise 6.5: Add the user service interface ####
-Let's create an interface to define the three different operations we need to create an SSO experience:
+Let's create an interface to define the three different operations we need to create a single sign-on experience:
 - **GetUserAsync:** Get an already mapped user in the service using the Office 365 unique user identifier (UUID).
 - **GetUUIDSaltAsync:** Create or get an existing unique salt for the Office 365 unique user identifier (UUID) - used creating the UUID.
 - **MapUserAsync:** Map the Office 365 unique user identifier (UUID) with a user in your service (using the provided credentials). 
