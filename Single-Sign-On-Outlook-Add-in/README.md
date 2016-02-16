@@ -153,8 +153,6 @@ Our first task is to clean up the project, and remove the default styling and se
 6. In **App.css**, remove everything, leaving you with an empty file.
 7. In **Home.css**, remove everything, leaving you with an empty file.
 
-
-
 #### Exercise 2.2: Add Office UI Fabric ####
 1. In **Home.html**, add two CSS references to the CDN for Office UI Fabric inside the **head** tags. Add them before the CSS reference to **"../App.css"**.
     ```html
@@ -163,7 +161,28 @@ Our first task is to clean up the project, and remove the default styling and se
     
     ```
     
-2. Your **Home.html** file should now look like this: 
+2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Spinner component that needs this. **Download** the JavaScript file for this component (**Spinner.js**) at <hhttps://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Spinner/Spinner.js> or get it by browsing the files included in this hands-on lab. 
+3. Add the **Spinner.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choosing **Add Existing Item...**.                                    
+    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
+4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
+    ```html
+    <script src="../../Scripts/Spinner.js" type="text/javascript"></script>
+    
+    ```
+5. In **Home.js**, add the following line inside the **document.ready** function of your page.             
+    ```js
+    if (typeof fabric !== "") {
+        if ('Spinner' in fabric) {
+            var element = document.querySelector('.ms-Spinner');
+            if (typeof element !== "undefined") {
+                var component = new fabric['Spinner'](element);
+            }
+        }
+    }
+    ```  
+    This will use the functionality within the **Spinner.js** file and initialize any Spinner components that we add to the view. 
+    
+6. Your **Home.html** file should now look like this: 
     ```html
     <!DOCTYPE html>
     <html>
@@ -174,21 +193,45 @@ Our first task is to clean up the project, and remove the default styling and se
         <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
 
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
-    
+
+        <script src="../../Scripts/Spinner.js" type="text/javascript"></script>
+
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
-        <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
 
         <link href="../App.css" rel="stylesheet" type="text/css" />
         <script src="../App.js" type="text/javascript"></script>
-    
+
         <link href="Home.css" rel="stylesheet" type="text/css" />
         <script src="Home.js" type="text/javascript"></script>
     </head>
     <body>
-    
+
     </body>
     </html>
+
+    ```  
+    Your **Home.js** file should look like this:
+    ```js
+    (function () {
+        "use strict";
+
+        // The Office initialize function must be run each time a new page is loaded
+        Office.initialize = function (reason) {
+            $(document).ready(function () {
+                // Initialize Office UI Fabric components (spinner)
+                if (typeof fabric !== "") {
+                    if ('Spinner' in fabric) {
+                        var element = document.querySelector('.ms-Spinner');
+                        if (typeof element !== "undefined") {
+                            var component = new fabric['Spinner'](element);
+                        }
+                    }
+                }
+
+            });
+        };
+    })();
     ``` 
 
 #### Exercise 2.3: Add the base (CSS + HTML) ####
@@ -216,83 +259,58 @@ Our first task is to clean up the project, and remove the default styling and se
         top: 80px;
         padding-left: 15px;
         padding-right: 15px;
-    }
-
-    .section-title {
-        margin-bottom: -5px;
-    }
-
-    .section {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
     ``` 
 2. In **Home.html**, add the following chunk of HTML inside the **body** tags. This will set the stage for the next array of exercises to come. 
     ```html
     <!-- Header -->
     <div id="header" class="ms-bgColor-themePrimary">
-        <h2 class="ms-font-xxl ms-fontWeight-semibold ms-fontColor-white">HOL: Outlook Add-in (Read Mode)</h2>
+        <h2 class="ms-font-xl ms-fontWeight-semibold ms-fontColor-white">
+            HOL: Single Sign-On Outlook Add-in
+        </h2>
     </div>
     <div id="content">
-        <!-- Introduction -->
-        <p class="ms-font-m ms-fontColor-neutralSecondary">
-            This sample demonstrates a few different ways to interact with the Office context.
-            Accessing different types of data for a mailbox item (message or appointment) in read mode.
-        </p>
-
         <div class="ms-Grid">
             <div class="ms-Grid-row">
-                <!-- Exercise Section: Get subject -->
-                <div class="ms-Grid-col ms-u-sm6 ms-u-md6" style="padding-left: 0px;">
-                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get subject</p>
+                <div class="ms-Grid-col ms-u-sm5 ms-u-md5" style="padding-left: 0px;">
+                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: SSO</p>
+                    <!-- Introduction -->
                     <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        Get the item subject and display it by clicking the button down below.
+                        This sample demonstrates how to implement a single sign-on experience within an Outlook add-in.
+                        <br />
+                        <br />
+                        Check the "Keep me signed in" box to enable SSO before clicking the "Sign in" button.
                     </p>
-
-                    <!-- Exercise: Get subject -->
-
                 </div>
 
-                <!-- Exercise Section: Get sender -->
-                <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
-                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get sender</p>
-                    <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        Get the item sender and display it by clicking the button down below.
-                    </p>
+                <!-- Exercise Section: SSO -->
+                <div class="ms-Grid-col ms-u-sm7 ms-u-md7" style="padding-top: 15px;">
+                    <!-- Exercise: Username -->
 
-                    <!-- Exercise: Get sender -->
+                    <!-- Exercise: Password -->
 
-                </div>
-            </div>
+                    <div class="ms-Grid">
+                        <div class="ms-Grid-row">
+                            <div class="ms-Grid-col ms-u-sm7 ms-u-md7">
+                                <!-- Exercise: ChoiceField -->
 
-            <div class="ms-Grid-row">
-                <!-- Exercise Section: Get body -->
-                <div class="ms-Grid-col ms-u-sm6 ms-u-md6" style="padding-left: 0px;">
-                    <p class="ms-font-l ms-fontWeight-semibold section-title">Exercise: Get body</p>
-                    <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        Get the item body by clicking the button down below.
-                        This requires a minimum mailbox requirement set version of 1.3.
-                    </p>
+                            </div>
+                            <div class="ms-Grid-col ms-u-sm5 ms-u-md5">
+                                <!-- Exercise: Sign in button -->
 
-                    <!-- Exercise: Get body -->
+                                <!-- Exercise: Spinner -->
 
-                </div>
-
-                <!-- Office UI Fabric -->
-                <div class="ms-Grid-col ms-u-sm6 ms-u-md6">
-                    <p class="ms-font-l ms-fontWeight-semibold section-title">Office UI Fabric</p>
-                    <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        Different styles and components from the Office UI Fabric library are used throughout this Office add-in.
-                    </p>
-                    <p class="ms-font-m ms-fontColor-neutralSecondary">
-                        Learn more about Office UI Fabric at: <a class="ms-Link" href="http://dev.office.com/fabric/" target="_blank">http://dev.office.com/fabric/</a>
-                    </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Exercise: Dialog -->
-
     </div>
+
+    <!-- Exercise: Data dialog -->
+
     ``` 
 3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
