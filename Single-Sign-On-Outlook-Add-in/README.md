@@ -924,6 +924,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
             public string Password { get; set; }
         }
     }
+    
     ```
 5. Right-click on the **Models** folder and choose **Add Class...**. Name it **UserModel** and click on the **OK** button.
 6. In **UserModel.cs**, replace everything with the following code piece.  
@@ -939,6 +940,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
             public CredentialsModel Credentials { get; set; }
         }
     }
+    
     ```
 7. Right-click on the **Models** folder and choose **Add Class...**. Name it **UserRequestModel** and click on the **OK** button.
 8. In **UserRequestModel.cs**, replace everything with the following code piece.  
