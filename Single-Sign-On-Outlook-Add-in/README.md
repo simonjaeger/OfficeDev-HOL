@@ -316,7 +316,7 @@ Our first task is to clean up the project, and remove the default styling and se
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin2.png)
 
 
-#### Exercise 4.1: Add input fields ####
+#### Exercise 4.1: Add the input fields ####
 1. In **Home.html**, locate the "Exercise: Username" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
     ```html
     <div class="ms-TextField">
@@ -350,11 +350,34 @@ Our first task is to clean up the project, and remove the default styling and se
     $('#password').val('#Office365Dev');
     
     ```
-4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form.            
+4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form. You will see that the input fields are disabled, we will enable them later on as part of the initalization logic.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin3.png)
 
 
 
+#### Exercise 4.1: Add the Office UI Fabric Spinner ####
+1. In **Home.html**, locate the "Exercise: Spinner" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
+    ```html
+    <div id="spinner" class="ms-Spinner ms-Spinner--large">
+    </div>
+    
+    ```
+2. In **Home.css**, add the following CSS piece. This will place the Spinner within the form and customize the color.
+    ```html
+    #spinner {
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin-right: -3px;
+    }
+
+    .ms-Spinner-circle {
+        background-color: #0078D7;
+    }
+    
+    ```
+4. Launch your mail add-in and view your work. You should be able to see the Office UI Spinner.             
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin3.png)
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
