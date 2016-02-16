@@ -443,14 +443,14 @@ Our first task is to clean up the project, and remove the default styling and se
 
 #### Exercise 5.1: Add the authentication logic (add-in) ####
 In order to authenticate and create a single sign-on experience, we need to perform a couple of things:
-- **Add-in:** Get the ID token of the current Office 365 user.
-- **Add-in:** Send the ID token to the Web API and check if the ID token has already been mapped.
+- **Add-in:** Get the identity token of the current Office 365 user.
+- **Add-in:** Send the identity token to the Web API and check if the identity token has already been mapped.
 - **Web API:** If a mapping is found (no user credentials needed)
     -  **Add-in:** Return the user data and sign in automatically (SSO).  
 - **Web API:** If a mappiung is not found (user credentials needed)
     - **Add-in:** Let the user sign in using their credentials.
-    - **Add-in:** Send the ID token and user credentials to the Web API.
-    - **Web API:** If the provided credentials are correct, map the ID token with the user in the Web API.
+    - **Add-in:** Send the identity token and user credentials to the Web API.
+    - **Web API:** If the provided credentials are correct, map the identity token with the user in the Web API.
     - **Web API:** Notify the mail add-in.
     - **Add-in:** Reload the mail add-in and experience SSO.
 
@@ -909,6 +909,12 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
 
 #### Exercise 6.4: Add the models ####
+We will use three different models (objects) when building the authentication/mapping logic. These are:
+- **CredentialsModel:** Represents the basic values needed to validate someone as a user (UserModel). This model is merely a demonstration of an authentication mechanism. Make sure that your usage of credentials meets the security requirements of your application. You could either implement a token flow (i.e. using one-time tokens or the OAuth protocol) for your web service or POST directly over HTTPS (with an HTML FORM) to your API.  
+      
+    Ideally your web service should generate a set of (short-lived) credentials only intended for the user mapping. Validate and expire those credentials in your Web API.
+- **UserModel:** Represents the user in the service. It contains both a **DisplayName** property and **Credentials** property.
+- **UserRequestModel:** Represents the properties (**IdentityToken**, **HostUri** and optional **Credentials**) needed to perform a mapping of an Office 365 user and a user in your service. It also containts the properties needed to do a lookup of an already mapped user.
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
 2. Right-click and choose **Add New Folder**, name it **"Models"**. 
@@ -964,6 +970,11 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
 
 #### Exercise 6.5: Add the user service interface ####
+Let's create an interface to define the three different operations we need to create an SSO experience:
+- **GetUserAsync:** Get an already mapped user in the service using the Office 365 user unique identifier (UUID).
+- **GetUUIDSaltAsync:** Create or get an existing unique salt for the Office 365 user unique identifier (UUID) - used creating the UUID.
+- **MapUserAsync:** Map the Office 365 user unique identifier (UUID) with a user in your service (using the provided credentials). 
+
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
 2. Right-click and choose **Add New Folder**, name it **"Services"**. 
@@ -997,6 +1008,9 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     
 
 #### Exercise 6.6: Add the user service implementation ####
+In order to get going and test this out - we need to implement the IUserService interface. In this exercise we will implement the three needed methods (**GetUserAsync**, **GetUUIDSaltAsync** and **MapUserAsync**) by creating a fake user service.
+
+We will simulate a persisted solution for users, salts and mappings with simple Dictionary objects. While it will be simple to implement, it is not persisted to disk and will only be available as long as your web application is running (so keep the debugging session going to keep the data). 
 
 1. Right-click on the **Services** folder and choose **Add Class...**. Name it **"UserService"** and click on the **OK** button.
 2. In **UserService.cs**, replace everything with the following code piece.  
@@ -1081,6 +1095,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     ```
     
 #### Exercise 6.7: Finish the SSO Controller ####
+The last step is to complete the Web API Controller. We will create a POST method to handle everything. This method will accept a **UserRequestModel** object to be passed in this request body. The **Credentials** property on the request body is optional, but without it we will not perform a mapping between an Office 365 user and a user in the **UserService** instance. 
     
 1. Click on **Tools** in the Visual Studio 2015 top menu. 
 2. Select **NuGet Package Manager** and choose **Package Manager Console**.
