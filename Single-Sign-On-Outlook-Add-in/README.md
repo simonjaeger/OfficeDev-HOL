@@ -1099,7 +1099,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     using System.Threading.Tasks;
 
     ```
-2. In **SSOController.cs**, add the following code piece within the class.
+2. In **SSOController.cs**, add the following code piece within the class:
     ```csharp
     private static readonly IUserService _userService = new UserService();
 
@@ -1172,6 +1172,12 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
     }
 
     ```
+3. Launch your mail add-in and test your work. Use the form to sign in with the credentials defined of a user in the **UserService.cs** class. When the sign in is completed, the mail add-in will reload and automatically sign in. 
+   
+   If you restart Outlook and the mail add-in, you will find that the user is automatically signed in every time (as long as you keep your application running, because the mapping is in-memory and not persisted).
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin7.png)
+   
+   You could also launch your mail-addin in Outlook Web Access (<https://outlook.office.com/owa/>) and experience the SSO.
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
