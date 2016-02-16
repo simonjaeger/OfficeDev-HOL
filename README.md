@@ -13,13 +13,15 @@ Short of time and just want the final sample? Clone this repository (```git clon
 - Office 365 Developer Tenant: <http://dev.office.com/devprogram>
 
 ### Hands-on Labs ###
-Hands-on Lab | Time (min) | Author(s)
+Hands-on Lab | Time (min)* | Author(s)
 ---------|----------|----------
-[Excel-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Excel-Add-in) | 30 |Simon Jäger (**Microsoft**)
+[Excel-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Excel-Add-in) | 30-45 |Simon Jäger (**Microsoft**)
 [Word-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Word-Add-in) | 45-60 |Simon Jäger (**Microsoft**)
 [Read-Mode-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Read-Mode-Outlook-Add-in) | 45-60 |Simon Jäger (**Microsoft**)
 [Compose-Mode-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Compose-Mode-Outlook-Add-in) | 45-60 |Simon Jäger (**Microsoft**)
 [Single-Sign-On-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Single-Sign-On-Outlook-Add-in) | 60-90 |Simon Jäger (**Microsoft**)
+
+*The suggested times are still preliminary, these will be adjusted as the content has been delivered more.
 
 ### Feedback ###
 If you have completed any of the above hands-on labs - I would love to get feedback from you! That way I can improve and develop the content further. Is there anything that you would like to see added in the future? Anything that you think should have been done differently? 
