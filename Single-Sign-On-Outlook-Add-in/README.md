@@ -164,7 +164,7 @@ Our first task is to clean up the project, and remove the default styling and se
 2. Some components in the Office UI Fabric library require some additional JavaScript to function. In our case, we will use a Spinner component that needs this. **Download** the JavaScript file for this component (**Spinner.js**) at <hhttps://raw.githubusercontent.com/OfficeDev/Office-UI-Fabric/master/src/components/Spinner/Spinner.js> or get it by browsing the files included in this hands-on lab. 
 3. Add the **Spinner.js** file to your **Scripts** folder in the **Solution Explorer**. You can do this by right-clicking the **Scripts** folder and choosing **Add Existing Item...**.                                    
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/AddExisting.png)
-4. In **Home.html**, reference the **Jquery.Dropdown.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
+4. In **Home.html**, reference the **Spinner.js** file by adding the following line inside the **head** tags. Be sure to add it after the reference to **"../../Scripts/jquery-1.9.1.js"**.                      
     ```html
     <script src="../../Scripts/Spinner.js" type="text/javascript"></script>
     
