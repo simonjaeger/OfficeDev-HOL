@@ -844,7 +844,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 2. Right-click and choose **Add New Folder**, name it **Controllers**. 
 3. Right-click the **Controllers** folder and choose **Web API Controller Class (v2.1)**. Name it **SSOController** and click on the **OK** button.        
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SSO.png) 
-4. In **SSOController.cs**, remove all of the methods leaving you with:  
+4. In **SSOController.cs**, remove every method leaving you with an empty class:  
     ```csharp
     using System.Web.Http;
 
