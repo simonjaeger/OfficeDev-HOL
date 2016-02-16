@@ -34,7 +34,7 @@ Single-Sign-On-Outlook-Add-in | Simon Jäger (**Microsoft**)
 ### Version history ###
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | February 14th 2016 | Initial release
+1.0  | February 16th 2016 | Initial release
 
 ### Disclaimer ###
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -75,12 +75,11 @@ We need to make sure that we understand the manifest file. This file is essentia
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/GeneralAddinManifest.png)
 3. In the **Read Form** tab section, find the **Activation** part. This is what determines the rules for potential activation of your mail add-in. By default, **Item is a message** should be included. 
 4. Scroll down and pay attention to the **Source location** property. This points to a specific file in your web project (**Single-Sign-On-Outlook-Add-inWeb**). When launching your mail add-in, this page will be the first thing that gets loaded and displayed. 
-5. Below the **Source location** property, you will find the **Requested height (px)** property. This a way for your mail add-in to ask for a certain height in pixels when displayed within Outlook. It doesn't mean that it will be granted. Change this to **300** - as we want a bit more height in this mail add-in to display the sign-in form. 
+5. Below the **Source location** property, you will find the **Requested height (px)** property. This a way for your mail add-in to ask for a certain height in pixels when displayed within Outlook. Be aware though, it doesn't mean that it will be granted. Change this to **300** - as we want a bit more height for our mail add-in to display the sign-in form. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/ReadFormAddinManifest.png)
 
 #### Exercise 1.3: Launch the project ####
 Before we launch our mail add-in we should validate that our start actions are proper.
-
 
 1. Select the manifest project; **Single-Sign-On-Outlook-Add-in** in the **Solution Explorer**.                                     
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectManifestProject.png)
@@ -90,7 +89,7 @@ Before we launch our mail add-in we should validate that our start actions are p
 5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 6. When launching your mail add-in for the first time, Visual Studoo 2015 needs to install the manifest file. This is where you should use your Office 365 Developer Tenant (if you haven't signed up for one yet, get yours for free at <http://dev.office.com/devprogram>). Enter the credentials of a user (**[username]@[your domain].onmicrosoft.com**) belonging to your Office 365 Developer Tenant and click on the **Connect** button.            
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/ConnectToExchange.png)
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Form-Outlook-Add-in/Images/ConnectToExchange.png)
 7. Once Outlook has launched, you'll notice that your mail add-in doesn't start right away. We need to start it manually. Select a message in your mailbox (send yourself one if needed) and click on the **Single-Sign-On-Outlook-Add-in** above it. Once your mail add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedReadMailAddin.png)
 8. Finally, stop debugging by opening the **Debug** menu at the top of Visual Studio 2015 and click on the **Stop Debugging** button. You can also click the **Stop** button in your toolbar.            
