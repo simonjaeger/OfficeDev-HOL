@@ -4,7 +4,7 @@ With the new application model for Office comes a brand new way of extending Off
 
 In mail add-ins, we have access to a great functionality within the APIs to get an identity token. This identity token represents the Office 365 user and is key when it comes to building a single sign-on experience for your users. If you would like to learn more about what’s inside the identity token – head to: http://simonjaeger.com/dissecting-and-validating-the-exchange-identity-token/
 
-Why would you want to do this? Imagine if your add-in could sign in the user as soon as the add-in starts in Outlook – without having to ask for credentials every time. Not only is this behavior annoying from a user standpoint, but it’s also possible to overcome this because we have access to the identity token.
+Why would you want to do this? Imagine if your mail add-in could sign in the user as soon as it starts in Outlook – without having to ask for credentials every time. Not only is this behavior annoying from a user standpoint, but it’s also possible to overcome this because we have access to the identity token.
 
 This hands-on lab demonstrates how to implement a single sign-on experience within an Outlook add-in. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
 The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
