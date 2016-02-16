@@ -20,7 +20,7 @@
 
             // Add event handlers
             $('#sign-in').click(signIn);
-            $('#data-dialog-ok').click(hideDataDialog);
+            $('#dialog-ok').click(hideDialog);
 
             // Authenticate silently (without credentials)
             authenticate(null, function (response) {
@@ -36,7 +36,7 @@
                 }
                 else {
                     // Display user data
-                    showDataDialog('Hi developer!', 'Office 365 user ' + '(' +
+                    showDialog('Hi developer!', 'Office 365 user ' + '(' +
                         Office.context.mailbox.userProfile.emailAddress + ') ' +
                         'has automatically signed in as user: ' +
                         response.displayName + ' (' +
@@ -103,7 +103,7 @@
                 $('#password').removeAttr('disabled');
 
                 // Display error
-                showDataDialog('Oops!', 'Something happened... make sure that ' +
+                showDialog('Oops!', 'Something happened... make sure that ' +
                     'the credentials are valid (for an entry in the user service).');
             }
             else {
@@ -113,16 +113,16 @@
         });
     }
 
-    // Show the data dialog
-    function showDataDialog(title, text) {
+    // Show the dialog
+    function showDialog(title, text) {
         // Set the dialog title and text
-        $('#data-dialog-title').text(title);
-        $('#data-dialog-text').text(text);
-        $('#data-dialog').show();
+        $('#dialog-title').text(title);
+        $('#dialog-text').text(text);
+        $('#dialog').show();
     }
 
-    // Hide the data dialog
-    function hideDataDialog() {
-        $('#data-dialog').hide();
+    // Hide the dialog
+    function hideDialog() {
+        $('#dialog').hide();
     }
 })();
