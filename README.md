@@ -21,6 +21,13 @@ Hands-on Lab | Time (min) | Author(s)
 [Compose-Mode-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Compose-Mode-Outlook-Add-in) | 45-60 |Simon Jäger (**Microsoft**)
 [Single-Sign-On-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Single-Sign-On-Outlook-Add-in) | 60-90 |Simon Jäger (**Microsoft**)
 
+### Feedback ###
+If you have completed any of the above hands-on labs - I would love to get feedback from you! That way I can improve and develop the content further. Is there anything that you would like to see added in the future? Anything that you think should have been done differently? 
+
+Here is a feedback form (don't worry, it's super quick): <https://onedrive.live.com/survey?resid=518209D326167423!425042&authkey=!AFQSOK4L-tppAp4>
+
+You can also reach me at @simonjaegr: <https://twitter.com/simonjaegr>
+
 ### More Resources ###
 - Discover Office development: <https://msdn.microsoft.com/en-us/office/>
 - Learn more about Office UI Fabric: <http://dev.office.com/fabric/>
