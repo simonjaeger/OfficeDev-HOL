@@ -2,7 +2,11 @@
 
 With the new application model for Office comes a brand new way of extending Office with your own functionality - using the tools and dev stacks that we already know and love. 
 
-This hands-on lab demonstrates a few different ways to interact with the Office context.  Accessing different types of data for a mailbox item (message or appointment) in read mode. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
+In mail add-ins, we have access to a great functionality within the APIs to get an identity token. This identity token represents the Office 365 user and is key when it comes to building a single sign-on experience for your users. If you would like to learn more about what’s inside the identity token – head to: http://simonjaeger.com/dissecting-and-validating-the-exchange-identity-token/
+
+Why would you want to do this? Imagine if your add-in could sign in the user as soon as the add-in starts in Outlook – without having to ask for credentials every time. Not only is this behavior annoying from a user standpoint, but it’s also possible to overcome this because we have access to the identity token.
+
+This hands-on lab demonstrates how to implement a single sign-on experience within an Outlook add-in. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
 The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
@@ -280,7 +284,7 @@ Our first task is to clean up the project, and remove the default styling and se
                         This sample demonstrates how to implement a single sign-on experience within an Outlook add-in.
                         <br />
                         <br />
-                        Check the "Keep me signed in" box to enable SSO before clicking the "Sign in" button.
+                        Enter the credentials of an existing user in your user service before signing in.
                     </p>
                 </div>
 
@@ -620,7 +624,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
                             This sample demonstrates how to implement a single sign-on experience within an Outlook add-in.
                             <br />
                             <br />
-                            Check the "Keep me signed in" box to enable SSO before clicking the "Sign in" button.
+                            Enter the credentials of an existing user in your user service before signing in.
                         </p>
                     </div>
 
