@@ -17,6 +17,19 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [2.1 Clean up the project](#exercise-21-clean-up-the-project)
 * [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
 * [2.3 Add the base](#exercise-23-add-the-base-css--html)
+* [3.1 Add the input fields](#exercise-31-add-the-input-fields)
+* [3.2 Add the Spinner](#exercise-32-add-the-spinner)
+* [3.3 Add the dialog](#exercise-33-add-the-dialog)
+* [4.1 Add the authentication logic](#exercise-41-add-the-authentication-logic)
+* [4.2 Add the sign in button](#exercise-42-add-the-sign-in-button)
+* [4.3 Enable the sign in button](#exercise-43-enable-the-sign-in-button)
+* [5.1 Add the Web API Controller](#exercise-51-add-the-web-api-controller)
+* [5.2 Add the Web API configuration](#exercise-52-add-the-web-api-configuration)
+* [5.3 Add the Global Application Class](#exercise-53-add-the-global-application-class)
+* [5.4 Add the models](#exercise-54-add-the-models)
+* [5.5 Add the user service interface](#exercise-55-add-the-user-service-interface)
+* [5.6 Add the service implementation](#exercise-56-add-the-user-service-implementation)
+* [5.7 Finish the SSO Controller](#exercise-57-finish-the-sso-controller)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Single-Sign-On-Outlook-Add-in\\Source\\Single-Sign-On-Outlook-Add-in.sln**.           
     
