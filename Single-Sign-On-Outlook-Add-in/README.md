@@ -346,11 +346,13 @@ Our first task is to clean up the project, and remove the default styling and se
     ```
 2. In **Home.js**, add some default values to our input fields (below the initialization of the Office UI Fabric components, in the **ready** function) when the mail add-in is initialized:
     ```js
-    $('#username').val('#Office365Dev'),
-    $('#password').val('#Office365Dev'),
+    $('#username').val('#Office365Dev');
+    $('#password').val('#Office365Dev');
     
     ```
-4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form.
+4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin3.png)
+
 
 
 
