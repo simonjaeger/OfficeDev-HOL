@@ -971,10 +971,9 @@ We will use three different models (objects) when building the authentication/ma
 
 #### Exercise 6.5: Add the user service interface ####
 Let's create an interface to define the three different operations we need to create an SSO experience:
-- **GetUserAsync:** Get an already mapped user in the service using the Office 365 user unique identifier (UUID).
-- **GetUUIDSaltAsync:** Create or get an existing unique salt for the Office 365 user unique identifier (UUID) - used creating the UUID.
-- **MapUserAsync:** Map the Office 365 user unique identifier (UUID) with a user in your service (using the provided credentials). 
-
+- **GetUserAsync:** Get an already mapped user in the service using the Office 365 unique user identifier (UUID).
+- **GetUUIDSaltAsync:** Create or get an existing unique salt for the Office 365 unique user identifier (UUID) - used creating the UUID.
+- **MapUserAsync:** Map the Office 365 unique user identifier (UUID) with a user in your service (using the provided credentials). 
 
 1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
 2. Right-click and choose **Add New Folder**, name it **"Services"**. 
@@ -1096,6 +1095,10 @@ We will simulate a persisted solution for users, salts and mappings with simple 
     
 #### Exercise 6.7: Finish the SSO Controller ####
 The last step is to complete the Web API Controller. We will create a POST method to handle everything. This method will accept a **UserRequestModel** object to be passed in this request body. The **Credentials** property on the request body is optional, but without it we will not perform a mapping between an Office 365 user and a user in the **UserService** instance. 
+
+Before we do anything that has to do with user lookups or user mappings - we need to validate the identity token in the request. We can of course write this validation code if we want to (<http://simonjaeger.com/dissecting-and-validating-the-exchange-identity-token/>). But we can save ourselves a lot of time (and errors) by using the **Exchange Web Services Managed API** - available as a NuGet package.
+
+When we are mapping an Office 365 user with a user in the **UserService** instance, we don't want to use the Office 365 email address (or Exchange ID for that matter). Instead, we should get the **UniqueUserIdentification** property, salt it and then hash it (this is done in the **GetHashedUUID** method). 
     
 1. Click on **Tools** in the Visual Studio 2015 top menu. 
 2. Select **NuGet Package Manager** and choose **Package Manager Console**.
