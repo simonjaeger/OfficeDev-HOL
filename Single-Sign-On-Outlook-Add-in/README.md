@@ -316,6 +316,42 @@ Our first task is to clean up the project, and remove the default styling and se
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin2.png)
 
 
+#### Exercise 4.1: Add input fields ####
+1. In **Home.html**, locate the "Exercise: Username" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
+    ```html
+    <div class="ms-TextField">
+        <label class="ms-Label">Username</label>
+        <input id="username" class="ms-TextField-field" type="text" disabled>
+        <span class="ms-TextField-description">This should be an entry in your user service</span>
+    </div>
+    
+    ```
+2. In **Home.html**, locate the "Exercise: Password" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field. 
+    ```html
+    <div class="ms-TextField">
+        <label class="ms-Label">Password</label>
+        <input id="password" class="ms-TextField-field" type="password" disabled>
+    </div>
+    
+    ```
+2. In **Home.html**, locate the "Exercise: ChoiceField" comment and add the following HTML piece below it. This is an Office UI Fabric styled input field (checkbox). 
+    ```html
+    <div class="ms-ChoiceField">
+        <input id="demo-checkbox-unselected" class="ms-ChoiceField-input" type="checkbox" checked disabled>
+        <label for="demo-checkbox-unselected" class="ms-ChoiceField-field">
+            <span class="ms-Label">Keep me signed in</span>
+        </label>
+    </div>
+    
+    ```
+2. In **Home.js**, add some default values to our input fields (below the initialization of the Office UI Fabric components, in the **ready** function) when the mail add-in is initialized:
+    ```js
+    $('#username').val('#Office365Dev'),
+    $('#password').val('#Office365Dev'),
+    
+    ```
+4. Launch your mail add-in and view your work. You should see the new input fields that we will use as the sign-in form.
+
 
 
 # Wrap up  #
