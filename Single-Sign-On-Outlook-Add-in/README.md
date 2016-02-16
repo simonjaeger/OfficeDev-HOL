@@ -1080,8 +1080,7 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 
     ```
     
-
-#### Exercise 6.5: Finish the SSOController ####
+#### Exercise 6.7: Finish the SSO Controller ####
     
 1. In **SSOController.cs** (in the **Controllers** folder, add the following code piece within the class.
     ```csharp
