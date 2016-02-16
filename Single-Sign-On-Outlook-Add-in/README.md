@@ -838,7 +838,72 @@ We need to implement two parts to achieve the above; the front-end (add-in) and 
 3. Launch your mail add-in and test your work. Quickly after launching, your sign in form should be enabled. If you try to sign in, you will be prompted by the dialog that we created - saying that an error occurred. Which is true as we haven't created our Web API yet, we will do that next.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/LaunchedSSOMailAddin6.png)
 
+#### Exercise 6.1: Add the Web API Controller ####
+1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SelectWebProject.png)
+2. Right-click and choose **Add New Folder**, name it **Controllers**. 
+3. Right-click the **Controllers** folder and choose **Web API Controller Class (v2.1)**. Name it **SSOController** and click on the **OK** button. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/SSO.png) 
+4. In **SSOController.cs**, remove all of the methods leaving you with:  
+    ```csharp
+    using System.Web.Http;
 
+    namespace Single_Sign_On_Outlook_Add_inWeb.Controllers
+    {
+        public class SSOController : ApiController
+        {
+        }
+    }
+    ```
+
+#### Exercise 6.2: Add the Web API configuration ####
+1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
+2. Right-click and choose **Add New Folder**, name it **App_Start**. 
+3. Right-click the **App_Start** folder and choose **Add Class...**, name it **WebApiConfig.cs**. 
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/WebApiConfig.png)
+4. In **WebApiConfig.cs**, remove everything and add the following code piece. This class will configure the route for the Web API (this determines how we call it). 
+    ```csharp
+    using System.Web.Http;
+
+    namespace Single_Sign_On_Outlook_Add_inWeb.App_Start
+    {
+        class WebApiConfig
+        {
+            public static void Register(HttpConfiguration configuration)
+            {
+                configuration.Routes.MapHttpRoute("API Default", "api/{controller}/{id}",
+                    new { id = RouteParameter.Optional });
+            }
+        }
+    }
+    
+    ```
+#### Exercise 6.3: Add the Global Application Class ####
+1. Select the web project; **Read-Mode-Outlook-Add-inWeb** in the **Solution Explorer**.
+2. Right-click and choose **Add Global Application Class**, name it **Global**. Click **OK**.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Single-Sign-On-Outlook-Add-in/Images/Global.png)
+3. In **Global.asax.cs**, find the **Application_Start** method and add the following code piece inside of it. 
+    ```csharp
+    // Configure Web API
+    WebApiConfig.Register(GlobalConfiguration.Configuration);
+
+    // Configure camel case for JSON responses
+    var formatters = GlobalConfiguration.Configuration.Formatters;
+    var jsonFormatter = formatters.JsonFormatter;
+    var settings = jsonFormatter.SerializerSettings;
+    settings.Formatting = Formatting.Indented;
+    settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+    
+    ```
+4. In **Global.asax.cs**, add the following using statements at the top of the file: 
+    ```csharp
+    using Single_Sign_On_Outlook_Add_inWeb.App_Start;
+    using System.Web.Http;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
+    
+    ```
+5. 
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting with the Office context (a mailbox item in this case). In addition, you have also seen some of the styles and components included in the Office UI Fabric.
