@@ -9,14 +9,15 @@ The objective is to get familiar with the authentication piece (which is the com
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
 
-* [1.1 Create the project](#exercise-11-create-the-project)
-* [1.2 Edit the manifest](#exercise-12-edit-the-manifest)
-* [1.3 Launch the project](#exercise-13-launch-the-project)
-* [2.1 Clean up the project](#exercise-21-clean-up-the-project)
-* [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
-* [2.3 Add the base](#exercise-23-add-the-base-css--html)
-* [3.1 Add the input fields](#exercise-31-add-the-input-fields)
-* 
+* [1.1 Register the application in Azure AD](#exercise-11-register-the-application-in-azure-ad)
+* [1.2 Configure the application in Azure AD](#exercise-12-configure-the-application-in-azure-ad)
+* [2.1 Create the project](#exercise-21-create-the-project)
+* [2.2 Add the dependencies](#exercise-22-add-the-dependencies)
+* [3.1 Add the models](#exercise-31-add-the-models)
+* [3.2 Add the MailClient class](#exercise-32-add-the-mailclient-class)
+* [3.3 Configure the MailClient class](#exercise-33-configure-the-mailclient-class)
+* [3.4 Finish the MailClient class](#exercise-34-finish-the-mailclient-class)
+* [3.5 Finish the Program class](#exercise-35-finish-the-program-class)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Single-Sign-On-Outlook-Add-in\\Source\\Single-Sign-On-Outlook-Add-in.sln**.           
     
