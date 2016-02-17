@@ -19,7 +19,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [3.4 Finish the MailClient class](#exercise-34-finish-the-mailclient-class)
 * [3.5 Finish the Program class](#exercise-35-finish-the-program-class)
 
-Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Single-Sign-On-Outlook-Add-in\\Source\\Single-Sign-On-Outlook-Add-in.sln**.           
+Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Microsoft-Graph-Mail-Console-App\\Source\\Microsoft-Graph-Mail-Console-App.sln**.           
     
 ### Prerequisites ###
 - Visual Studio 2015: <https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx>
