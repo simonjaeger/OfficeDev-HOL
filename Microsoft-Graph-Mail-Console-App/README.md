@@ -270,6 +270,43 @@ For the next exercises, let's add the following structure for the mail client to
     }
 
     ```
+    
+#### Exercise 3.3: Configure the mail client ####
+
+1. In **MailClient.cs**, replace **"[YOUR DOMAIN]"** in the **Domain** property with the domain of your Office 365 Developer Tenant (e.g. contoso.onmicrosoft.com).   
+    ```csharp
+    // The Office 365 domain (e.g. contoso.microsoft.com)
+    public static string Domain
+    {
+        get { return "simonj.onmicrosoft.com"; }
+    }
+
+    ```
+2. Head to the configuration page of your Azure AD application. In the **Configure** tab section, locate the **Client ID** property. Copy it.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/ClientID.png) 
+3. In **MailClient.cs**, replace **"[YOUR CLIENT ID]"** in the **ClientId** property with the client Id of your Azure AD application.   
+    ```csharp
+    // The client Id of your native Azure AD application
+    public static string ClientId
+    {
+        get { return "deb79365-f124-4719-bc71-f5821cb172dd"; }
+    }
+
+    ```
+4. Head to the configuration page of your Azure AD application. In the **Configure** tab section, locate the **Redirect URIs** property. Copy it.
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/RedirectURI.png) 
+5. In **MailClient.cs**, replace **"[YOUR REDIRECT URI]"** in the **RedirectUri** property with the redirect URI of your Azure AD application.   
+    ```csharp
+    // The redirect URI specified in the Azure AD application
+    public static Uri RedirectUri
+    {
+        get { return new Uri("https://Microsoft-Graph-Mail-Console-App/"); }
+    }
+
+    ```
+
+
+
 
 #### Exercise 3.-: Finish the Program class ####
 
