@@ -20,6 +20,7 @@ Hands-on Lab | Time (min)* | Author(s)
 [Read-Mode-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Read-Mode-Outlook-Add-in) | 45-60 |Simon Jäger (**Microsoft**)
 [Compose-Mode-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Compose-Mode-Outlook-Add-in) | 45-60 |Simon Jäger (**Microsoft**)
 [Single-Sign-On-Outlook-Add-in](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Single-Sign-On-Outlook-Add-in) | 60-90 |Simon Jäger (**Microsoft**)
+[Microsoft-Graph-Mail-Console-App](https://github.com/simonjaeger/OfficeDev-HOL/tree/master/Microsoft-Graph-Mail-Console-App) | 30-45 |Simon Jäger (**Microsoft**)
 
 *The suggested times are still preliminary, these will be adjusted as the content has been delivered more.
 
