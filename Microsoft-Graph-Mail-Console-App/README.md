@@ -588,11 +588,13 @@ In order to trigger the mail client to send ourselves a mail, we need to call it
     {
        
     }
+    
     ```   
 2. In **Program.cs**, add the following code piece inside the **Main** method.   
     ```csharp
     MailClient.SendMeAsync().Wait();
     Console.Read();
+    
     ```   
 3. Your **Program.cs** file should look like this:   
     ```csharp
