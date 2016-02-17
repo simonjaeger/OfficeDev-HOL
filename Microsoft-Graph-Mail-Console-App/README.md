@@ -617,6 +617,18 @@ In order to trigger the mail client to send ourselves a mail, we need to call it
 
 Launch the project; open the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
+   
+At first, you should be asked to sign in using a user in your Office 365 Developer Tenant.
+            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SignIn.png)
+   
+This should generate a mail in your console app and send it to yourself.
+            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/ConsoleApp.png)
+   
+At this point, go ahead and check your mailbox!
+            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/NewMail.png)
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting (and authenticating) with the Microsoft Graph.
