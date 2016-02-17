@@ -3,7 +3,7 @@
 With the new application model for Office comes a brand new way of extending Office with your own functionality - using the tools and dev stacks that we already know and love. 
 
 This hands-on lab demonstrates a few different ways to interact with the Office context.  Setting different properties of a mailbox item (message or appointment) in compose mode. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
-The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
+The objective is to get familiar with some of the possiblities that we have when building Outlook add-ins.
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
 

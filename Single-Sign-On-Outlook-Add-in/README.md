@@ -7,7 +7,7 @@ In mail add-ins, we have access to a great functionality within the APIs to get 
 Why would you want to do this? Imagine if your mail add-in could sign in the user as soon as it starts in Outlook – without having to ask for credentials every time. Not only is this behavior annoying from a user standpoint, but it’s also possible to overcome this because we have access to the identity token.
 
 This hands-on lab demonstrates how to implement a single sign-on experience within an Outlook add-in. In addition, Different styles and components from the Office UI Fabric library are used throughout this Office add-in. 
-The objective is to get familiar with some of the possiblities that we have when building Excel add-ins.
+The objective is to get familiar with some of the possiblities that we have when building Outlook add-ins.
 
 The hands-on lab is divided into multiple exercises and should be followed in a chronological order. These are the included exercises:
 
