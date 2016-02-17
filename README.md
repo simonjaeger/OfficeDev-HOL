@@ -11,6 +11,7 @@ Short of time and just want the final sample? Clone this repository (```git clon
 - Office Developer Tools: <https://www.visualstudio.com/en-us/features/office-tools-vs.aspx>
 - Office 2013 (Service Pack 1) or Office 2016
 - Office 365 Developer Tenant: <http://dev.office.com/devprogram>
+- Azure subscription for the Office 365 Developer Tenant (a trial is sufficient)
 
 ### Hands-on Labs ###
 Hands-on Lab | Time (min)* | Author(s)
