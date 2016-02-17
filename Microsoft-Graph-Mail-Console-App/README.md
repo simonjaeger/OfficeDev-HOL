@@ -46,15 +46,15 @@ Version  | Date | Comments
 Make sure that you have all of the required prerequisites before getting into the exercise.
 
 1. Head to the current Azure portal and sign in with a user in your Office 365 Developer Tenant at: <https://manage.windowsazure.com/>
-2. In the left menu, click on **Active Directory** to list your Azure AD.  
+2. In the left menu, choose on **Active Directory** to list your Azure AD.  
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AAD.png)
 
 3. Click on your Azure AD in the **Directory** tab section.  
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SelectTenant.png)
 4. Click on **Applications** in the tab menu. 
-5. Click on **Add** at the bottom to register a new Azure AD application.   
+5. Click on the **Add** button at the bottom to register a new Azure AD application.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddApp.png)
-6. Click on **Add an application my organization is developing** in the dialog that shows up.
+6. Choose on **Add an application my organization is developing** in the dialog that shows up.
 7. Name your application **"Microsoft-Graph-Mail-Console-App"** and select **Native Client Application**. Proceed by clicking the continue button down at the bottom.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddApp2.png)
 8. Enter **"https://Microsoft-Graph-Mail-Console-App/"** as the **Redirect URI**. Click on the check button down below to complete the wizard.   
