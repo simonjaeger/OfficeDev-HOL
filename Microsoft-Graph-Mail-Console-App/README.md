@@ -77,16 +77,90 @@ We need to configure the application in Azure AD to be able to request the Micro
 6. Save your configuration by clicking the **Save** button at the bottom.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SaveApp.png)
 
-
 #### Exercise 2.1: Create the project ####
-Now let's create the project itself and add the basic structure.
+Now let's create the project itself in Visual Studio 2015.
 
 1. Click **File**, **New** and finally the **Project** button.
 2. In **Templates**, select **Visual C#**, **Windows** and then choose **Console Application**. 
 3. Name your project **"Microsoft-Graph-Mail-Console-App"** and click the **OK** button to continue. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/NewProject.png)
+4. Visual Studio 2015 will now create your console application project. Have a look in the **Solution Explorer** and find your new project.  
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SolutionExplorer.png)
 
+#### Exercise 2.2: Add the models ####
+We will use a few different models (objects) when calling the Microsoft Graph: These are
+- **UserModel:** Represents the current user in the Microsoft Graph. We will use the **Mail** property to use as the recipient of our mail.
+- **MailModel:** Contains a single property, **Message**.
+- **MessageModel**: This is the message (or mail of you will) itself. In the real world, it has a bunch of different properties - but we will only expose a few in this hands-on lab.
+- **BodyModel**: Contains the body content and the format (HTML in this case).
+- **ToRecipientModel**: Represents the recipient, contains a single **EmailAddress** property.
+- **EmailAddressModel**: Represents the mail address in the Microsoft Graph.
 
+1. Right-click on the project **Microsoft-Graph-Mail-Console-App**  and choose **Add Class...**. Name it **"UserModel"** and click on the **OK** button.
+2. In **UserModel.cs**, replace everything with the following code piece.  
+    ```csharp
+    using System.Collections.Generic;
+
+    namespace Microsoft_Graph_Mail_Console_App
+    {
+        public class UserModel
+        {
+            public string Id { get; set; }
+            public string UserPrincipalName { get; set; }
+            public List<string> BusinessPhones { get; set; }
+            public string DisplayName { get; set; }
+            public string GivenName { get; set; }
+            public object JobTitle { get; set; }
+            public string Mail { get; set; }
+            public string MobilePhone { get; set; }
+            public object OfficeLocation { get; set; }
+            public string PreferredLanguage { get; set; }
+            public string Surname { get; set; }
+        }
+    }
+    
+    ```
+2. Right-click on the project **Microsoft-Graph-Mail-Console-App**  and choose **Add Class...**. Name it **"MailModel"** and click on the **OK** button.
+3. In **MailModel.cs**, replace everything with the following code piece.  
+    ```csharp
+    using System.Collections.Generic;
+
+    namespace Microsoft_Graph_Mail_Console_App
+    {
+        public class MailModel
+        {
+            public MessageModel Message { get; set; }
+        }
+
+        public class MessageModel
+        {
+            public string Subject { get; set; }
+            public BodyModel Body { get; set; }
+            public List<ToRecipientModel> ToRecipients { get; set; }
+        }
+
+        public class BodyModel
+        {
+            public string ContentType { get; set; }
+            public string Content { get; set; }
+        }
+
+        public class ToRecipientModel
+        {
+            public EmailAddressModel EmailAddress { get; set; }
+        }
+
+        public class EmailAddressModel
+        {
+            public string Address { get; set; }
+        }
+    }
+
+    ```
+
+#### Exercise 2.3: Add the client ####
+
+#### Exercise 2.4: Finish the Program class ####
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting (and authenticating) with the Microsoft Graph.
