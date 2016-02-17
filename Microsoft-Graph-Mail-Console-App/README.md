@@ -72,8 +72,7 @@ We need to configure the application in Azure AD to be able to request the Micro
 3. Show **Microsoft Apps** and add the **Microsoft Graph**. 
 4. Save your changes by clicking the check button at the bottom.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddMSGraph.png)
-5. Click on **Delegated permissions** and pick the following permissions:
-    - Send mail as a user   
+5. Click on **Delegated permissions** and pick the **Send mail as a user** permission.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddPermissions.png)
 6. Save your configuration by clicking the **Save** button at the bottom.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SaveApp.png)
