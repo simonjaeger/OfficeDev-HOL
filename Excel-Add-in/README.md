@@ -13,14 +13,13 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [2.1 Clean up the project](#exercise-21-clean-up-the-project)
 * [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
 * [2.3 Add the base](#exercise-23-add-the-base-css--html)
-* [3.1 Add plain text to the document](#exercise-31-add-plain-text-to-the-document)
-* [3.2 Add HTML to the document](#exercise-32-add-html-to-the-document)
-* [3.3 Add a matrix to the document](#exercise-33-add-a-matrix-to-the-document)
-* [3.4 Add an Office Table to the document](#exercise-34-add-an-office-table-to-the-document)
-* [3.5 Add Office Open XML to the document](#exercise-35-add-office-open-xml-ooxml-to-the-document)
-* [4.1 Add a dialog](#exercise-41-add-a-dialog)
-* [4.2 Get selected data as plain text](#exercise-42-get-selected-data-as-plain-text)
-* [4.3 Get selected data as HTML](#exercise-43-get-selected-data-as-html)
+* [3.1 Read data from selection](#exercise-31-read-data-from-selection)
+* [3.2 Write data to selection](#exercise-32-write-data-to-selection)
+* [4.1 Create a custom start document](#exercise-41-create-a-custom-start-document)
+* [4.2 Use a custom start document](#exercise-42-use-a-custom-start-document)
+* [5.1 Create a binding to "MyTable"](#exercise-51-create-a-binding-to-mytable)
+* [5.2 Write data to the binding](#exercise-52-write-data-to-the-binding)
+* [5.3 Read data from the binding](#exercise-53-read-data-from-the-binding)
 
 Short of time and just want the final sample? Clone this repository (```git clone https://github.com/simonjaeger/OfficeDev-HOL.git```) and open the solution file: **Excel-Add-in\\Source\\Excel-Add-in.sln**.           
     
