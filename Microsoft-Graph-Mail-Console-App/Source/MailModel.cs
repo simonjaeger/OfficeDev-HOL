@@ -2,7 +2,7 @@
 
 namespace Microsoft_Graph_Mail_Console_App
 {
-    public class SendMailRequestModel
+    public class MailModel
     {
         public MessageModel Message { get; set; }
     }

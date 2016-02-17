@@ -30,7 +30,7 @@ namespace Microsoft_Graph_Mail_Console_App
             get { return string.Format("{0}/{1}/", AADInstance, Domain); }
         }
 
-        // The client ID of your native Azure AD application
+        // The client Id of your native Azure AD application
         public static string ClientId
         {
             get { return "[YOUR CLIENT ID]"; }
