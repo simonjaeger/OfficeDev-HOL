@@ -622,11 +622,7 @@ At first, you should be asked to sign in using a user in your Office 365 Develop
             
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SignIn.png)
    
-This should generate a mail in your console app and send it to yourself.
-            
-   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/ConsoleApp.png)
-   
-At this point, go ahead and check your mailbox!
+This should generate a mail in your console app and send it to yourself. At this point, go ahead and check your mailbox!
             
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/NewMail.png)
 
