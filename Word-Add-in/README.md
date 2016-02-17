@@ -18,7 +18,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [3.3 Add a matrix to the document](#exercise-33-add-a-matrix-to-the-document)
 * [3.4 Add an Office Table to the document](#exercise-34-add-an-office-table-to-the-document)
 * [3.5 Add Office Open XML to the document](#exercise-35-add-office-open-xml-ooxml-to-the-document)
-* [4.1 Add a dialog](#exercise-41-add-a-dialog)
+* [4.1 Add the dialog](#exercise-41-add-the-dialog)
 * [4.2 Get selected data as plain text](#exercise-42-get-selected-data-as-plain-text)
 * [4.3 Get selected data as HTML](#exercise-43-get-selected-data-as-html)
 
@@ -532,7 +532,7 @@ An TableData object (<https://msdn.microsoft.com/en-us/library/office/fp161002.a
 6. Launch your Word add-in and test your work by clicking the **Add OOXML** button. When the button is clicked, the function will be executed; adding an OOXML piece (read from the selected file) into the document.                                   
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Word-Add-in/Images/Chart.png) 
 
-#### Exercise 4.1: Add a dialog ####
+#### Exercise 4.1: Add the dialog ####
 
 1. In **Home.html**, locate the "Exercise: Selected data dialog" comment and add the following HTML piece below it. This is an Office UI Fabric styled dialog. 
     ```html

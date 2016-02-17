@@ -13,7 +13,7 @@ The hands-on lab is divided into multiple exercises and should be followed in a 
 * [2.1 Clean up the project](#exercise-21-clean-up-the-project)
 * [2.2 Add Office UI Fabric](#exercise-22-add-office-ui-fabric)
 * [2.3 Add the base](#exercise-23-add-the-base-css--html)
-* [3.1 Add a dialog](#exercise-31-add-a-dialog)
+* [3.1 Add the dialog](#exercise-31-add-the-dialog)
 * [4.1 Get the item subject](#exercise-41-get-the-item-subject)
 * [4.2 Get the item sender](#exercise-42-get-the-item-sender)
 * [4.3 Get the item body](#exercise-43-get-the-item-body)
@@ -301,7 +301,7 @@ Our first task is to clean up the project, and remove the default styling and se
 3. Launch your mail add-in to display the new styling. We will add more interactive components in the different sections (inside the recently added HTML piece).            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/LaunchedReadMailAddin2.png)
 
-#### Exercise 3.1: Add a dialog ####
+#### Exercise 3.1: Add the dialog ####
 As we are going to extract property values from the mailbox item, let's have a more sophisticated approach than the **JavaScript Console**. We can use an Office UI Fabric dialog to display this data in a more user-friendly way.  
 
 1. In **Home.html**, locate the "Exercise: Data dialog" comment and add the following HTML piece below it. This is an Office UI Fabric styled dialog. 
