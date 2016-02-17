@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft-Graph-Mail-Console-App", "Microsoft-Graph-Mail-Console-App.csproj", "{136785AD-E24E-4899-8AF2-34ED15DCB49B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{136785AD-E24E-4899-8AF2-34ED15DCB49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136785AD-E24E-4899-8AF2-34ED15DCB49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136785AD-E24E-4899-8AF2-34ED15DCB49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136785AD-E24E-4899-8AF2-34ED15DCB49B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
