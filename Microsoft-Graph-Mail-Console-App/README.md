@@ -306,7 +306,113 @@ For the next exercises, let's add the following structure for the mail client to
     ```
 
 
+#### Exercise 3.4: Finish the mail client ####
+In order to complete the mail client we need to implement a few methods.
+- **GetAccessToken:** Prompt the user with UI (if needed) in order to sign into the application and return an access token (for Microsoft Graph) from Azure AD.
+- **GetHttpClient:** Prepare an **HttpClient** object with the access token attached to the authorization header.
+- **GetUserAsync:** Get the current user profile (**UserModel**) using the Microsoft Graph. 
+- **CreateMail:** Create the mail object (**MailModel**) which we will send to the Microsoft Graph.
+- **SendMailAsync:** Send a mail object (**MailModel**) to the Microsoft Graph. 
+- **SendMeAsync:** Assemble the above methods into one single method.
 
+1. In **MailClient.cs**, locate the "Exercise: Get access token" comment and add the following code piece below it.   
+    ```csharp
+    // Create the authentication context (ADAL)
+    var authenticationContext = new AuthenticationContext(Authority);
+
+    // Get the access token
+    var authenticationResult = authenticationContext.AcquireToken(GraphResource,
+        ClientId, RedirectUri, PromptBehavior.RefreshSession);
+    var accessToken = authenticationResult.AccessToken;
+    return accessToken;
+
+    ```
+2. In **MailClient.cs**, locate the "Exercise: Get HttpClient" comment and add the following code piece below it.   
+    ```csharp
+    // Create the HTTP client with the access token
+    var httpClient = new HttpClient();
+    httpClient.DefaultRequestHeaders.Authorization =
+        new AuthenticationHeaderValue("Bearer",
+        accessToken);
+    return httpClient;
+
+    ```   
+3. In **MailClient.cs**, locate the "Exercise: Get user" comment and add the following code piece below it.   
+    ```csharp
+    // Get and deserialize the user
+    var userResponse = await httpClient.GetStringAsync(GraphResource + GraphVersion + "/me/");
+    var user = JsonConvert.DeserializeObject<UserModel>(userResponse);
+    return user;
+
+    ```   
+4. In **MailClient.cs**, locate the "Exercise: Create mail" comment and add the following code piece below it.   
+    ```csharp
+    var mail = new MailModel
+    {
+        Message = new MessageModel
+        {
+            ToRecipients = recipients.Select(recipient => new ToRecipientModel
+            {
+                EmailAddress = new EmailAddressModel
+                {
+                    Address = recipient
+                }
+            }).ToList(),
+            Subject = subject,
+            Body = new BodyModel
+            {
+                ContentType = "html",
+                Content = body
+            }
+        }
+    };
+    return mail;
+
+    ```   
+5. In **MailClient.cs**, locate the "Exercise: Send mail" comment and add the following code piece below it.   
+    ```csharp
+    // Serialize the mail
+    var stringContent = JsonConvert.SerializeObject(mail);
+
+    // Send using POST
+    var response = await httpClient.PostAsync(GraphResource + GraphVersion + "/me/microsoft.graph.sendMail",
+        new StringContent(stringContent, Encoding.UTF8, "application/json"));
+    return response.IsSuccessStatusCode;
+
+    ```      
+6. In **MailClient.cs**, locate the "Exercise: Assemble everything" comment and add the following code piece below it.   
+    ```csharp
+    // Get an access token and configure the HttpClient
+    var accessToken = GetAccessToken();
+    var httpClient = GetHttpClient(accessToken);
+
+    // Get the current user (to extract the mail address)
+    var user = await GetUserAsync(httpClient);
+
+    // Create the mail (HTML)
+    var mail = CreateMail("Hello #Office365Dev",
+        "<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing " +
+        "elit, sed do eiusmod tempor incididunt ut labore et dolore " +
+        "magna aliqua. Ut enim ad minim veniam, quis nostrud " +
+        "exercitation ullamco laboris nisi ut aliquip ex ea commodo " +
+        "consequat. Duis aute irure dolor in reprehenderit in voluptate " +
+        "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint " +
+        "occaecat cupidatat non proident, sunt in culpa qui officia deserunt " +
+        "mollit anim id est laborum.", user.Mail);
+
+    // Send the mail and check for success
+    var isSuccess = await SendMailAsync(httpClient, mail);
+    if (isSuccess)
+    {
+        Console.Write("Ooh... check your mailbox!");
+    }
+    else
+    {
+        // TODO: Handle error
+        Console.Write("Oops... something went wrong!");
+    }
+
+    ```   
 
 #### Exercise 3.-: Finish the Program class ####
 
