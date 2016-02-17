@@ -20,13 +20,13 @@ namespace Microsoft_Graph_Mail_Console_App
         public string Content { get; set; }
     }
 
-    public class EmailAddressModel
-    {
-        public string Address { get; set; }
-    }
-
     public class ToRecipientModel
     {
         public EmailAddressModel EmailAddress { get; set; }
+    }
+
+    public class EmailAddressModel
+    {
+        public string Address { get; set; }
     }
 }
