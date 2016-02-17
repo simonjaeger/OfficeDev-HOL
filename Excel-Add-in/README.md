@@ -90,7 +90,7 @@ Before we launch our Excel add-in we should validate that our start actions are 
 3. Set **Start Document** to **[New Excel Document]**.
 4. Set **Web Project** to your web project; **Excel-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartActions.png)
-5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **{F5}** keyboard shortcut.            
+5. To launch the project, open the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click **Start** in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 6. Once your Excel add-in has launched, you can explore the functionality that comes right out of the box with the Visual Studio 2015 template.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/LaunchedAddin.png)

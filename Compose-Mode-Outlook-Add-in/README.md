@@ -88,7 +88,7 @@ Before we launch our mail add-in we should validate that our start actions are p
 2. In the **Properties** window, set **Start Action** to Office Desktop Client. 
 4. Set **Web Project** to your web project; **Compose-Mode-Outlook-Add-inWeb**.
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Compose-Mode-Outlook-Add-in/Images/StartActions.png)
-5. To launch the project, open on the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
+5. To launch the project, open the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 6. When launching your mail add-in for the first time, Visual Studoo 2015 needs to install the manifest file. This is where you should use your Office 365 Developer Tenant (if you haven't signed up for one yet, get yours for free at <http://dev.office.com/devprogram>). Enter the credentials of a user (**[username]@[your domain].onmicrosoft.com**) belonging to your Office 365 Developer Tenant and click on the **Connect** button.            
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Read-Mode-Outlook-Add-in/Images/ConnectToExchange.png)
