@@ -87,7 +87,18 @@ Now let's create the project itself in Visual Studio 2015.
 4. Visual Studio 2015 will now create your console application project. Have a look in the **Solution Explorer** and find your new project.  
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SolutionExplorer.png)
 
-#### Exercise 2.2: Add the models ####
+#### Exercise 2.2: Add the dependencies ####
+We will use a couple of NuGet packages in this console application, to make it easy for us. These are Json.NET (<http://www.newtonsoft.com/json>) and Active Directory Authentication Library (<https://azure.microsoft.com/sv-se/documentation/articles/active-directory-authentication-libraries/>).
+
+1. Click on **Tools** in the Visual Studio 2015 top menu.
+2. Select **NuGet Package Manager** and choose **Package Manager Console**.  
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/PackageManager.png)
+3. In the **Package Manager Console**, select the project (**Microsoft-Graph-Mail-Console-App**) as the **Default project**.
+4. Enter and run **Install-Package Newtonsoft.Json** to install Json.NET.
+5. Enter and run **Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory** to install ADAL (short for Active Directory Authentication Library)  
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/PackageManagerConsole.png)
+
+#### Exercise 3.1: Add the models ####
 We will use a few different models (objects) when calling the Microsoft Graph: These are
 - **UserModel:** Represents the current user in the Microsoft Graph. We will use the **Mail** property to use as the recipient of our mail.
 - **MailModel:** Contains a single property, **Message**.
@@ -158,9 +169,9 @@ We will use a few different models (objects) when calling the Microsoft Graph: T
 
     ```
 
-#### Exercise 2.3: Add the client ####
+#### Exercise 3.2: Add the client base ####
 
-#### Exercise 2.4: Finish the Program class ####
+#### Exercise 3.-: Finish the Program class ####
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting (and authenticating) with the Microsoft Graph.
