@@ -576,7 +576,7 @@ In order to complete the mail client we need to implement a few methods.
             }
         }
     }
-
+    ```   
 
 #### Exercise 3.5: Finish the Program class ####
 In order to trigger the mail client to send ourselves a mail, we need to call it from the **Main** method.
