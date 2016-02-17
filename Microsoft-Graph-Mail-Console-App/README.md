@@ -308,7 +308,7 @@ For the next exercises, let's add the following structure for the mail client to
 
 #### Exercise 3.4: Finish the mail client ####
 In order to complete the mail client we need to implement a few methods.
-- **GetAccessToken:** Prompt the user with UI (if needed) in order to sign into the application and return an access token (for Microsoft Graph) from Azure AD.
+- **GetAccessToken:** Prompt the user with UI (if needed) in order to sign into the application and return an access token (for the Microsoft Graph) from Azure AD.
 - **GetHttpClient:** Prepare an **HttpClient** object with the access token attached to the authorization header.
 - **GetUserAsync:** Get the current user profile (**UserModel**) using the Microsoft Graph. 
 - **CreateMail:** Create the mail object (**MailModel**) which we will send to the Microsoft Graph.
@@ -412,9 +412,211 @@ In order to complete the mail client we need to implement a few methods.
         Console.Write("Oops... something went wrong!");
     }
 
+    ```  
+7. Your **MailClient.cs** file should look like this (except for the Azure AD properties, use your own):   
+    ```csharp
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Newtonsoft.Json;
+    using System;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace Microsoft_Graph_Mail_Console_App
+    {
+        public static class MailClient
+        {
+            // The Azure AD instance where you domain is hosted
+            public static string AADInstance
+            {
+                get { return "https://login.microsoftonline.com"; }
+            }
+
+            // The Office 365 domain (e.g. contoso.microsoft.com)
+            public static string Domain
+            {
+                get { return "simonj.onmicrosoft.com"; }
+            }
+
+            // The authority for authentication; combining the AADInstance
+            // and the domain.
+            public static string Authority
+            {
+                get { return string.Format("{0}/{1}/", AADInstance, Domain); }
+            }
+
+            // The client Id of your native Azure AD application
+            public static string ClientId
+            {
+                get { return "deb79365-f124-4719-bc71-f5821cb172dd"; }
+            }
+
+            // The redirect URI specified in the Azure AD application
+            public static Uri RedirectUri
+            {
+                get { return new Uri("https://Microsoft-Graph-Mail-Console-App/"); }
+            }
+
+            // The resource identifier for the Microsoft Graph
+            public static string GraphResource
+            {
+                get { return "https://graph.microsoft.com/"; }
+            }
+
+            // The Microsoft Graph version, can be "v1.0" or "beta"
+            public static string GraphVersion
+            {
+                get { return "v1.0"; }
+            }
+
+            // Get an access token for the Microsoft Graph using ADAL
+            public static string GetAccessToken()
+            {
+                // Create the authentication context (ADAL)
+                var authenticationContext = new AuthenticationContext(Authority);
+
+                // Get the access token
+                var authenticationResult = authenticationContext.AcquireToken(GraphResource,
+                    ClientId, RedirectUri, PromptBehavior.RefreshSession);
+                var accessToken = authenticationResult.AccessToken;
+                return accessToken;
+            }
+
+            // Prepare an HttpClient with the an authorization header (access token)
+            public static HttpClient GetHttpClient(string accessToken)
+            {
+                // Create the HTTP client with the access token
+                var httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer",
+                    accessToken);
+                return httpClient;
+            }
+
+            // Get the current user using a prepared HttpClient (with an authorization header)
+            public static async Task<UserModel> GetUserAsync(HttpClient httpClient)
+            {
+                // Get and deserialize the user
+                var userResponse = await httpClient.GetStringAsync(GraphResource + GraphVersion + "/me/");
+                var user = JsonConvert.DeserializeObject<UserModel>(userResponse);
+                return user;
+            }
+
+            // Create the mail structure needed to make a request to the Microsoft Graph
+            public static MailModel CreateMail(string subject, string body, params string[] recipients)
+            {
+                var mail = new MailModel
+                {
+                    Message = new MessageModel
+                    {
+                        ToRecipients = recipients.Select(recipient => new ToRecipientModel
+                        {
+                            EmailAddress = new EmailAddressModel
+                            {
+                                Address = recipient
+                            }
+                        }).ToList(),
+                        Subject = subject,
+                        Body = new BodyModel
+                        {
+                            ContentType = "html",
+                            Content = body
+                        }
+                    }
+                };
+                return mail;
+            }
+
+            // Send a mail using a prepared HttpClient (with an authorization header)
+            private static async Task<bool> SendMailAsync(HttpClient httpClient, MailModel mail)
+            {
+                // Serialize the mail
+                var stringContent = JsonConvert.SerializeObject(mail);
+
+                // Send using POST
+                var response = await httpClient.PostAsync(GraphResource + GraphVersion + "/me/microsoft.graph.sendMail",
+                    new StringContent(stringContent, Encoding.UTF8, "application/json"));
+                return response.IsSuccessStatusCode;
+            }
+
+            // Send a mail to the current user
+            public static async Task SendMeAsync()
+            {
+                // Get an access token and configure the HttpClient
+                var accessToken = GetAccessToken();
+                var httpClient = GetHttpClient(accessToken);
+
+                // Get the current user (to extract the mail address)
+                var user = await GetUserAsync(httpClient);
+
+                // Create the mail (HTML)
+                var mail = CreateMail("Hello #Office365Dev",
+                    "<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing " +
+                    "elit, sed do eiusmod tempor incididunt ut labore et dolore " +
+                    "magna aliqua. Ut enim ad minim veniam, quis nostrud " +
+                    "exercitation ullamco laboris nisi ut aliquip ex ea commodo " +
+                    "consequat. Duis aute irure dolor in reprehenderit in voluptate " +
+                    "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint " +
+                    "occaecat cupidatat non proident, sunt in culpa qui officia deserunt " +
+                    "mollit anim id est laborum.", user.Mail);
+
+                // Send the mail and check for success
+                var isSuccess = await SendMailAsync(httpClient, mail);
+                if (isSuccess)
+                {
+                    Console.Write("Ooh... check your mailbox!");
+                }
+                else
+                {
+                    // TODO: Handle error
+                    Console.Write("Oops... something went wrong!");
+                }
+            }
+        }
+    }
+
+
+#### Exercise 3.5: Finish the Program class ####
+In order to trigger the mail client to send ourselves a mail, we need to call it from the **Main** method.
+
+1. In **Program.cs**, mark the **Main** method with the **[STAThread]** attribute.   
+    ```csharp
+    [STAThread]
+    static void Main(string[] args)
+    {
+       
+    }
+    ```   
+2. In **Program.cs**, add the following code piece inside the **Main** method.   
+    ```csharp
+    MailClient.SendMeAsync().Wait();
+    Console.Read();
+    ```   
+3. Your **Program.cs** file should look like this:   
+    ```csharp
+    using System;
+
+    namespace Microsoft_Graph_Mail_Console_App
+    {
+        class Program
+        {
+            [STAThread]
+            static void Main(string[] args)
+            {
+                MailClient.SendMeAsync().Wait();
+                Console.Read();
+            }
+        }
+    }
+
     ```   
 
-#### Exercise 3.-: Finish the Program class ####
+> STAThreadAttribute indicates that the COM threading model for the application is single-threaded apartment. This attribute must be present on the entry point of any application that uses Windows Forms; if it is omitted, the Windows components might not work correctly. If the attribute is not present, the application uses the multithreaded apartment model, which is not supported for Windows Forms. <https://msdn.microsoft.com/en-us/library/ms182351(VS.80).aspx>
+
+Launch the project; open the **Debug** menu at the top of Visual Studio 2015 and click on the **Start Debugging** button. You can also click the **Start** button in your toolbar or use the **{F5}** keyboard shortcut.            
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/StartProject.png)
 
 # Wrap up  #
 View the source code files included in this hands-on lab for a final reference of how your code should be structured (if needed). You should now have grasped an understanding of a few possibilities of interacting (and authenticating) with the Microsoft Graph.

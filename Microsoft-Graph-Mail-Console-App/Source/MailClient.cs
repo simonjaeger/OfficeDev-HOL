@@ -20,7 +20,7 @@ namespace Microsoft_Graph_Mail_Console_App
         // The Office 365 domain (e.g. contoso.microsoft.com)
         public static string Domain
         {
-            get { return "simonj.onmicrosoft.com"; }
+            get { return "[YOUR DOMAIN]"; }
         }
 
         // The authority for authentication; combining the AADInstance
@@ -33,13 +33,13 @@ namespace Microsoft_Graph_Mail_Console_App
         // The client Id of your native Azure AD application
         public static string ClientId
         {
-            get { return "b2daa454-f3ea-46b4-aeb7-305b109e2a1c"; }
+            get { return "[YOUR CLIENT ID]"; }
         }
 
         // The redirect URI specified in the Azure AD application
         public static Uri RedirectUri
         {
-            get { return new Uri("https://l0"); }
+            get { return new Uri("[YOUR REDIRECT URI]"); }
         }
 
         // The resource identifier for the Microsoft Graph
