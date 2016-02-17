@@ -94,8 +94,8 @@ We will use a couple of NuGet packages in this console application, to make it e
 2. Select **NuGet Package Manager** and choose **Package Manager Console**.  
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/PackageManager.png)
 3. In the **Package Manager Console**, select the project (**Microsoft-Graph-Mail-Console-App**) as the **Default project**.
-4. Enter and run **Install-Package Newtonsoft.Json** to install Json.NET.
-5. Enter and run **Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory** to install ADAL (short for Active Directory Authentication Library)  
+4. Enter and run **Install-Package Newtonsoft.Json** to add the Json.NET NuGet package.
+5. Enter and run **Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory** to add the ADAL (short for Active Directory Authentication Library) NuGet package. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/PackageManagerConsole.png)
 
 #### Exercise 3.1: Add the models ####
@@ -169,7 +169,107 @@ We will use a few different models (objects) when calling the Microsoft Graph: T
 
     ```
 
-#### Exercise 3.2: Add the client base ####
+#### Exercise 3.2: Add the mail client base ####
+For the next exercises, let's add the following structure for the mail client to better organize where to put our code. 
+
+1. Right-click on the project **Microsoft-Graph-Mail-Console-App**  and choose **Add Class...**. Name it **"MailClient"** and click on the **OK** button.
+2. In **MailClient.cs**, replace everything with the following code piece.  
+    ```csharp
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Newtonsoft.Json;
+    using System;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace Microsoft_Graph_Mail_Console_App
+    {
+        public static class MailClient
+        {
+            // The Azure AD instance where you domain is hosted
+            public static string AADInstance
+            {
+                get { return "https://login.microsoftonline.com"; }
+            }
+
+            // The Office 365 domain (e.g. contoso.microsoft.com)
+            public static string Domain
+            {
+                get { return "[YOUR DOMAIN]"; }
+            }
+
+            // The authority for authentication; combining the AADInstance
+            // and the domain.
+            public static string Authority
+            {
+                get { return string.Format("{0}/{1}/", AADInstance, Domain); }
+            }
+
+            // The client Id of your native Azure AD application
+            public static string ClientId
+            {
+                get { return "[YOUR CLIENT ID]"; }
+            }
+
+            // The redirect URI specified in the Azure AD application
+            public static Uri RedirectUri
+            {
+                get { return new Uri("[YOUR REDIRECT URI]"); }
+            }
+
+            // The resource identifier for the Microsoft Graph
+            public static string GraphResource
+            {
+                get { return "https://graph.microsoft.com/"; }
+            }
+
+            // The Microsoft Graph version, can be "v1.0" or "beta"
+            public static string GraphVersion
+            {
+                get { return "v1.0"; }
+            }
+
+            // Get an access token for the Microsoft Graph using ADAL
+            public static string GetAccessToken()
+            {
+                // Exercise: Get the access token
+            }
+
+            // Prepare an HttpClient with the an authorization header (access token)
+            public static HttpClient GetHttpClient(string accessToken)
+            {
+                // Exercise: Get the HttpClient
+            }
+
+            // Get the current user using a prepared HttpClient (with an authorization header)
+            public static async Task<UserModel> GetUserAsync(HttpClient httpClient)
+            {
+                // Exercise: Get the user
+            }
+
+            // Create the mail structure needed to make a request to the Microsoft Graph
+            public static MailModel CreateMail(string subject, string body, params string[] recipients)
+            {
+                // Exercise: Create the mail
+            }
+
+            // Send a mail using a prepared HttpClient (with an authorization header)
+            private static async Task<bool> SendMailAsync(HttpClient httpClient, MailModel mail)
+            {
+                // Exercise: Send the mail
+            }
+
+            // Send a mail to the current user
+            public static async Task SendMeAsync()
+            {
+                // Exercise: Assemble everything
+            }
+        }
+    }
+
+    ```
 
 #### Exercise 3.-: Finish the Program class ####
 
