@@ -169,7 +169,7 @@ We will use a few different models (objects) when calling the Microsoft Graph: T
 
     ```
 
-#### Exercise 3.2: Add the mail client base ####
+#### Exercise 3.2: Add the MailClient class ####
 For the next exercises, let's add the following structure for the mail client to better organize where to put our code. 
 
 1. Right-click on the project **Microsoft-Graph-Mail-Console-App**  and choose **Add Class...**. Name it **"MailClient"** and click on the **OK** button.
@@ -271,7 +271,8 @@ For the next exercises, let's add the following structure for the mail client to
 
     ```
     
-#### Exercise 3.3: Configure the mail client ####
+#### Exercise 3.3: Configure the MailClient class ####
+We need to get back into our Azure AD application configuration page to extract a few properties and put them into the **MailClient.cs** file.
 
 1. In **MailClient.cs**, replace **"[YOUR DOMAIN]"** in the **Domain** property with the domain of your Office 365 Developer Tenant (e.g. contoso.onmicrosoft.com).   
     ```csharp
@@ -306,7 +307,7 @@ For the next exercises, let's add the following structure for the mail client to
     ```
 
 
-#### Exercise 3.4: Finish the mail client ####
+#### Exercise 3.4: Finish the MailClient class ####
 In order to complete the mail client we need to implement a few methods.
 - **GetAccessToken:** Prompt the user with UI (if needed) in order to sign into the application and return an access token (for the Microsoft Graph) from Azure AD.
 - **GetHttpClient:** Prepare an **HttpClient** object with the access token attached to the authorization header.
