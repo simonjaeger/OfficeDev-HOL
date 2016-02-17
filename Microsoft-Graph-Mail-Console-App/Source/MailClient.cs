@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -54,8 +54,8 @@ namespace Microsoft_Graph_Mail_Console_App
             get { return "v1.0"; }
         }
 
-        // Sends a mail to the current user
-        public static async Task SendMeAsync()
+        // Get an access token for the Microsoft Graph using ADAL
+        public static string GetAccessToken()
         {
             // Create the authentication context (ADAL)
             var authenticationContext = new AuthenticationContext(Authority);
@@ -64,54 +64,90 @@ namespace Microsoft_Graph_Mail_Console_App
             var authenticationResult = authenticationContext.AcquireToken(GraphResource,
                 ClientId, RedirectUri, PromptBehavior.RefreshSession);
             var accessToken = authenticationResult.AccessToken;
+            return accessToken;
+        }
 
+        // Prepare an HttpClient with the an authorization header (access token)
+        public static HttpClient GetHttpClient(string accessToken)
+        {
             // Create the HTTP client with the access token
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer",
                 accessToken);
+            return httpClient;
+        }
 
+        // Get the current user using a prepared HttpClient (with an authorization header)
+        public static async Task<UserModel> GetUserAsync(HttpClient httpClient)
+        {
             // Get and deserialize the user
             var userResponse = await httpClient.GetStringAsync(GraphResource + GraphVersion + "/me/");
             var user = JsonConvert.DeserializeObject<UserModel>(userResponse);
+            return user;
+        }
 
-            // Create the mail
-            var sendMailRequest = new SendMailRequestModel
+        // Create the mail structure needed to make a request to the Microsoft Graph
+        public static MailModel CreateMail(string subject, string body, params string[] recipients)
+        {
+            var mail = new MailModel
             {
                 Message = new MessageModel
                 {
-                    ToRecipients = new List<ToRecipientModel>
+                    ToRecipients = recipients.Select(recipient => new ToRecipientModel
                     {
-                        new ToRecipientModel
+                        EmailAddress = new EmailAddressModel
                         {
-                            EmailAddress = new EmailAddressModel
-                            {
-                                Address = user.Mail
-                            }
+                            Address = recipient
                         }
-                    },
-                    Subject = "Hello #Office365Dev",
+                    }).ToList(),
+                    Subject = subject,
                     Body = new BodyModel
                     {
                         ContentType = "html",
-                        Content = "<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing " +
-                        "elit, sed do eiusmod tempor incididunt ut labore et dolore " +
-                        "magna aliqua. Ut enim ad minim veniam, quis nostrud " +
-                        "exercitation ullamco laboris nisi ut aliquip ex ea commodo " +
-                        "consequat. Duis aute irure dolor in reprehenderit in voluptate " +
-                        "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint " +
-                        "occaecat cupidatat non proident, sunt in culpa qui officia deserunt " +
-                        "mollit anim id est laborum."
+                        Content = body
                     }
                 }
             };
+            return mail;
+        }
 
-            // Send the mail
-            var stringContent = JsonConvert.SerializeObject(sendMailRequest);
+        // Send a mail using a prepared HttpClient (with an authorization header)
+        private static async Task<bool> SendMailAsync(HttpClient httpClient, MailModel mail)
+        {
+            // Serialize the mail
+            var stringContent = JsonConvert.SerializeObject(mail);
+
+            // Send using POST
             var response = await httpClient.PostAsync(GraphResource + GraphVersion + "/me/microsoft.graph.sendMail",
                 new StringContent(stringContent, Encoding.UTF8, "application/json"));
+            return response.IsSuccessStatusCode;
+        }
 
-            if (response.IsSuccessStatusCode)
+        // Send a mail to the current user
+        public static async Task SendMeAsync()
+        {
+            // Get an access token and configure the HttpClient
+            var accessToken = GetAccessToken();
+            var httpClient = GetHttpClient(accessToken);
+
+            // Get the current user (to extract the mail address)
+            var user = await GetUserAsync(httpClient);
+
+            // Create the mail (HTML)
+            var mail = CreateMail("Hello #Office365Dev",
+                "<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing " +
+                "elit, sed do eiusmod tempor incididunt ut labore et dolore " +
+                "magna aliqua. Ut enim ad minim veniam, quis nostrud " +
+                "exercitation ullamco laboris nisi ut aliquip ex ea commodo " +
+                "consequat. Duis aute irure dolor in reprehenderit in voluptate " +
+                "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint " +
+                "occaecat cupidatat non proident, sunt in culpa qui officia deserunt " +
+                "mollit anim id est laborum.", user.Mail);
+
+            // Send the mail and check for success
+            var isSuccess = await SendMailAsync(httpClient, mail);
+            if (isSuccess)
             {
                 Console.Write("Ooh... check your mailbox!");
             }
