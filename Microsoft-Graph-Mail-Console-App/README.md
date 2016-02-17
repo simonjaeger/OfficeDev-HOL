@@ -43,6 +43,8 @@ Version  | Date | Comments
 
 # Exercises #
 #### Exercise 1.1: Register the application in Azure AD ####
+The first thing that we need to do is to register our application in Azure AD. This is how can acquire an access token for the Microsoft Graph (on behalf of the user). 
+
 Make sure that you have all of the required prerequisites before getting into the exercise.
 
 1. Head to the current Azure portal and sign in with a user in your Office 365 Developer Tenant at: <https://manage.windowsazure.com/>
@@ -60,6 +62,23 @@ Make sure that you have all of the required prerequisites before getting into th
 8. Enter **"https://Microsoft-Graph-Mail-Console-App/"** as the **Redirect URI**. Click on the check button down below to complete the wizard.   
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddApp3.png)
 
+
+#### Exercise 1.2: Configure the application in Azure AD ####
+We need to configure the application in Azure AD to be able to request the Microsoft Graph as a resource. This is done by adding the Microsoft Graph as an application, along with a set of permissions.
+
+1. Click on the **Configure** tab in the Azure AD application page.   
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/ConfigureApp.png)
+2. Scroll down to the bottom to the **Permissions to other applications** section and click on the **Add application** button.
+3. Show **Microsoft Apps** and add the **Microsoft Graph**. 
+4. Save your changes by clicking the check button at the bottom.   
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddMSGraph.png)
+5. Click on **Delegated permissions** and pick the following permissions:
+    - Send mail as a user   
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/AddPermissions.png)
+6. Save your configuration by clicking the **Save** button at the bottom.   
+   ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/SaveApp.png)
+
+
 #### Exercise 2.1: Create the project ####
 Now let's create the project itself and add the basic structure.
 
@@ -67,7 +86,6 @@ Now let's create the project itself and add the basic structure.
 2. In **Templates**, select **Visual C#**, **Windows** and then choose **Console Application**. 
 3. Name your project **"Microsoft-Graph-Mail-Console-App"** and click the **OK** button to continue. 
    ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Microsoft-Graph-Mail-Console-App/Images/NewProject.png)
-
 
 
 
