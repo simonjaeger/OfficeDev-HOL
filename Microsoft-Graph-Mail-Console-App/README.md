@@ -1,8 +1,8 @@
 # Hands-on Lab: Microsoft Graph Mail Console App #
 
-If you haven’t heard, there is an easy way to call a great amount of Microsoft APIs – using one single endpoint. This endpoint, so called the Microsoft Graph (https://graph.microsoft.io/) lets you access everything from data, to intelligence and insights powered by the Microsoft cloud.
+If you haven’t heard, there is an easy way to call a great amount of Microsoft APIs – using one single endpoint. This endpoint, so called the Microsoft Graph (<https://graph.microsoft.io/>) lets you access everything from data, to intelligence and insights powered by the Microsoft cloud.
 
-No longer will you need to keep track of different endpoints and separate tokens in your solutions – how great is that? This post is an introductory part of getting started with the Microsoft Graph. For changes in the Microsoft Graph, head to: https://graph.microsoft.io/changelog
+No longer will you need to keep track of different endpoints and separate tokens in your solutions – how great is that? This post is an introductory part of getting started with the Microsoft Graph. For changes in the Microsoft Graph, head to: <https://graph.microsoft.io/changelog>
 
 This hands-on lab demonstrates how to configure Azure AD to acquire an access token, used when calling the Microsoft Graph. With the Microsoft Graph, we will send ourselves a mail from the console application.
 The objective is to get familiar with the authentication piece (which is the complex part), but also to display some of the possibilities of the Microsoft Graph.

@@ -175,8 +175,7 @@ Our first task is to clean up the project, and remove the default styling and se
     
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
-        <script src="../../Scripts/Jquery.Dropdown.js" type="text/javascript"></script>
-
+   
         <link href="../App.css" rel="stylesheet" type="text/css" />
         <script src="../App.js" type="text/javascript"></script>
     
@@ -322,7 +321,7 @@ Our first task is to clean up the project, and remove the default styling and se
     }
     
     ```
-4. Launch your Excel add-in and test your work by first entering a value into a cell (such as *"Hello #Office365Dev"*. Then proceed by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the **JavaScript Console**.
+4. Launch your Excel add-in and test your work by first typing a value into a cell (such as *"Hello #Office365Dev"*). Press Enter to add the value to the cell. Then proceed by clicking the **Read data from selection** button. When the button is clicked, the function will be executed; reading the data from the current selection and logging it in the **JavaScript Console**.
 5. While your Excel add-in is running, switch back to Visual Studio 2015. Use the **Quick Launch** box in your top right corner to locate the **JavaScript Console** (simply by typing "JavaScript Console").                                     
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/QuickLaunch.png)
 6. In the **JavaScript Console**, you should find the selected data logged:                                     
@@ -373,7 +372,7 @@ When bulding an Excel add-in, you can use a custom document as the starting poin
 6. Save and close the workbook. 
 
 #### Exercise 4.2: Use a custom start document ####
-Now let's add the custon start document to our manifest project (**Excel-Add-in**) and configure Visual Studio 2015 to use it whenver we launch the Excel add-in.
+Now let's add the custom start document to our manifest project (**Excel-Add-in**) and configure Visual Studio 2015 to use it whenver we launch the Excel add-in.
 
 1. Right-click your manifest project and choose **Add Existing Item...**.                                      
     ![](https://raw.githubusercontent.com/simonjaeger/OfficeDev-HOL/master/Excel-Add-in/Images/SelectManifestProject.png)
